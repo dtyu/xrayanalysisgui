@@ -1,4 +1,4 @@
-Naiyun,  please check in your code here periodically (every hour).
+Naiyun's work logs:
 
 June 09, 2014
 I wrote a new version of matlab gui with modification of image display scalebar and display order selection. I added a third axes to display fitting result. I will show it to Karen to fix bug and add exception to control working flow. 
