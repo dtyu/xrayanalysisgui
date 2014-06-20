@@ -6,3 +6,13 @@ This week plan: finish matlab version and start using python to read data and di
 
 June 13, 2014
 This week, I have fixed all the GUI related bugs in my first version with help of Karen. The work procedure is organized by 'enable' and 'disable' components.
+
+June 20, 2014
+This week: added 'xrm' file loading function
+           error messages when needed
+           put reference plot choices into the listbox
+           made 'export spectrum' available to all types of spectrum
+           displayed image with any size in axes1
+           added 'export Athena' functionality
+           installed numpy,scipy,matplotlib,etc.(libraries needed when doing python GUI data processing)
+Next week plan: program txrm&xrm file import and image stack display function with PyQT
