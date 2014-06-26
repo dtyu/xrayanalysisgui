@@ -16,3 +16,9 @@ This week: added 'xrm' file loading function
            added 'export Athena' functionality
            installed numpy,scipy,matplotlib,etc.(libraries needed when doing python GUI data processing)
 Next week plan: program txrm&xrm file import and image stack display function with PyQT
+
+June 26, 2014
+This week: implemented a function of saving fitting tiff image with higher bit depth
+           fixed image display colorbar error
+           read 'LoadStack' class written in PyQT for loading data
+Next week plan: program txrm&xrm file import and image stack display function with PyQT
