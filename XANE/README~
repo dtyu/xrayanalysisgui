@@ -20,5 +20,5 @@ Next week plan: program txrm&xrm file import and image stack display function wi
 June 26, 2014
 This week: implemented a function of saving fitting tiff image with higher bit depth
            fixed image display colorbar error
-           read 'LoadStack' class in PyQT for loading data
+           read 'LoadStack' class written in PyQT for loading data
 Next week plan: program txrm&xrm file import and image stack display function with PyQT

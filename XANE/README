@@ -22,3 +22,12 @@ This week: implemented a function of saving fitting tiff image with higher bit d
            fixed image display colorbar error
            read 'LoadStack' class written in PyQT for loading data
 Next week plan: program txrm&xrm file import and image stack display function with PyQT
+
+July 11, 2014
+This week: implemented 'Input Data' module by PyQt
+           input data in 'txrm' & 'xrm'
+           display filepath & filename in the panel
+           input reference data in 'txt'
+           display corrected image in QGraphicsView
+Next week: implement 'Processing' module by PyQt
+           learn mantis modules (PCA, clustering, etc.)
