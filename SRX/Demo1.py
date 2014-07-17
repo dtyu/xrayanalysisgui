@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Demo1.ui'
 #
-# Created: Tue Jul 08 15:59:10 2014
+# Created: Mon Jul 14 15:36:09 2014
 #      by: PyQt4 UI code generator 4.11
 #
 # WARNING! All changes made in this file will be lost!
@@ -196,11 +196,14 @@ class Ui_Dialog(object):
         self.graphicsView_XR.setGeometry(QtCore.QRect(610, 50, 361, 241))
         self.graphicsView_XR.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.graphicsView_XR.setObjectName(_fromUtf8("graphicsView_XR"))
-        self.tableView = QtGui.QTableView(Dialog)
-        self.tableView.setGeometry(QtCore.QRect(300, 330, 217, 200))
-        self.tableView.setAlternatingRowColors(True)
-        self.tableView.setSelectionBehavior(QtGui.QAbstractItemView.SelectRows)
-        self.tableView.setObjectName(_fromUtf8("tableView"))
+        self.tableWidget = QtGui.QTableWidget(Dialog)
+        self.tableWidget.setGeometry(QtCore.QRect(300, 330, 467, 201))
+        self.tableWidget.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
+        self.tableWidget.setRowCount(1)
+        self.tableWidget.setColumnCount(4)
+        self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
+        self.tableWidget.setColumnCount(4)
+        self.tableWidget.setRowCount(1)
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)

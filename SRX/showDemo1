@@ -66,52 +66,31 @@ class MyForm(QtGui.QDialog):
         self.height_XR = 0
         # Elements which user can select
         '''
-        # SelectElements[0] represents Ti, SelectElements[1] represents V,
-        # SelectElements[2] represents Cr, SelectElements[3] represents Mn,
-        # SelectElements[4] represents Fe, SelectElements[5] represents Co,
-        # SelectElements[6] represents Ni, SelectElements[7] represents Cu,
-        # SelectElements[8] represents Zn, SelectElements[9] represents Ga,
-        # SelectElements[10] represents Ge, SelectElements[11] represents As
-        # SelectElements[12] represents Se, SelectElements[13] represents Br,
-        # SelectElements[14] represents Kr, SelectElements[15] represents Rb,
-        # SelectElements[16] represents Sr, SelectElements[17] represents Y,
-        # SelectElements[18] represents Zr, SelectElements[19] represents Nb,
-        # SelectElements[20] represents Mo, SelectElements[21] represents Tc,
-        # SelectElements[22] represents Ru, SelectElements[23] represents Rh,
-        # SelectElements[24] represents Pd, SelectElements[25] represents Ag,
-        # SelectElements[26] represents Cd, SelectElements[27] represents In,
-        # SelectElements[28] represents Sn, SelectElements[29] represents Sb,
-        # SelectElements[30] represents Te, SelectElements[31] represents I,
-        # SelectElements[32] represents Xe, SelectElements[33] represents Cs,
-        # SelectElements[34] represents Ba, SelectElements[35] represents Hf,
-        # SelectElements[36] represents Ta, SelectElements[37] represents W,
-        # SelectElements[38] represents Re, SelectElements[39] represents Os,
-        # SelectElements[40] represents Ir, SelectElements[41] represents Pt,
-        # SelectElements[42] represents Au, SelectElements[43] represents Hg,
-        # SelectElements[44] represents Tl, SelectElements[45] represents Pb,
-        # SelectElements[46] represents Bi, SelectElements[47] represents Po,
-        # SelectElements[48] represents At, SelectElements[49] represents Rn,
-        # SelectElements[50] represents Fr, SelectElements[51] represents Ra,
-        # SelectElements[52] represents La, SelectElements[53] represents Ce,
-        # SelectElements[54] represents Pr, SelectElements[55] represents Nd,
-        # SelectElements[56] represents Pm, SelectElements[57] represents Sm,
-        # SelectElements[58] represents Eu, SelectElements[59] represents Gd,
-        # SelectElements[60] represents Tb, SelectElements[61] represents Dy,
-        # SelectElements[62] represents Ho, SelectElements[63] represents Er,
-        # SelectElements[64] represents Tm, SelectElements[65] represents Yb,
-        # SelectElements[66] represents Lu, SelectElements[67] represents Ac,
-        # SelectElements[68] represents Th, SelectElements[69] represents Pa,
-        # SelectElements[70] represents U, SelectElements[71] represents Np,
-        # SelectElements[72] represents Pu, SelectElements[73] represents Am,
-        
-        # 0 means not selected, 1 means selected
+        # [0] represents Ti, [1] represents V, [2] represents Cr, [3] represents Mn,
+        # [4] represents Fe, [5] represents Co, [6] represents Ni, [7] represents Cu,
+        # [8] represents Zn, [9] represents Ga, [10] represents Ge, [11] represents As
+        # [12] represents Se, [13] represents Br, [14] represents Kr, [15] represents Rb,
+        # [16] represents Sr, [17] represents Y, [18] represents Zr, [19] represents Nb,
+        # [20] represents Mo, [21] represents Tc, [22] represents Ru, [23] represents Rh,
+        # [24] represents Pd, [25] represents Ag, [26] represents Cd, [27] represents In,
+        # [28] represents Sn, [29] represents Sb, [30] represents Te, [31] represents I,
+        # [32] represents Xe, [33] represents Cs, [34] represents Ba, [35] represents Hf,
+        # [36] represents Ta, [37] represents W, [38] represents Re, [39] represents Os,
+        # [40] represents Ir, [41] represents Pt, [42] represents Au, [43] represents Hg,
+        # [44] represents Tl, [45] represents Pb, [46] represents Bi, [47] represents Po,
+        # [48] represents At, [49] represents Rn, [50] represents Fr, [51] represents Ra,
+        # [52] represents La, [53] represents Ce, [54] represents Pr, [55] represents Nd,
+        # [56] represents Pm, [57] represents Sm, [58] represents Eu, [59] represents Gd,
+        # [60] represents Tb, [61] represents Dy, [62] represents Ho, [63] represents Er,
+        # [64] represents Tm, [65] represents Yb, [66] represents Lu, [67] represents Ac,
+        # [68] represents Th, [69] represents Pa, [70] represents U, [71] represents Np,
+        # [72] represents Pu, [73] represents Am,
         '''
+        # 0 means not selected, 1 means selected
         self.SelectElements = [0]*74
         # Store selection results temporarily
         self.tempSelectElements = self.SelectElements
-        '''
-        # All elements available for user to select
-        '''
+        # Data stored in advance
         self.knownElements = [["Ti",8],["V",9],["Cr",10],["Mn",11],["Fe",12],
                               ["Co",13],["Ni",14],["Cu",15],["Zn",16],["Ga",17],
                               ["Ge",18],["As",19],["Se",20],["Br",21],["Kr",22],
@@ -127,6 +106,7 @@ class MyForm(QtGui.QDialog):
                               ["Tb",68],["Dy",69],["Ho",70],["Er",71],["Tm",72],
                               ["Yb",73],["Lu",74],["Ac",75],["Th",76],["Pa",77],
                               ["U",78],["Np",79],["Pu",80],["Am",81]]
+        
         self.count = 0
         '''
         # If user have selected a ROI in VL, then selected_VL = 1
@@ -157,17 +137,127 @@ class MyForm(QtGui.QDialog):
         self.ui.ScanStepSizeY.setText(unicode(self.scanStepY))
         # Initialized as 0.1
         self.ui.DwellTime.setText(unicode(self.dwellTime))
-        # Set standard model for Table View
-        self.model = QStandardItemModel(1,2)
-        self.model.setHorizontalHeaderItem(0,QStandardItem(QString("Elements")))
-        self.model.setHorizontalHeaderItem(1,QStandardItem(QString("Energy")))
-        self.ui.tableView.setModel(self.model)
-        self.ui.tableView.setColumnWidth(0,100)
-        self.ui.tableView.setColumnWidth(1,100)
+        # 
+        self.ui.tableWidget.setHorizontalHeaderLabels([QString("Element"),
+                                                       QString("Energy"),
+                                                       QString("Range"),
+                                                       QString("Count")])
+
+        self.ui.tableWidget.cellDoubleClicked.connect(self.handleCellDoubleClicked)
+        self.ui.tableWidget.cellChanged.connect(self.handleCellChanged)
+        
+        self.ui.tableWidget.setColumnWidth(0,100)
+        self.ui.tableWidget.setColumnWidth(1,150)
+        self.ui.tableWidget.setColumnWidth(2,100)
+        self.ui.tableWidget.setColumnWidth(3,100)
+        
+        self.energySelection = [""]*74
+        self.scanRange = [300]*74
+        
+        # Ti
+        '''
+        self.comboBoxTi = QtGui.QComboBox()
+        self.comboBoxTi.insertItem(u"K\u03b11: 4,510.84eV")
+        self.comboBoxTi.insertItem(u"K\u03b12: 4,504.86eV")
+        self.comboBoxTi.insertItem(u"K\u03b21: 4,931.81eV")
+        self.comboBoxTi.insertItem("All")
+        # Connect handle method with combo box
+        self.comboBoxTi.currentIndexChanged['QString'].connect(self.comboBoxTi_Changed)
+        '''
+        self.energySelection[0] = "4,510.84"
+        # V
+        '''
+        self.comboBoxV = QtGui.QComboBox()
+        self.comboBoxV.insertItem(0,u"K\u03b11: 4,952.2eV")
+        self.comboBoxV.insertItem(1,u"K\u03b12: 4,944.64eV")
+        self.comboBoxV.insertItem(2,u"K\u03b21: 5,427.29eV")
+        self.comboBoxV.insertItem(3,"All")
+        # Connect handle method with combo box
+        self.comboBoxV.currentIndexChanged['QString'].connect(self.comboBoxV_Changed)
+        '''
+        self.energySelection[1] = "4,952.20"
+        # Cr
+        '''
+        self.comboBoxCr = QtGui.QComboBox()
+        self.comboBoxCr.insertItem(0,u"K\u03b11: 5,414.72eV")
+        self.comboBoxCr.insertItem(1,u"K\u03b12: 5,405.509eV")
+        self.comboBoxCr.insertItem(2,u"K\u03b21: 5,946.71eV")
+        self.comboBoxCr.insertItem(3,"All")
+        # Connect handle method with combo box
+        self.comboBoxCr.currentIndexChanged['QString'].connect(self.comboBoxCr_Changed)
+        '''
+        self.energySelection[2] = "5,414.72"
+        # Mn
+        '''
+        self.comboBoxMn = QtGui.QComboBox()
+        self.comboBoxMn.insertItem(0,u"K\u03b11: 5,898.75eV")
+        self.comboBoxMn.insertItem(1,u"K\u03b12: 5,887.65eV")
+        self.comboBoxMn.insertItem(2,u"K\u03b21: 6,490.45eV")
+        self.comboBoxMn.insertItem(3,"All")
+        # Connect handle method with combo box
+        self.comboBoxMn.currentIndexChanged['QString'].connect(self.comboBoxMn_Changed)
+        '''
+        self.energySelection[3] = "5,898.75"
+        # Fe
+        '''
+        self.comboBoxFe = QtGui.QComboBox()
+        self.comboBoxFe.insertItem(0,u"K\u03b11: 6,403.84eV")
+        self.comboBoxFe.insertItem(1,u"K\u03b12: 6,390.84eV")
+        self.comboBoxFe.insertItem(2,u"K\u03b21: 7,057.98eV")
+        self.comboBoxFe.insertItem(3,"All")
+        # Connect handle method with combo box
+        self.comboBoxFe.currentIndexChanged['QString'].connect(self.comboBoxFe_Changed)
+        '''
+        self.energySelection[4] = "6,403.84"
+        # Co
+        '''
+        self.comboBoxCo = QtGui.QComboBox()
+        self.comboBoxCo.insertItem(0,u"K\u03b11: 6,930.32eV")
+        self.comboBoxCo.insertItem(1,u"K\u03b12: 6,915.30eV")
+        self.comboBoxCo.insertItem(2,u"K\u03b21: 7,649.43eV")
+        self.comboBoxCo.insertItem(3,"All")
+        # Connect handle method with combo box
+        self.comboBoxCo.currentIndexChanged['QString'].connect(self.comboBoxCo_Changed)
+        '''
+        self.energySelection[5] = "6,930.32"
+        # Ni
+        '''
+        self.comboBoxNi = QtGui.QComboBox()
+        self.comboBoxNi.insertItem(0,u"K\u03b11: 7,478.15eV")
+        self.comboBoxNi.insertItem(1,u"K\u03b12: 7,460.89eV")
+        self.comboBoxNi.insertItem(2,u"K\u03b21: 8,264.66eV")
+        self.comboBoxNi.insertItem(3,"All")
+        # Connect handle method with combo box
+        self.comboBoxNi.currentIndexChanged['QString'].connect(self.comboBoxNi_Changed)
+        '''
+        self.energySelection[6] = "7,478.15"
+        # Cu
+        '''
+        self.comboBoxCu = QtGui.QComboBox()
+        self.comboBoxCu.insertItem(0,u"K\u03b11: 8,047.78eV")
+        self.comboBoxCu.insertItem(1,u"K\u03b12: 8,027.83eV")
+        self.comboBoxCu.insertItem(2,u"K\u03b21: 8,905.29eV")
+        self.comboBoxCu.insertItem(3,"All")
+        # Connect handle method with combo box
+        self.comboBoxCu.currentIndexChanged['QString'].connect(self.comboBoxCu_Changed)
+        '''
+        self.energySelection[7] = "8,047.78"
+        # Zn
+        '''
+        self.comboBoxZn = QtGui.QComboBox()
+        self.comboBoxZn.insertItem(0,u"K\u03b11: 8,638.86eV")
+        self.comboBoxZn.insertItem(1,u"K\u03b12: 8,615.78eV")
+        self.comboBoxZn.insertItem(2,u"K\u03b21: 9,572.0eV")
+        self.comboBoxZn.insertItem(3,"All")
+        # Connect handle method with combo box
+        self.comboBoxZn.currentIndexChanged['QString'].connect(self.comboBoxZn_Changed)
+        '''
+        self.energySelection[8] = "8,638.86"
         
     '''
     # Handles mouse events in graphicsView_VL and graphicsView_XR
     '''
+
     def eventFilter(self, source, event):
         # mouse press event in graphicsView_VL
         if (event.type() == QtCore.QEvent.GraphicsSceneMousePress
@@ -466,20 +556,227 @@ class MyForm(QtGui.QDialog):
         if ok == True:
             self.SelectElements = self.tempSelectElements
             # Show selection results in the table view
-            for x in range(self.count):
-                self.model.setItem(x,0,QStandardItem(QString("")))
-                self.model.setItem(x,1,QStandardItem(QString("")))
+            self.ui.tableWidget.setRowCount(0)
             self.count = 0
             for index in range(len(self.SelectElements)):
                 if self.SelectElements[index] == 1:
-                    self.model.setItem(self.count,0,
-                                       QStandardItem(QString(self.knownElements[index][0])))
-                    self.model.setItem(self.count,1,
-                                       QStandardItem(QString(unicode(self.knownElements[index][1]))))
+                    self.ui.tableWidget.insertRow(self.count)
+                    self.ui.tableWidget.setItem(self.count,0,
+                                                QTableWidgetItem(QString(self.knownElements[index][0])))
+                    self.ui.tableWidget.setItem(self.count,2,
+                                                QTableWidgetItem(QString(unicode(self.scanRange[index]))))
+                    if index == 0:
+                        self.comboBoxTi = QtGui.QComboBox()
+                        self.comboBoxTi.insertItem(0,u"K\u03b11: 4,510.84eV")
+                        self.comboBoxTi.insertItem(1,u"K\u03b11: 4,510.84eV")
+                        self.comboBoxTi.insertItem(2,u"K\u03b21: 4,931.81eV")
+                        self.comboBoxTi.insertItem(3,"All")
+                        self.comboBoxTi.currentIndexChanged['QString'].connect(self.comboBoxTi_Changed)
+                        self.ui.tableWidget.setCellWidget(self.count,1,self.comboBoxTi)
+                    elif index == 1:
+                        self.comboBoxV = QtGui.QComboBox()
+                        self.comboBoxV.insertItem(0,u"K\u03b11: 4,952.2eV")
+                        self.comboBoxV.insertItem(1,u"K\u03b12: 4,944.64eV")
+                        self.comboBoxV.insertItem(2,u"K\u03b21: 5,427.29eV")
+                        self.comboBoxV.insertItem(3,"All")
+                        self.comboBoxV.currentIndexChanged['QString'].connect(self.comboBoxV_Changed)
+                        self.ui.tableWidget.setCellWidget(self.count,1,self.comboBoxV)
+                    elif index == 2:
+                        self.comboBoxCr = QtGui.QComboBox()
+                        self.comboBoxCr.insertItem(0,u"K\u03b11: 5,414.72eV")
+                        self.comboBoxCr.insertItem(1,u"K\u03b12: 5,405.509eV")
+                        self.comboBoxCr.insertItem(2,u"K\u03b21: 5,946.71eV")
+                        self.comboBoxCr.insertItem(3,"All")
+                        self.comboBoxCr.currentIndexChanged['QString'].connect(self.comboBoxCr_Changed)
+                        self.ui.tableWidget.setCellWidget(self.count,1,self.comboBoxCr)
+                    elif index == 3:
+                        self.comboBoxMn = QtGui.QComboBox()
+                        self.comboBoxMn.insertItem(0,u"K\u03b11: 5,898.75eV")
+                        self.comboBoxMn.insertItem(1,u"K\u03b12: 5,887.65eV")
+                        self.comboBoxMn.insertItem(2,u"K\u03b21: 6,490.45eV")
+                        self.comboBoxMn.insertItem(3,"All")
+                        self.comboBoxMn.currentIndexChanged['QString'].connect(self.comboBoxMn_Changed)
+                        self.ui.tableWidget.setCellWidget(self.count,1,self.comboBoxMn)
+                    elif index == 4:
+                        self.comboBoxFe = QtGui.QComboBox()
+                        self.comboBoxFe.insertItem(0,u"K\u03b11: 6,403.84eV")
+                        self.comboBoxFe.insertItem(1,u"K\u03b12: 6,390.84eV")
+                        self.comboBoxFe.insertItem(2,u"K\u03b21: 7,057.98eV")
+                        self.comboBoxFe.insertItem(3,"All")
+                        self.comboBoxFe.currentIndexChanged['QString'].connect(self.comboBoxFe_Changed)
+                        self.ui.tableWidget.setCellWidget(self.count,1,self.comboBoxFe)
+                    elif index == 5:
+                        self.comboBoxCo = QtGui.QComboBox()
+                        self.comboBoxCo.insertItem(0,u"K\u03b11: 6,930.32eV")
+                        self.comboBoxCo.insertItem(1,u"K\u03b12: 6,915.30eV")
+                        self.comboBoxCo.insertItem(2,u"K\u03b21: 7,649.43eV")
+                        self.comboBoxCo.insertItem(3,"All")
+                        self.comboBoxCo.currentIndexChanged['QString'].connect(self.comboBoxCo_Changed)
+                        self.ui.tableWidget.setCellWidget(self.count,1,self.comboBoxCo)
+                    elif index == 6:
+                        self.comboBoxNi = QtGui.QComboBox()
+                        self.comboBoxNi.insertItem(0,u"K\u03b11: 7,478.15eV")
+                        self.comboBoxNi.insertItem(1,u"K\u03b12: 7,460.89eV")
+                        self.comboBoxNi.insertItem(2,u"K\u03b21: 8,264.66eV")
+                        self.comboBoxNi.insertItem(3,"All")
+                        self.comboBoxNi.currentIndexChanged['QString'].connect(self.comboBoxNi_Changed)
+                        self.ui.tableWidget.setCellWidget(self.count,1,self.comboBoxNi)
+                    elif index == 7:
+                        self.comboBoxCu = QtGui.QComboBox()
+                        self.comboBoxCu.insertItem(0,u"K\u03b11: 8,047.78eV")
+                        self.comboBoxCu.insertItem(1,u"K\u03b12: 8,027.83eV")
+                        self.comboBoxCu.insertItem(2,u"K\u03b21: 8,905.29eV")
+                        self.comboBoxCu.insertItem(3,"All")
+                        self.comboBoxCu.currentIndexChanged['QString'].connect(self.comboBoxCu_Changed)
+                        self.ui.tableWidget.setCellWidget(self.count,1,self.comboBoxCu)
+                    elif index == 8:
+                        self.comboBoxZn = QtGui.QComboBox()
+                        self.comboBoxZn.insertItem(0,u"K\u03b11: 8,638.86eV")
+                        self.comboBoxZn.insertItem(1,u"K\u03b12: 8,615.78eV")
+                        self.comboBoxZn.insertItem(2,u"K\u03b21: 9,572.0eV")
+                        self.comboBoxZn.insertItem(3,"All")
+                        self.comboBoxZn.currentIndexChanged['QString'].connect(self.comboBoxZn_Changed)
+                        self.ui.tableWidget.setCellWidget(self.count,1,self.comboBoxZn)
+                    
+                    print QString(self.knownElements[index][0]) + ":"
+                    print self.energySelection[index]
+                    
                     self.count = self.count + 1
-            # Remove blank rows
-            if (self.model.rowCount() > self.count):
-                self.model.removeRows(self.count,self.model.rowCount() - self.count)
+
+    def comboBoxTi_Changed(self,event):
+        if unicode(self.comboBoxTi.currentText()) == u"K\u03b11: 4,510.84eV":
+            self.energySelection[0] = "4,510.84"
+        elif unicode(self.comboBoxTi.currentText()) == u"K\u03b12: 4,504.86eV":
+            self.energySelection[0] = "4,504.86"
+        elif unicode(self.comboBoxTi.currentText()) == u"K\u03b21: 4,931.81eV":
+            self.energySelection[0] = "4,931.81"
+        elif unicode(self.comboBoxTi.currentText()) == "All":
+            self.energySelection[0] = "4,510.84; 4,504.86; 4,931.81"
+        print "Ti:"
+        print self.energySelection[0]
+
+    def comboBoxV_Changed(self,event):
+        if unicode(self.comboBoxV.currentText()) == u"K\u03b11: 4,952.20eV":
+            self.energySelection[1] = "4,952.20"
+        elif unicode(self.comboBoxV.currentText()) == u"K\u03b12: 4,944.64eV":
+            self.energySelection[1] = "4,944.64"
+        elif unicode(self.comboBoxV.currentText()) == u"K\u03b21: 5,427.29eV":
+            self.energySelection[1] = "5,427.29"
+        elif unicode(self.comboBoxV.currentText()) == "All":
+            self.energySelection[1] = "4,952.20; 4,944.64; 5,427.29"
+        print "V:"
+        print self.energySelection[1]
+    def comboBoxCr_Changed(self,event):
+        if unicode(self.comboBoxCr.currentText()) == u"K\u03b11: 5,414.72eV":
+            self.energySelection[2] = "5,414.72"
+        elif unicode(self.comboBoxCr.currentText()) == u"K\u03b12: 5,405.509eV":
+            self.energySelection[2] = "5,405.509"
+        elif unicode(self.comboBoxCr.currentText()) == u"K\u03b21: 5,946.71eV":
+            self.energySelection[2] = "5,946.71"
+        elif unicode(self.comboBoxCr.currentText()) == "All":
+            self.energySelection[2] = "5,414.72; 5,405.509; 5,946.71"
+        print "Cr:"
+        print self.energySelection[2]
+    def comboBoxMn_Changed(self,event):
+        if unicode(self.comboBoxMn.currentText()) == u"K\u03b11: 5,898.75eV":
+            self.energySelection[3] = "5,898.75"
+        elif unicode(self.comboBoxMn.currentText()) == u"K\u03b12: 5,887.65eV":
+            self.energySelection[3] = "5,887.65"
+        elif unicode(self.comboBoxMn.currentText()) == u"K\u03b21: 6,490.45eV":
+            self.energySelection[3] = "6,490.45"
+        elif unicode(self.comboBoxMn.currentText()) == "All":
+            self.energySelection[3] = "5,898.75; 5,887.65; 6,490.45"
+        print "Mn:"
+        print self.energySelection[3]
+    def comboBoxFe_Changed(self,event):
+        if unicode(self.comboBoxFe.currentText()) == u"K\u03b11: 6,403.84eV":
+            self.energySelection[4] = "6,403.84"
+        elif unicode(self.comboBoxFe.currentText()) == u"K\u03b12: 6,390.84eV":
+            self.energySelection[4] = "6,390.84"
+        elif unicode(self.comboBoxFe.currentText()) == u"K\u03b21: 7,057.98eV":
+            self.energySelection[4] = "7,057.98"
+        elif unicode(self.comboBoxFe.currentText()) == "All":
+            self.energySelection[4] = "6,403.84; 6,390.84; 7,057.98"
+        print "Fe:"
+        print self.energySelection[4]
+    def comboBoxCo_Changed(self,event):
+        if unicode(self.comboBoxCo.currentText()) == u"K\u03b11: 6,930.32eV":
+            self.energySelection[5] = "6,930.32"
+        elif unicode(self.comboBoxCo.currentText()) == u"K\u03b12: 6,915.30eV":
+            self.energySelection[5] = "6,915.30"
+        elif unicode(self.comboBoxCo.currentText()) == u"K\u03b21: 7,649.43eV":
+            self.energySelection[5] = "7,649.43"
+        elif unicode(self.comboBoxCo.currentText()) == "All":
+            self.energySelection[5] = "6,930.32; 6,915.30; 7,649.43"
+        print "Co:"
+        print self.energySelection[5]
+    def comboBoxNi_Changed(self,event):
+        if unicode(self.comboBoxNi.currentText()) == u"K\u03b11: 7,478.15eV":
+            self.energySelection[6] = "7,478.15"
+        elif unicode(self.comboBoxNi.currentText()) == u"K\u03b12: 7,460.89eV":
+            self.energySelection[6] = "7,460.89"
+        elif unicode(self.comboBoxNi.currentText()) == u"K\u03b21: 8,264.66eV":
+            self.energySelection[6] = "8,264.66"
+        elif unicode(self.comboBoxNi.currentText()) == "All":
+            self.energySelection[6] = "7,478.15; 7,460.89; 8,264.66"
+        print "Ni:"
+        print self.energySelection[6]
+    def comboBoxCu_Changed(self,event):
+        if unicode(self.comboBoxCu.currentText()) == u"K\u03b11: 8,047.78eV":
+            self.energySelection[7] = "8,047.78"
+        elif unicode(self.comboBoxCu.currentText()) == u"K\u03b12: 8,027.83eV":
+            self.energySelection[7] = "8,027.83"
+        elif unicode(self.comboBoxCu.currentText()) == u"K\u03b21: 8,905.29eV":
+            self.energySelection[7] = "8,905.29"
+        elif unicode(self.comboBoxCu.currentText()) == "All":
+            self.energySelection[7] = "8,047.78; 8,027.83; 8,905.29"
+        print "Cu:"
+        print self.energySelection[7]
+    def comboBoxZn_Changed(self,event):
+        if unicode(self.comboBoxZn.currentText()) == u"K\u03b11: 8,638.86eV":
+            self.energySelection[8] = "8,638.86"
+        elif unicode(self.comboBoxZn.currentText()) == u"K\u03b12: 8,615.78eV":
+            self.energySelection[8] = "8,615.78"
+        elif unicode(self.comboBoxZn.currentText()) == u"K\u03b21: 9,572.0eV":
+            self.energySelection[8] = "9,572.0"
+        elif unicode(self.comboBoxZn.currentText()) == "All":
+            self.energySelection[8] = "8,638.86; 8,615.78; 9,572.0"
+        print "Zn:"
+        print self.energySelection[8]
+
+    def handleCellDoubleClicked(self,row,column):
+        if column == 2 and (row < self.ui.tableWidget.rowCount()):
+            self.ui.tableWidget.editItem(self.ui.tableWidget.item(row,column))
+
+    def handleCellChanged(self,row,column):
+        if column == 2:
+            if (self.ui.tableWidget.item(row,0).text() == "Ti") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                self.scanRange[0] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            elif (self.ui.tableWidget.item(row,0).text() == "V") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                self.scanRange[1] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            elif (self.ui.tableWidget.item(row,0).text() == "Cr") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                self.scanRange[2] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            elif (self.ui.tableWidget.item(row,0).text() == "Mn") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                self.scanRange[3] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            elif (self.ui.tableWidget.item(row,0).text() == "Fe") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                self.scanRange[4] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            elif (self.ui.tableWidget.item(row,0).text() == "Co") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                self.scanRange[5] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            elif (self.ui.tableWidget.item(row,0).text() == "Ni") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                self.scanRange[6] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            elif (self.ui.tableWidget.item(row,0).text() == "Cu") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                self.scanRange[7] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            elif (self.ui.tableWidget.item(row,0).text() == "Zn") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                self.scanRange[8] = self.ui.tableWidget.item(row,column).text().toInt()[0]
 
 # Class for the Periodic Table Dialog
 class PeriodicTable(QtGui.QDialog):
