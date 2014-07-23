@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'Demo1.ui'
 #
-# Created: Mon Jul 14 15:36:09 2014
-#      by: PyQt4 UI code generator 4.11
+# Created: Wed Jul 23 14:07:15 2014
+#      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.resize(979, 554)
+        Dialog.resize(1127, 554)
         self.ModifyElement = QtGui.QPushButton(Dialog)
         self.ModifyElement.setGeometry(QtCore.QRect(300, 300, 101, 23))
         self.ModifyElement.setObjectName(_fromUtf8("ModifyElement"))
@@ -166,34 +166,34 @@ class Ui_Dialog(object):
         self.label_21.setGeometry(QtCore.QRect(180, 440, 31, 21))
         self.label_21.setObjectName(_fromUtf8("label_21"))
         self.label_22 = QtGui.QLabel(Dialog)
-        self.label_22.setGeometry(QtCore.QRect(720, 300, 71, 21))
+        self.label_22.setGeometry(QtCore.QRect(800, 280, 71, 21))
         self.label_22.setObjectName(_fromUtf8("label_22"))
         self.TimeLeft = QtGui.QLineEdit(Dialog)
         self.TimeLeft.setEnabled(False)
-        self.TimeLeft.setGeometry(QtCore.QRect(790, 300, 111, 20))
+        self.TimeLeft.setGeometry(QtCore.QRect(870, 280, 111, 20))
         self.TimeLeft.setCursor(QtGui.QCursor(QtCore.Qt.ForbiddenCursor))
         self.TimeLeft.setObjectName(_fromUtf8("TimeLeft"))
         self.ExecuteScan = QtGui.QPushButton(Dialog)
         self.ExecuteScan.setGeometry(QtCore.QRect(70, 470, 101, 23))
         self.ExecuteScan.setObjectName(_fromUtf8("ExecuteScan"))
         self.label_23 = QtGui.QLabel(Dialog)
-        self.label_23.setGeometry(QtCore.QRect(360, 30, 201, 21))
+        self.label_23.setGeometry(QtCore.QRect(390, 10, 201, 21))
         self.label_23.setObjectName(_fromUtf8("label_23"))
         self.label_24 = QtGui.QLabel(Dialog)
-        self.label_24.setGeometry(QtCore.QRect(700, 30, 201, 21))
+        self.label_24.setGeometry(QtCore.QRect(780, 10, 201, 21))
         self.label_24.setObjectName(_fromUtf8("label_24"))
         self.MoveToStartPoint = QtGui.QPushButton(Dialog)
         self.MoveToStartPoint.setGeometry(QtCore.QRect(50, 220, 131, 23))
         self.MoveToStartPoint.setObjectName(_fromUtf8("MoveToStartPoint"))
         self.graphicsView_VL = QtGui.QGraphicsView(Dialog)
-        self.graphicsView_VL.setGeometry(QtCore.QRect(300, 50, 301, 241))
+        self.graphicsView_VL.setGeometry(QtCore.QRect(330, 30, 301, 241))
         self.graphicsView_VL.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.graphicsView_VL.setMouseTracking(False)
         self.graphicsView_VL.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.graphicsView_VL.setViewportUpdateMode(QtGui.QGraphicsView.MinimalViewportUpdate)
         self.graphicsView_VL.setObjectName(_fromUtf8("graphicsView_VL"))
         self.graphicsView_XR = QtGui.QGraphicsView(Dialog)
-        self.graphicsView_XR.setGeometry(QtCore.QRect(610, 50, 361, 241))
+        self.graphicsView_XR.setGeometry(QtCore.QRect(690, 30, 361, 241))
         self.graphicsView_XR.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.graphicsView_XR.setObjectName(_fromUtf8("graphicsView_XR"))
         self.tableWidget = QtGui.QTableWidget(Dialog)
@@ -202,8 +202,16 @@ class Ui_Dialog(object):
         self.tableWidget.setRowCount(1)
         self.tableWidget.setColumnCount(4)
         self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
-        self.tableWidget.setColumnCount(4)
-        self.tableWidget.setRowCount(1)
+        self.graphicsView_Plot = QtGui.QGraphicsView(Dialog)
+        self.graphicsView_Plot.setGeometry(QtCore.QRect(790, 310, 321, 201))
+        self.graphicsView_Plot.setObjectName(_fromUtf8("graphicsView_Plot"))
+        self.Energy = QtGui.QRadioButton(Dialog)
+        self.Energy.setGeometry(QtCore.QRect(860, 520, 89, 21))
+        self.Energy.setChecked(True)
+        self.Energy.setObjectName(_fromUtf8("Energy"))
+        self.Channel = QtGui.QRadioButton(Dialog)
+        self.Channel.setGeometry(QtCore.QRect(990, 520, 89, 21))
+        self.Channel.setObjectName(_fromUtf8("Channel"))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -242,4 +250,6 @@ class Ui_Dialog(object):
         self.label_23.setText(_translate("Dialog", "        Visible Light View", None))
         self.label_24.setText(_translate("Dialog", "            X-ray View", None))
         self.MoveToStartPoint.setText(_translate("Dialog", "Move to Start Point", None))
+        self.Energy.setText(_translate("Dialog", "Energy", None))
+        self.Channel.setText(_translate("Dialog", "Channel", None))
 

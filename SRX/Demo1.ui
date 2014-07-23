@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>979</width>
+    <width>1127</width>
     <height>554</height>
    </rect>
   </property>
@@ -555,8 +555,8 @@
   <widget class="QLabel" name="label_22">
    <property name="geometry">
     <rect>
-     <x>720</x>
-     <y>300</y>
+     <x>800</x>
+     <y>280</y>
      <width>71</width>
      <height>21</height>
     </rect>
@@ -571,8 +571,8 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>790</x>
-     <y>300</y>
+     <x>870</x>
+     <y>280</y>
      <width>111</width>
      <height>20</height>
     </rect>
@@ -597,8 +597,8 @@
   <widget class="QLabel" name="label_23">
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>30</y>
+     <x>390</x>
+     <y>10</y>
      <width>201</width>
      <height>21</height>
     </rect>
@@ -610,8 +610,8 @@
   <widget class="QLabel" name="label_24">
    <property name="geometry">
     <rect>
-     <x>700</x>
-     <y>30</y>
+     <x>780</x>
+     <y>10</y>
      <width>201</width>
      <height>21</height>
     </rect>
@@ -636,8 +636,8 @@
   <widget class="QGraphicsView" name="graphicsView_VL">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>50</y>
+     <x>330</x>
+     <y>30</y>
      <width>301</width>
      <height>241</height>
     </rect>
@@ -658,8 +658,8 @@
   <widget class="QGraphicsView" name="graphicsView_XR">
    <property name="geometry">
     <rect>
-     <x>610</x>
-     <y>50</y>
+     <x>690</x>
+     <y>30</y>
      <width>361</width>
      <height>241</height>
     </rect>
@@ -691,6 +691,45 @@
    <column/>
    <column/>
    <column/>
+  </widget>
+  <widget class="QGraphicsView" name="graphicsView_Plot">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>310</y>
+     <width>321</width>
+     <height>201</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="Energy">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>520</y>
+     <width>89</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Energy</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="Channel">
+   <property name="geometry">
+    <rect>
+     <x>990</x>
+     <y>520</y>
+     <width>89</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Channel</string>
+   </property>
   </widget>
  </widget>
  <resources/>
