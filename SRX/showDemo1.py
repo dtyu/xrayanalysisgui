@@ -6,6 +6,8 @@ from PyQt4.QtGui import *
 from PyQt4.QtCore import *
 from Demo1 import *
 from secondDialog import *
+import h5py    # HDF5 support
+import numpy as np
 import matplotlib 
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
@@ -45,6 +47,32 @@ class MyForm(QtGui.QDialog):
         # Set up graphics scene and graphics view for plot
         self.scene_Plot = QGraphicsScene()
         self.ui.graphicsView_Plot.setScene(self.scene_Plot)
+
+        # Open HDF5 file
+        self.hdf5File = h5py.File('C:/Users/robinliheyi/Desktop/dataForHeyi/2xfm_0430.h5','r+')
+        self.loadData = self.hdf5File['MAPS/XRF_roi']
+        print "Open file 'x_axis'"
+
+        self.testData = self.loadData[0]
+        scale_min = 0.5
+        scale_max = 101.75
+        self.newData = (self.testData - scale_min) / (scale_max - scale_min)
+        self.newData[self.testData >= (scale_max)] = 1
+        self.newData[self.testData <= (scale_min)] = 0
+        
+        self.testImage = self.numpy2qimage(np.array(255*self.newData,dtype=int))
+        self.pixmap = QtGui.QPixmap.fromImage(self.testImage)
+        # self.pixmap = self.pixmap.scaled(50,50,QtCore.Qt.IgnoreAspectRatio)
+        self.pixmapItem = QtGui.QGraphicsPixmapItem(self.pixmap)
+        
+        self.scene_VL = QGraphicsScene()
+        self.scene_VL.addItem(self.pixmapItem)
+        self.ui.graphicsView_VL.setScene(self.scene_VL)
+        
+        '''
+        openFile = h5py.File('home/user/file.hdf5', 'r+')
+        numpyArray = openFile['group/imageData']
+        '''
         
         '''
         # Load the first image
@@ -53,10 +81,11 @@ class MyForm(QtGui.QDialog):
         # Set the scene in the first GraphicsView
         '''
         self.pixmap_VL = QtGui.QPixmap("image1.jpg")
-        self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
-        self.scene_VL = QGraphicsScene()
-        self.scene_VL.addItem(self.pixmapItem_VL)
-        self.ui.graphicsView_VL.setScene(self.scene_VL)
+        # self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
+        # self.scene_VL = QGraphicsScene()
+        # self.scene_VL.addItem(self.pixmapItem_VL)
+        # self.ui.graphicsView_VL.setScene(self.scene_VL)
+        
         '''
         # Load the second image
         # Create the second GraphicsPixmapItem
@@ -260,6 +289,28 @@ class MyForm(QtGui.QDialog):
     def closeEvent(self, event):
         print "Closing"
         self.scene_Plot.clear()
+        self.scene_XR.clear()
+        self.scene_VL.clear()
+
+    def numpy2qimage(self,array):
+        if np.ndim(array) == 2:
+            return self.gray2qimage(array)
+        elif np.ndim(array) == 3:
+            return rgb2qimage(array)
+        raise ValueError("can only convert 2D or 3D arrays")
+    
+    def gray2qimage(self,gray):
+        if (len(gray.shape) != 2):
+            raise ValueError("gray2QImage can only convert 2D arrays")    
+        gray = np.require(gray, np.uint8, 'C')
+        
+        (h, w) = gray.shape
+        
+        result = QImage(gray.data, w, h, QImage.Format_Indexed8)
+        result.ndarray = gray
+        for i in range(256):
+                result.setColor(i, QColor(i, i, i).rgb())
+        return result
         
     '''
     # Handles mouse events in graphicsView_VL and graphicsView_XR
