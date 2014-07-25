@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'Demo1.ui'
 #
-# Created: Wed Jul 23 14:07:15 2014
+# Created: Fri Jul 25 10:54:52 2014
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -212,6 +212,18 @@ class Ui_Dialog(object):
         self.Channel = QtGui.QRadioButton(Dialog)
         self.Channel.setGeometry(QtCore.QRect(990, 520, 89, 21))
         self.Channel.setObjectName(_fromUtf8("Channel"))
+        self.maxPixelValue = QtGui.QLineEdit(Dialog)
+        self.maxPixelValue.setGeometry(QtCore.QRect(1070, 90, 41, 20))
+        self.maxPixelValue.setObjectName(_fromUtf8("maxPixelValue"))
+        self.label_16 = QtGui.QLabel(Dialog)
+        self.label_16.setGeometry(QtCore.QRect(1080, 70, 21, 21))
+        self.label_16.setObjectName(_fromUtf8("label_16"))
+        self.minPixelValue = QtGui.QLineEdit(Dialog)
+        self.minPixelValue.setGeometry(QtCore.QRect(1070, 210, 41, 20))
+        self.minPixelValue.setObjectName(_fromUtf8("minPixelValue"))
+        self.label_25 = QtGui.QLabel(Dialog)
+        self.label_25.setGeometry(QtCore.QRect(1080, 190, 21, 21))
+        self.label_25.setObjectName(_fromUtf8("label_25"))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -252,4 +264,6 @@ class Ui_Dialog(object):
         self.MoveToStartPoint.setText(_translate("Dialog", "Move to Start Point", None))
         self.Energy.setText(_translate("Dialog", "Energy", None))
         self.Channel.setText(_translate("Dialog", "Channel", None))
+        self.label_16.setText(_translate("Dialog", "Max:", None))
+        self.label_25.setText(_translate("Dialog", "Min:", None))
 

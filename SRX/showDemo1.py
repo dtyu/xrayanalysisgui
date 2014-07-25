@@ -50,24 +50,48 @@ class MyForm(QtGui.QDialog):
 
         # Open HDF5 file
         self.hdf5File = h5py.File('C:/Users/robinliheyi/Desktop/dataForHeyi/2xfm_0430.h5','r+')
-        self.loadData = self.hdf5File['MAPS/XRF_roi']
-        print "Open file 'x_axis'"
+        # Load data from HDF5 file
+        self.loadData_XR = self.hdf5File['MAPS/XRF_roi']
+        print "Open file 'XRF_roi'"
+        self.loadData_Plot = self.hdf5File['MAPS/mca_arr']
+        print "Open file 'mca_arr'"
+        self.calib = self.hdf5File['MAPS/energy_calib']
+        print "Open file 'energy_calib'"
 
-        self.testData = self.loadData[0]
-        scale_min = 0.5
-        scale_max = 101.75
-        self.newData = (self.testData - scale_min) / (scale_max - scale_min)
-        self.newData[self.testData >= (scale_max)] = 1
-        self.newData[self.testData <= (scale_min)] = 0
+        self.plotData = [0]*2000
+        self.channel = [0]*2000
+        for i in range(2000):
+            self.plotData[i] = np.sum(self.loadData_Plot[i])
+            self.channel[i] = i * self.calib[1] + self.calib[0]
+
+        print np.max(self.plotData)
+        print np.min(self.plotData)
         
-        self.testImage = self.numpy2qimage(np.array(255*self.newData,dtype=int))
-        self.pixmap = QtGui.QPixmap.fromImage(self.testImage)
-        # self.pixmap = self.pixmap.scaled(50,50,QtCore.Qt.IgnoreAspectRatio)
-        self.pixmapItem = QtGui.QGraphicsPixmapItem(self.pixmap)
+        self.paintPlot()
+
+        self.imageData_XR = self.loadData_XR[0]
+
+        self.scale_min = np.min(self.imageData_XR)
+        self.scale_max = np.max(self.imageData_XR)
+
+        self.ui.minPixelValue.setText(unicode(self.scale_min))
+        self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
+        self.ui.maxPixelValue.setText(unicode(self.scale_max))
+        self.ui.maxPixelValue.editingFinished.connect(self.maxPixelValue_EditingFinished)
         
-        self.scene_VL = QGraphicsScene()
-        self.scene_VL.addItem(self.pixmapItem)
-        self.ui.graphicsView_VL.setScene(self.scene_VL)
+        self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
+        self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
+        self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
+        
+        self.Image_XR = self.numpy2qimage(np.array(255*self.newImageData_XR,
+                                                    dtype=int))
+        self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
+        self.pixmap_XR = self.pixmap_XR.scaled(200,200,QtCore.Qt.IgnoreAspectRatio)
+        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+        
+        self.scene_XR = QGraphicsScene()
+        self.scene_XR.addItem(self.pixmapItem_XR)
+        self.ui.graphicsView_XR.setScene(self.scene_XR)
         
         '''
         openFile = h5py.File('home/user/file.hdf5', 'r+')
@@ -81,10 +105,10 @@ class MyForm(QtGui.QDialog):
         # Set the scene in the first GraphicsView
         '''
         self.pixmap_VL = QtGui.QPixmap("image1.jpg")
-        # self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
-        # self.scene_VL = QGraphicsScene()
-        # self.scene_VL.addItem(self.pixmapItem_VL)
-        # self.ui.graphicsView_VL.setScene(self.scene_VL)
+        self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
+        self.scene_VL = QGraphicsScene()
+        self.scene_VL.addItem(self.pixmapItem_VL)
+        self.ui.graphicsView_VL.setScene(self.scene_VL)
         
         '''
         # Load the second image
@@ -92,11 +116,11 @@ class MyForm(QtGui.QDialog):
         # Add the item to the second GraphicsScene
         # Set the scene in the second GraphicsView
         '''
-        self.pixmap_XR = QtGui.QPixmap("image2.jpg")
-        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-        self.scene_XR = QGraphicsScene()
-        self.scene_XR.addItem(self.pixmapItem_XR)
-        self.ui.graphicsView_XR.setScene(self.scene_XR)
+        # self.pixmap_XR = QtGui.QPixmap("image2.jpg")
+        # self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+        # self.scene_XR = QGraphicsScene()
+        # self.scene_XR.addItem(self.pixmapItem_XR)
+        # self.ui.graphicsView_XR.setScene(self.scene_XR)
         
         # Create the first RubberBand in the first GraphicsView
         self.rubberBand_VL = QtGui.QRubberBand(QtGui.QRubberBand.Rectangle,
@@ -521,9 +545,6 @@ class MyForm(QtGui.QDialog):
             print "Please select ROI first!"
             QMessageBox.about(self, "Error",
                                   "Please select ROI first!")
-        
-        self.paintPlot()
-        
         '''
         # If user has selected a ROI
         # Calculate TimeLeft
@@ -602,26 +623,27 @@ class MyForm(QtGui.QDialog):
                                   "Please select ROI first!")
     
     def paintPlot(self):
-        self.figure = plt.Figure(figsize=(3.0,1.8),dpi=100, facecolor='w')
+        self.figure = plt.Figure(figsize=(7.0,2.0),dpi=100, facecolor='w')
         self.canvas = FigureCanvas(self.figure)
         self.scene_Plot.addWidget(self.canvas)
         self.axes = self.figure.add_subplot(111)
         
         x = [1,2,3,4]
         y = [20, 21, 20.5, 20.8]
-        self.axes.plot(x,y,
+        self.axes.plot(self.channel,
+                       self.plotData,
                        linestyle = 'solid',
-                       marker = '*',
+                       marker = '',
                        color = 'green',
                        #label = 'XANES'
                        )
         self.axes.grid('on')
         # self.axes.legend()
-        self.axes.set_xlim(0.5,4.5)
-        self.axes.set_xticks([1,2,3,4])
-        self.axes.set_ylim(19.8,21.2)
-        self.axes.set_yticks([20, 21, 20.5, 20.8])
-        self.axes.set_title('Histogram',size = 10)
+        #self.axes.set_xlim(1,2100)
+        #self.axes.set_xticks([500,1000])
+        self.axes.set_ylim(0,190000)
+        self.axes.set_yticks([5000,50000,150000])
+        self.axes.set_title('SRX',size = 10)
         '''
         self.axes.annotate('Energy (eV)', xy=(0, 0.8),
                          xycoords='axes points',
@@ -1346,6 +1368,62 @@ class MyForm(QtGui.QDialog):
                 QMessageBox.about(self, "Error",
                                   "Please select ROI first!")
         self.ui.ScanAreaHeight.setModified(False)
+
+    def minPixelValue_EditingFinished(self):
+        if self.ui.minPixelValue.isModified():
+            
+            self.scale_min = self.ui.minPixelValue.text().toDouble()[0]
+
+            if (self.scale_max == self.scale_min):
+                self.scale_min = np.min(self.imageData_XR)
+                self.ui.minPixelValue.setText(unicode(self.scale_min))
+                
+                print "Min value cannot be equal to Max value!"
+                QMessageBox.about(self, "Error",
+                                  "Min value cannot be equal to Max value!")
+            else:
+                self.scene_XR.clear()
+                
+                self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
+                self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
+                self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
+                
+                self.Image_XR = self.numpy2qimage(np.array(255*self.newImageData_XR,
+                                                            dtype=int))
+                self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
+                self.pixmap_XR = self.pixmap_XR.scaled(200,200,QtCore.Qt.IgnoreAspectRatio)
+                self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+                self.scene_XR.addItem(self.pixmapItem_XR)
+        
+        self.ui.minPixelValue.setModified(False)
+    
+    def maxPixelValue_EditingFinished(self):
+        if self.ui.maxPixelValue.isModified():
+            
+            self.scale_max = self.ui.maxPixelValue.text().toDouble()[0]
+
+            if (self.scale_max == self.scale_min):
+                self.scale_max = np.max(self.imageData_XR)
+                self.ui.maxPixelValue.setText(unicode(self.scale_max))
+                
+                print "Max value cannot be equal to Min value!"
+                QMessageBox.about(self, "Error",
+                                  "Max value cannot be equal to Min value!")
+            else:
+                self.scene_XR.clear()
+                
+                self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
+                self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
+                self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
+                
+                self.Image_XR = self.numpy2qimage(np.array(255*self.newImageData_XR,
+                                                            dtype=int))
+                self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
+                self.pixmap_XR = self.pixmap_XR.scaled(200,200,QtCore.Qt.IgnoreAspectRatio)
+                self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+                self.scene_XR.addItem(self.pixmapItem_XR)
+        
+        self.ui.maxPixelValue.setModified(False)
     
 # Class for the Periodic Table Dialog
 class PeriodicTable(QtGui.QDialog):
