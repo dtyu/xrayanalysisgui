@@ -22,6 +22,8 @@ class MyForm(QtGui.QDialog):
         QtGui.QWidget.__init__(self,parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        
+        # self.showMaximized()
         # Set properties of buttons
         self.ui.ModifyElement.setDefault(False)
         self.ui.ModifyElement.setAutoDefault(False)
@@ -87,7 +89,11 @@ class MyForm(QtGui.QDialog):
                                                     dtype=int))
         # Transfer QImage to QPixmap
         self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
-        self.pixmap_XR = self.pixmap_XR.scaled(200,200,QtCore.Qt.IgnoreAspectRatio)
+        # Resize the QPixmap
+        self.sizeWidth = 200
+        self.sizeHeight = 200
+        self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
+        # Create pixmapItem
         self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
         # Create graphics scene and graphics view
         self.scene_XR = QGraphicsScene()
@@ -611,7 +617,7 @@ class MyForm(QtGui.QDialog):
     # Paint the plot in graphics scene_Plot
     def paintPlot(self):
         # Set the size of the whole figure
-        self.figure = plt.Figure(figsize=(7.0,2.0),dpi=100, facecolor='w')
+        self.figure = plt.Figure(figsize=(5.5,2.0),dpi=100, facecolor='w')
         self.canvas = FigureCanvas(self.figure)
         # Add the canvas into he graphics scene
         self.scene_Plot.addWidget(self.canvas)
@@ -1386,7 +1392,9 @@ class MyForm(QtGui.QDialog):
                                                             dtype=int))
                 # Transfer QImage to QPixmap
                 self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
-                self.pixmap_XR = self.pixmap_XR.scaled(200,200,QtCore.Qt.IgnoreAspectRatio)
+                self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,
+                                                       self.sizeHeight,
+                                                       QtCore.Qt.IgnoreAspectRatio)
                 self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
                 self.scene_XR.addItem(self.pixmapItem_XR)
         
@@ -1416,7 +1424,9 @@ class MyForm(QtGui.QDialog):
                                                             dtype=int))
                 # Transfer QImage to QPixmap
                 self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
-                self.pixmap_XR = self.pixmap_XR.scaled(200,200,QtCore.Qt.IgnoreAspectRatio)
+                self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,
+                                                       self.sizeHeight,
+                                                       QtCore.Qt.IgnoreAspectRatio)
                 self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
                 self.scene_XR.addItem(self.pixmapItem_XR)
         
