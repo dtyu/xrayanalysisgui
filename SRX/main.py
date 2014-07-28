@@ -63,11 +63,11 @@ class MyForm(QtGui.QDialog):
         print "Open file 'energy_calib'"
         # Store data from hdf5 file
         self.plotData = [0]*2000
-        self.channel = [0]*2000
+        self.energy = [0]*2000
         # Calculate
         for i in range(2000):
             self.plotData[i] = np.sum(self.loadData_Plot[i])
-            self.channel[i] = i * self.calib[1] + self.calib[0]
+            self.energy[i] = i * self.calib[1] + self.calib[0]
         # Call plot method
         self.paintPlot()
         # Retrieve data for one element
@@ -245,9 +245,12 @@ class MyForm(QtGui.QDialog):
                                                        QString("Energy"),
                                                        QString("Range"),
                                                        QString("Count")])
-        # Connect event handlers with events
+        # Connect table widget event handlers with events
         self.ui.tableWidget.cellDoubleClicked.connect(self.handleCellDoubleClicked)
         self.ui.tableWidget.cellChanged.connect(self.handleCellChanged)
+        # Connect radio button event handlers with events
+        self.ui.Energy.toggled.connect(self.Energy_clicked)
+        self.ui.Channel.toggled.connect(self.Channel_clicked)
         # Set width of each column in the table widget
         self.ui.tableWidget.setColumnWidth(0,100)
         self.ui.tableWidget.setColumnWidth(1,150)
@@ -623,13 +626,22 @@ class MyForm(QtGui.QDialog):
         self.scene_Plot.addWidget(self.canvas)
         # Draw the plot
         self.axes = self.figure.add_subplot(111)
-        self.axes.plot(self.channel,
-                       self.plotData,
-                       linestyle = 'solid',
-                       marker = '',
-                       color = 'green',
-                       #label = 'XANES'
-                       )
+
+        if (self.ui.Energy.isChecked()):
+            self.axes.plot(self.energy,
+                           self.plotData,
+                           linestyle = 'solid',
+                           marker = '',
+                           color = 'green',
+                           #label = 'XANES'
+                           )
+        elif (self.ui.Channel.isChecked()):
+            self.axes.plot(self.plotData,
+                           linestyle = 'solid',
+                           marker = '',
+                           color = 'green',
+                           #label = 'XANES'
+                           )
         # Show grid
         self.axes.grid('on')
         '''
@@ -1367,7 +1379,18 @@ class MyForm(QtGui.QDialog):
                 QMessageBox.about(self, "Error",
                                   "Please select ROI first!")
         self.ui.ScanAreaHeight.setModified(False)
-        
+    # If user click radio button "Energy"
+    def Energy_clicked(self, enabled):
+        if enabled:
+            # Call plot method
+            self.paintPlot()
+
+    # If user click radio button "Channel"
+    def Channel_clicked(self, enabled):
+        if enabled:
+            # Call plot method
+            self.paintPlot()
+    
     # If user change min pixel value
     def minPixelValue_EditingFinished(self):
         if self.ui.minPixelValue.isModified():
