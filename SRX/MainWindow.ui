@@ -23,7 +23,7 @@
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>310</y>
+     <y>320</y>
      <width>101</width>
      <height>23</height>
     </rect>
@@ -681,7 +681,7 @@
    <property name="geometry">
     <rect>
      <x>230</x>
-     <y>340</y>
+     <y>360</y>
      <width>467</width>
      <height>231</height>
     </rect>
@@ -746,9 +746,9 @@
   <widget class="QLineEdit" name="maxPixelValue">
    <property name="geometry">
     <rect>
-     <x>980</x>
+     <x>1010</x>
      <y>80</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -758,20 +758,20 @@
     <rect>
      <x>990</x>
      <y>60</y>
-     <width>21</width>
+     <width>101</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>Max:</string>
+    <string>Max Pixel Value:</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="minPixelValue">
    <property name="geometry">
     <rect>
-     <x>980</x>
+     <x>1010</x>
      <y>220</y>
-     <width>41</width>
+     <width>51</width>
      <height>20</height>
     </rect>
    </property>
@@ -781,12 +781,58 @@
     <rect>
      <x>990</x>
      <y>200</y>
-     <width>21</width>
+     <width>91</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>Min:</string>
+    <string>Min Pixel Value:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="MinPhotonEnergy">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>330</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_27">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>310</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Min Photon Energy(eV):</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_28">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>310</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Max Photon Energy(eV):</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="MaxPhotonEnergy">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>330</y>
+     <width>71</width>
+     <height>20</height>
+    </rect>
    </property>
   </widget>
  </widget>

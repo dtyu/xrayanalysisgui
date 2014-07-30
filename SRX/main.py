@@ -49,7 +49,7 @@ class MyForm(QtGui.QDialog):
         self.ui.ExecuteScan.setDefault(False)
         self.ui.ExecuteScan.setAutoDefault(False)
         
-##        # Set up graphics scene and graphics view for plot
+##        # Create scene_Plot
 ##        self.scene_Plot = QGraphicsScene()
 ##        self.ui.graphicsView_Plot.setScene(self.scene_Plot)
 ##        # Open HDF5 file
@@ -61,80 +61,78 @@ class MyForm(QtGui.QDialog):
 ##        print "Open file 'mca_arr'"
 ##        self.calib = self.hdf5File['MAPS/energy_calib']
 ##        print "Open file 'energy_calib'"
-##        # Store data from hdf5 file
+##        # data in y coordinates
 ##        self.plotData = [0]*2000
+##        # data in x coordinates
 ##        self.energy = [0]*2000
-##        # Calculate
+##        # Calculate plotData & energy
 ##        for i in range(2000):
 ##            self.plotData[i] = np.sum(self.loadData_Plot[i])
 ##            self.energy[i] = i * self.calib[1] + self.calib[0]
-##        # Call plot method
+##        # Plot
 ##        self.paintPlot()
-##        # Retrieve data for one element
+##        # Retrieve data of one element (Mg in this case)
 ##        self.imageData_XR = self.loadData_XR[0]
-##        # Get max and min pixel value
+##        # Get max & min pixel value
 ##        self.scale_min = np.min(self.imageData_XR)
 ##        self.scale_max = np.max(self.imageData_XR)
-##        # Show max and min pixel value
+##        # Show max & min value
 ##        self.ui.minPixelValue.setText(unicode(self.scale_min))
 ##        self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
 ##        self.ui.maxPixelValue.setText(unicode(self.scale_max))
 ##        self.ui.maxPixelValue.editingFinished.connect(self.maxPixelValue_EditingFinished)
-##        # Transfer pixel value into 0-255
+##        # Scale value into 0-255
 ##        self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
 ##        self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
 ##        self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
-##        # Transfer numpy array to QImage
+##        # Transfer newImageData_XR to Image_XR
 ##        self.Image_XR = self.gray2qimage(np.array(255*self.newImageData_XR,
 ##                                                    dtype=int))
-##        # Transfer QImage to QPixmap
+##        # Transfer Image_XR to pixmap_XR
 ##        self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
-##        # Resize the QPixmap
+##        # Resize pixmap_XR
 ##        self.sizeWidth = 200
 ##        self.sizeHeight = 200
 ##        self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
-##        # Create pixmapItem
+##        # Create pixmapItem_XR
 ##        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-##        # Create graphics scene and graphics view
+##        # Create scene_XR
 ##        self.scene_XR = QGraphicsScene()
 ##        self.scene_XR.addItem(self.pixmapItem_XR)
-##        self.ui.graphicsView_XR.setScene(self.scene_XR) 
-        '''
-        # Load the first image
-        # Create the first GraphicsPixmapItem
-        # Add the item to the first GraphicsScene
-        # Set the scene in the first GraphicsView
-        '''
-        self.pixmap_VL = QtGui.QPixmap("image1.jpg")
-        self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
-        self.scene_VL = QGraphicsScene()
-        self.scene_VL.addItem(self.pixmapItem_VL)
-        self.ui.graphicsView_VL.setScene(self.scene_VL)
-        '''
-        # Load the second image
-        # Create the second GraphicsPixmapItem
-        # Add the item to the second GraphicsScene
-        # Set the scene in the second GraphicsView
-        '''
-        # self.pixmap_XR = QtGui.QPixmap("image2.jpg")
-        # self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-        # self.scene_XR = QGraphicsScene()
-        # self.scene_XR.addItem(self.pixmapItem_XR)
-        # self.ui.graphicsView_XR.setScene(self.scene_XR)
+##        # Add scene_XR in graphicsView_XR
+##        self.ui.graphicsView_XR.setScene(self.scene_XR)
+
         
-        # Create the first RubberBand in the first GraphicsView
+##        '''
+##        # Load the first image
+##        # Create the first GraphicsPixmapItem
+##        # Add the item to the first GraphicsScene
+##        # Set the scene in the first GraphicsView
+##        '''
+##        self.pixmap_VL = QtGui.QPixmap("image1.jpg")
+##        self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
+##        self.scene_VL = QGraphicsScene()
+##        self.scene_VL.addItem(self.pixmapItem_VL)
+##        self.ui.graphicsView_VL.setScene(self.scene_VL)
+##        '''
+##        # Load the second image
+##        # Create the second GraphicsPixmapItem
+##        # Add the item to the second GraphicsScene
+##        # Set the scene in the second GraphicsView
+##        '''
+##        self.pixmap_XR = QtGui.QPixmap("image2.jpg")
+##        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+##        self.scene_XR = QGraphicsScene()
+##        self.scene_XR.addItem(self.pixmapItem_XR)
+##        self.ui.graphicsView_XR.setScene(self.scene_XR)
+        
+        # Create RubberBand in GraphicsView_VL
         self.rubberBand_VL = QtGui.QRubberBand(QtGui.QRubberBand.Rectangle,
                                              self.ui.graphicsView_VL)
-        # Create the second RubberBand in the second GraphicsView
+        # Create RubberBand in GraphicsView_XR
         self.rubberBand_XR = QtGui.QRubberBand(QtGui.QRubberBand.Rectangle,
                                              self.ui.graphicsView_XR)
         
-        # Load Photo Energy from .txt file
-        self.PhotonEnergy = np.loadtxt('PhotonEnergy.txt')
-        # Energy Range(KeV)
-        self.minEnergy = 100
-        self.maxEnergy = 26000
-        # Elements which user can select
         '''
         [0] represents Li, [1] represents Be, [2] represents B, [3] represents C,
         [4] represents N, [5] represents O, [6] represents F, [7] represents Ne,
@@ -161,159 +159,176 @@ class MyForm(QtGui.QDialog):
         [88] represents Pa, [89] represents U, [90] represents Np, [91] represents Pu,
         [92] represents Am,
         '''
-        # 0 means not selected, 1 means selected
-        self.SelectElements = [0]*93
-        # Store selection results temporarily
-        self.tempSelectElements = self.SelectElements
-        self.count = 0
-        # Store user's selection
-        self.energySelection = [0]*93
-        self.energyCount = [0]*93
-        self.scanRange = [300]*93
-        self.knownElements = ["Li","B","Be","C","N",
-                              "O","F","Ne","Na","Mg",
-                              "Al","Si","P","S","Cl",
-                              "Ar","K","Ca","Sc","Ti",
-                              "V","Cr","Mn","Fe","Co",
-                              "Ni","Cu","Zn","Ga","Ge",
-                              "As","Se","Br","Kr","Rb",
-                              "Sr","Y","Zr","Nb","Mo",
-                              "Tc","Ru","Rh","Pd","Ag",
-                              "Cd","In","Sn","Sb","Te",
-                              "I","Xe","Cs","Ba","Hf",
-                              "Ta","W","Re","Os","Ir",
-                              "Pt","Au","Hg","Tl","Pb",
-                              "Bi","Po","At","Rn","Fr",
-                              "Ra","La","Ce","Pr","Nd",
-                              "Pm","Sm","Eu","Gd","Tb",
-                              "Dy","Ho","Er","Tm","Yb",
-                              "Lu","Ac","Th","Pa","U",
+        # element symbol (93 in total, from Li to Am)
+        self.knownElements = ["Li","B","Be","C","N","O","F","Ne","Na","Mg",
+                              "Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti",
+                              "V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge",
+                              "As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo",
+                              "Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb","Te",
+                              "I","Xe","Cs","Ba","Hf","Ta","W","Re","Os","Ir",
+                              "Pt","Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr",
+                              "Ra","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb",
+                              "Dy","Ho","Er","Tm","Yb","Lu","Ac","Th","Pa","U",
                               "Np","Pu","Am"]
+        # current status (-1 means not available, 0 means not selected, 1 means selected)
+        self.currentElementsStatus = [0]*len(self.knownElements)
+        # previous status
+        self.previousElementsStatus = self.currentElementsStatus
+        # amount of energy levels within range for each element
+        self.availableEnergyCount = [0]*len(self.knownElements)
+        # photon energy data (from .txt file)
+        self.PhotonEnergy = np.loadtxt('PhotonEnergy.txt')
+        # modified photon energy data (using minEnergy & maxEnergy) 
+        self.modifiedPhotonEnergy = self.PhotonEnergy
+        # min energy(KeV)
+        self.minEnergy = 0
+        # max energy(KeV)
+        self.maxEnergy = 26000
+        # energy level label (e.g. Kalpha1)
+        self.energyLabel = [u"K\u03b11: ",u"K\u03b12: ",u"K\u03b21: ",
+                            u"L\u03b11: ",u"L\u03b12: ",u"L\u03b21: ",
+                            u"L\u03b22: ",u"L\u03b31: ",u"M\u03b11: "]
+        # energy level selected for each element
+        self.scanEnergyLevel = [0]*len(self.knownElements)
+        # energy range entered for each element
+        self.scanEnergyRange = [300]*len(self.knownElements)
         
-        '''
-        # Initialize variables
-        '''
-        # Motor Position
+        # Update availableEnergyCount, modifiedPhotonEnergy & currentElementsStatus
+        for i in range(len(self.PhotonEnergy)):
+            for j in range(len(self.PhotonEnergy[0])):
+                # If PhotonEnergy[i][j] is in range, availableEnergyCount[i] ++
+                if (self.PhotonEnergy[i][j] >= self.minEnergy) and (self.PhotonEnergy[i][j] <= self.maxEnergy):
+                    self.availableEnergyCount[i] = self.availableEnergyCount[i] + 1
+                # Otherwise, modifiedEnergyCount[i][j] = 0
+                else:
+                    self.modifiedPhotonEnergy[i][j] = 0
+            # If no energy level is in range, currentElementsStatus = -1
+            if (self.availableEnergyCount[i] == 0):
+                self.currentElementsStatus[i] = -1
+        # Show min energy & max energy
+        self.ui.MinPhotonEnergy.setText(unicode(self.minEnergy))
+        self.ui.MaxPhotonEnergy.setText(unicode(self.maxEnergy))
+        
+        # motor position (initialized as 353,252,305)
         self.xPos = 353
         self.yPos = 252
         self.zPos = 305
-        # shift Motor Position
+        # motor position shift (initialized as 0,0,0)
         self.xStep = 0
         self.yStep = 0
         self.zStep = 0
-        # Scan Step Size
+        # scan step size (initialized as 1,1)
         self.scanStepX = 1
         self.scanStepY = 1
-        # Dwell Time
+        # dwell time (initialized as 0.1)
         self.dwellTime = 0.1
-        # Scan Area
-        self.width_VL = 0
-        self.height_VL = 0
-        self.width_XR = 0
-        self.height_XR = 0
-        '''
-        # If user have selected a ROI in VL, then selected_VL = 1
-        # Similar with selected_XR
-        '''
-        self.selected_VL = 0
-        self.selected_XR = 0
-        '''
-        # Initialize starting point, width and height for selected area
-        '''
-        # XR
-        self.startPos_XR = QPoint(0,0)
-        self.width_XR = 0
-        self.height_XR = 0
-        # VL
-        self.startPos_VL = QPoint(0,0)
-        self.width_VL = 0
-        self.height_VL = 0
         
-        '''
-        # Show the initialized values
-        '''
+        # width & height of ROI in GraphicsView_VL (initialized as 0,0)
+        self.width_VL = 0
+        self.height_VL = 0
+        # top-left point of ROI in GraphicsView_VL (initialized as (0,0))
+        self.startPos_VL = QPoint(0,0)
+        # width & height of ROI in GraphicsView_XR (initialized as 0,0)
+        self.width_XR = 0
+        self.height_XR = 0
+        # top-left point of ROI in GraphicsView_XR (initialized as (0,0))
+        self.startPos_XR = QPoint(0,0)
+        # whether ROI has been selected in GraphicsView_VL (1 means has, 0 means not)
+        self.selected_VL = 0
+        # whether ROI has been selected in GraphicsView_XR (1 means has, 0 means not)
+        self.selected_XR = 0
+        
+        # Show top-left point of ROI (x,y), Connect "editingFinished" event handler
         self.ui.TopLeftX.setText(unicode(self.startPos_XR.x()))
         self.ui.TopLeftX.editingFinished.connect(self.TopLeftX_EditingFinished)
         self.ui.TopLeftY.setText(unicode(self.startPos_XR.y()))
         self.ui.TopLeftY.editingFinished.connect(self.TopLeftY_EditingFinished)
+        # Show width of ROI, Connect "editingFinished" event handler
         self.ui.ScanAreaWidth.setText(unicode(self.width_XR))
         self.ui.ScanAreaWidth.editingFinished.connect(self.ScanAreaWidth_EditingFinished)
+        # Show width of ROI, Connect "editingFinished" event handler
         self.ui.ScanAreaHeight.setText(unicode(self.height_XR))
         self.ui.ScanAreaHeight.editingFinished.connect(self.ScanAreaHeight_EditingFinished)
-        # Initialized as 353,252,305
-        # Show Motor Position
+        # Show current motor position
         self.ui.MotorPositionX.setText(unicode(self.xPos))
         self.ui.MotorPositionY.setText(unicode(self.yPos))
         self.ui.MotorPositionZ.setText(unicode(self.zPos))
-        # Initialized as Motor Position
-        # User can enter desired Motor Position and click GO
+        # Show new motor position
         self.ui.toMotorPositionX.setText(unicode(self.xPos))
         self.ui.toMotorPositionY.setText(unicode(self.yPos))
         self.ui.toMotorPositionZ.setText(unicode(self.zPos))
-        # Initialized as 0
-        # User can enter values and click + for increasing, - for decreasing
+        # Show motor position shift
         self.ui.shiftMotorPositionX.setText(unicode(self.xStep))
         self.ui.shiftMotorPositionY.setText(unicode(self.yStep))
         self.ui.shiftMotorPositionZ.setText(unicode(self.zStep))
-        # Initialized as 1
+        # Show scan step size (in x & y coordinate)
         self.ui.ScanStepSizeX.setText(unicode(self.scanStepX))
         self.ui.ScanStepSizeY.setText(unicode(self.scanStepY))
-        # Initialized as 0.1
+        # Show dwell time
         self.ui.DwellTime.setText(unicode(self.dwellTime))
-        # Set titles for the table widget
+        
+        # Set titles in table widget
         self.ui.tableWidget.setHorizontalHeaderLabels([QString("Element"),
-                                                       QString("Energy"),
-                                                       QString("Range"),
+                                                       QString("Energy(KeV)"),
+                                                       QString("Range(eV)"),
                                                        QString("Count")])
-        # Connect table widget event handlers with events
-        self.ui.tableWidget.cellDoubleClicked.connect(self.handleCellDoubleClicked)
-        self.ui.tableWidget.cellChanged.connect(self.handleCellChanged)
-        # Connect radio button event handlers with events
-        self.ui.Energy.toggled.connect(self.Energy_clicked)
-        self.ui.Channel.toggled.connect(self.Channel_clicked)
-        # Set width of each column in the table widget
+        # Set column width in table widget
         self.ui.tableWidget.setColumnWidth(0,100)
         self.ui.tableWidget.setColumnWidth(1,150)
         self.ui.tableWidget.setColumnWidth(2,100)
         self.ui.tableWidget.setColumnWidth(3,100)
+        # Connect "cellDoubleClicked" event handler
+        self.ui.tableWidget.cellDoubleClicked.connect(self.handleCellDoubleClicked)
+        # Connect "cellChanged" event handler
+        self.ui.tableWidget.cellChanged.connect(self.handleCellChanged)
+        
+        # Connect "radio button clicked" event handlers
+        self.ui.Energy.toggled.connect(self.Energy_clicked)
+        self.ui.Channel.toggled.connect(self.Channel_clicked)
 
-        # Handler for closing the main window
+        # Connect "window close" event handler
         self.connect(self, QtCore.SIGNAL('triggered()'),self.closeEvent)
-    
-    # When the main window is closed, clear three graphics scenes
+
+    '''
+    "main window close" event handler
+    '''
     def closeEvent(self, event):
         print "Closing"
+        # Clear scene_Plot, sccene_XR & scene_VL
         self.scene_Plot.clear()
         self.scene_XR.clear()
         self.scene_VL.clear()
         
     '''
-    # Handles mouse events in graphicsView_VL and graphicsView_XR
+    "mouse press" event handler, "mouse move" event handler &
+    "mouse release" event handler in graphicsView_VL & graphicsView_XR
     '''
     def eventFilter(self, source, event):
-        # mouse press event in graphicsView_VL
+        # "mouse press" event in graphicsView_VL
         if (event.type() == QtCore.QEvent.GraphicsSceneMousePress
                 and source is self.scene_VL):
             if event.button() == QtCore.Qt.LeftButton:
-                # Clear graphicsScene_VL and graphicsScene_XR
+                # Clear scene_VL, Reload pixmap_VL
                 self.scene_VL.clear()
                 self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
                 self.scene_VL.addItem(self.pixmapItem_VL)
+                # Clear scene_XR, Reload pixmap_XR
                 self.scene_XR.clear()
                 self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
                 self.scene_XR.addItem(self.pixmapItem_XR)
-                # Set selected_VL = 0 and selected_XR = 0
+                # Set selected_VL & selected_XR = 0
                 self.selected_VL = 0
                 self.selected_XR = 0
-                # Set the width and the height of the scan area to 0
+                # Set width & height of ROI to 0
                 self.width_VL = 0
                 self.height_VL = 0
+                # Show width & height of ROI
                 self.ui.ScanAreaWidth.setText(unicode(self.width_VL))
                 self.ui.ScanAreaHeight.setText(unicode(self.height_VL))
                 
                 # Get mouse coordinates
                 self.startPos_VL = self.ui.graphicsView_VL.mapFromScene(event.scenePos())
-                # Show start point coordinates
+                # Show top-left point coordinates
                 self.ui.TopLeftX.setText(unicode(self.startPos_VL.x()))
                 self.ui.TopLeftY.setText(unicode(self.startPos_VL.y()))
                 # Start rubberBnad
@@ -322,7 +337,7 @@ class MyForm(QtGui.QDialog):
                 self.rubberBand_VL.show()
                 
                 return super(MyForm, self).eventFilter(source, event)
-        # mouse move event in graphicsView_VL
+        # "mouse move" event in graphicsView_VL
         if (event.type() == QtCore.QEvent.GraphicsSceneMouseMove
                 and source is self.scene_VL):
             if event.buttons() == Qt.LeftButton:
@@ -334,53 +349,55 @@ class MyForm(QtGui.QDialog):
                                                                 self.currentPos_VL).normalized())
     
                 return super(MyForm, self).eventFilter(source, event)
-        # mouse release event in graphicsView_VL
+        # "mouse release" event in graphicsView_VL
         if (event.type() == QtCore.QEvent.GraphicsSceneMouseRelease
                 and source is self.scene_VL):
             if event.button() == QtCore.Qt.LeftButton:
                 # Get mouse coordinates
                 self.currentPos_VL = self.ui.graphicsView_VL.mapFromScene(event.scenePos())
-                # Calculate scan area
+                # Calculate width & height of ROI
                 self.width_VL = self.currentPos_VL.x() - self.startPos_VL.x()
                 self.height_VL = self.currentPos_VL.y() - self.startPos_VL.y()
                 # Set selected_VL = 1
                 self.selected_VL = 1
-                # Hide the rubberBand_VL
+                # Hide rubberBand_VL
                 self.rubberBand_VL.hide()
-                # Draw a red rectangle to show the selected area
+                # Draw a red rectangle to show ROI
                 self.selectedRect_VL = QRectF(self.ui.graphicsView_VL.mapToScene(self.startPos_VL.x(),
                                                                                  self.startPos_VL.y()),
                                               QSizeF(self.width_VL,self.height_VL))
                 self.scene_VL.addRect(self.selectedRect_VL,QtCore.Qt.red)
-                # Show the width and the height of the scan area
+                # Show width & height of ROI
                 self.ui.ScanAreaWidth.setText(unicode(self.width_VL))
                 self.ui.ScanAreaHeight.setText(unicode(self.height_VL))
                 
                 return super(MyForm, self).eventFilter(source, event)
 
-        # mouse press event in graphicsView_XR
+        # "mouse press" event in graphicsView_XR
         if (event.type() == QtCore.QEvent.GraphicsSceneMousePress
                 and source is self.scene_XR):
             if event.button() == QtCore.Qt.LeftButton:
-                # Clear graphicsScene_VL and graphicsScene_XR
+                # Clear scene_VL, Reload pixmap_VL
                 self.scene_VL.clear()
                 self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
                 self.scene_VL.addItem(self.pixmapItem_VL)
+                # Clear scene_XR, Reload pixmap_XR
                 self.scene_XR.clear()
                 self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
                 self.scene_XR.addItem(self.pixmapItem_XR)
-                # Set selected_XR = 0 and selected_VL = 0
-                self.selected_XR = 0
+                # Set selected_VL & selected_XR = 0
                 self.selected_VL = 0
-                # Set the width and the height of the scan area to 0
+                self.selected_XR = 0
+                # Set width & height of ROI to 0
                 self.width_XR = 0
                 self.height_XR = 0
+                # Show width & height of ROI
                 self.ui.ScanAreaWidth.setText(unicode(self.width_XR))
                 self.ui.ScanAreaHeight.setText(unicode(self.height_XR))
                 
                 # Get mouse coordinates
                 self.startPos_XR = self.ui.graphicsView_XR.mapFromScene(event.scenePos())
-                # Show start point coordinates
+                # Show top-left point coordinates
                 self.ui.TopLeftX.setText(unicode(self.startPos_XR.x()))
                 self.ui.TopLeftY.setText(unicode(self.startPos_XR.y()))
                 # Start rubberBnad
@@ -388,7 +405,7 @@ class MyForm(QtGui.QDialog):
                 self.rubberBand_XR.show()
                 
                 return super(MyForm, self).eventFilter(source, event)
-        # mouse move event in graphicsView_XR
+        # "mouse move" event in graphicsView_XR
         if (event.type() == QtCore.QEvent.GraphicsSceneMouseMove
                 and source is self.scene_XR):
             if event.buttons() == Qt.LeftButton:
@@ -400,130 +417,151 @@ class MyForm(QtGui.QDialog):
                                                                 self.currentPos_XR).normalized())
     
                 return super(MyForm, self).eventFilter(source, event)
-        # mouse release event in graphicsView_XR
+        # "mouse release" event in graphicsView_XR
         if (event.type() == QtCore.QEvent.GraphicsSceneMouseRelease
                 and source is self.scene_XR):
             if event.button() == QtCore.Qt.LeftButton:
                 # Get mouse coordinates
                 self.currentPos_XR = self.ui.graphicsView_XR.mapFromScene(event.scenePos())
-                # Calculate scan area
+                # Calculate width & height of ROI
                 self.width_XR = self.currentPos_XR.x() - self.startPos_XR.x()
                 self.height_XR = self.currentPos_XR.y() - self.startPos_XR.y()
                 # Set selected_XR = 1
                 self.selected_XR = 1
-                # Hide the rubberBand_XR
+                # Hide rubberBand_XR
                 self.rubberBand_XR.hide()
-                # Draw a red rectangle to show the selected area
+                # Draw a red rectangle to show ROI
                 self.selectedRect_XR = QRectF(self.ui.graphicsView_XR.mapToScene(self.startPos_XR.x(),
                                                                                  self.startPos_XR.y()),
                                               QSizeF(self.width_XR,self.height_XR))
                 self.scene_XR.addRect(self.selectedRect_XR,QtCore.Qt.red)
-                # Show the width and the height of the scan area
+                # Show width & height of ROI
                 self.ui.ScanAreaWidth.setText(unicode(self.width_XR))
                 self.ui.ScanAreaHeight.setText(unicode(self.height_XR))
                 
                 return super(MyForm, self).eventFilter(source, event)
         
         return False
-    
+
     '''
-    Handles button click events
+    "MotorPositionX clicked" event handler
     '''
-    # Click 1st Go, change Motor Position X
     @QtCore.pyqtSlot()
     def on_changeMotorPositionX_clicked(self, checked=None):
+        # Update xPos
         self.xPos = int(self.ui.toMotorPositionX.text())
+        # Show current MotorPositionX 
         self.ui.MotorPositionX.setText(unicode(self.xPos))
-    # Click 2nd Go, change Motor Position Y
+    '''
+    "MotorPositionY clicked" event handler
+    '''
     @QtCore.pyqtSlot()
     def on_changeMotorPositionY_clicked(self, checked=None):
+        # Update yPos
         self.yPos = int(self.ui.toMotorPositionY.text())
+        # Show current MotorPositionY
         self.ui.MotorPositionY.setText(unicode(self.yPos))
-    # Click 3rd Go, change Motor Position Z
+    '''
+    "MotorPositionZ clicked" event handler
+    '''
     @QtCore.pyqtSlot()
     def on_changeMotorPositionZ_clicked(self, checked=None):
+        # Update zPos
         self.zPos = int(self.ui.toMotorPositionZ.text())
+        # Show current MotorPositionZ
         self.ui.MotorPositionZ.setText(unicode(self.zPos))
     
-    # Click 1st -, decrease Motor Position X
+    '''
+    "minusMotorPositionX clicked" event handler
+    '''
     @QtCore.pyqtSlot()
     def on_minusMotorPositionX_clicked(self, checked=None):
+        # Update xPos
         self.xStep = int(self.ui.shiftMotorPositionX.text())
         self.xPos -= self.xStep
+        # Show current MotorPositionX
         self.ui.MotorPositionX.setText(unicode(self.xPos))
-    # Click 1st +, increase Motor Position X
+    '''
+    "plusMotorPositionX clicked" event handler
+    '''
     @QtCore.pyqtSlot()
     def on_plusMotorPositionX_clicked(self, checked=None):
+        # Update xPos
         self.xStep = int(self.ui.shiftMotorPositionX.text())
         self.xPos += self.xStep
+        # Show current MotorPositionX
         self.ui.MotorPositionX.setText(unicode(self.xPos))
-    
-    # Click 2nd -, decrease Motor Position Y
+    '''
+    "minusMotorPositionY clicked" event handler
+    '''
     @QtCore.pyqtSlot()
     def on_minusMotorPositionY_clicked(self, checked=None):
+        # Update yPos
         self.yStep = int(self.ui.shiftMotorPositionY.text())
         self.yPos -= self.yStep
+        # Show current MotorPositionY
         self.ui.MotorPositionY.setText(unicode(self.yPos))
-    # Click 2nd +, increase Motor Position Y
+    '''
+    "plusMotorPositionY clicked" event handler
+    '''
     @QtCore.pyqtSlot()
     def on_plusMotorPositionY_clicked(self, checked=None):
+        # Update yPos
         self.yStep = int(self.ui.shiftMotorPositionY.text())
         self.yPos += self.yStep
+        # Show current MotorPositionY
         self.ui.MotorPositionY.setText(unicode(self.yPos))
-    
-    # Click 3rd -, decrease Motor Position Z
+    '''
+    "minusMotorPositionZ clicked" event handler
+    '''
     @QtCore.pyqtSlot()
     def on_minusMotorPositionZ_clicked(self, checked=None):
+        # Update zPos
         self.zStep = int(self.ui.shiftMotorPositionZ.text())
         self.zPos -= self.zStep
+        # Show current MotorPositionZ
         self.ui.MotorPositionZ.setText(unicode(self.zPos))
-    # Click 3rd +, increase Motor Position Z
+    '''
+    "plusMotorPositionZ clicked" event handler
+    '''
     @QtCore.pyqtSlot()
     def on_plusMotorPositionZ_clicked(self, checked=None):
+        # Update zPos
         self.zStep = int(self.ui.shiftMotorPositionZ.text())
         self.zPos += self.zStep
+        # Show current MotorPositionZ
         self.ui.MotorPositionZ.setText(unicode(self.zPos))
 
-    # Start scanning process
+    '''
+    "ExecuteScan clicked" event handler
+    '''
     @QtCore.pyqtSlot()
     def on_ExecuteScan_clicked(self, checked=None):
-        '''
-        # If user has not selected a ROI
-        # Print out a warning message
-        '''
+        # Check if ROI has been selected
         if (self.selected_VL != 1 and self.selected_XR != 1):
             print "Please select ROI first!"
-            QMessageBox.about(self, "Error",
-                                  "Please select ROI first!")
-        '''
-        # If user has selected a ROI
-        # Calculate TimeLeft
-        # Start scanning process
-        '''
-        
-        if (self.selected_VL == 1 or self.selected_XR == 1):
-            # Get ScanStepSizeX
-            self.scanStepX = int(self.ui.ScanStepSizeX.text())
-            # Get ScanStepSizeY
-            self.scanStepY = int(self.ui.ScanStepSizeY.text())
-            # Get DwellTime
-            self.dwellTime = float(self.ui.DwellTime.text())
-            # Check if user has clicked MoveToStartPoint
+            QMessageBox.about(self, "Error","Please select ROI first!")
+        else:
+            # Check if motor has moved to top-left point
             if (self.xPos != int(self.ui.TopLeftX.text())
                     or self.yPos != int(self.ui.TopLeftY.text())):
                 print "Please click MoveToStartPoint button first!"
-                QMessageBox.about(self, "Error",
-                                  "Please click MoveToStartPoint button first!")
+                QMessageBox.about(self, "Error","Please click MoveToStartPoint button first!")
             else:
-                '''
-                # If user has selected a ROI in VL
-                '''
+                # Update ScanStepSizeX
+                self.scanStepX = int(self.ui.ScanStepSizeX.text())
+                # Update ScanStepSizeY
+                self.scanStepY = int(self.ui.ScanStepSizeY.text())
+                # Update DwellTime
+                self.dwellTime = float(self.ui.DwellTime.text())
+                
+                # If ROI is in scene_VL
                 if self.selected_VL == 1:
                     # Calculate TimeLeft
                     self.timeLeft = self.width_VL * self.height_VL / (self.dwellTime * 1000)
                     # Show TimeLeft
                     self.ui.TimeLeft.setText(unicode(self.timeLeft)+"s")
-                    # Print out coordinates of X and Y
+                    # Print coordinates of x & y
                     print "Y Position Change:"
                     for j in range(0,self.height_VL,self.scanStepY):
                         self.yPos += self.scanStepY
@@ -534,17 +572,16 @@ class MyForm(QtGui.QDialog):
                         self.xPos += self.scanStepX
                         print self.xPos
                         self.ui.MotorPositionX.setText(unicode(self.xPos))
-                    # Set selected_VL = 0
+                    # Set selected_VL back to 0
                     self.selected_VL = 0
-                '''
-                # If user has selected a ROI in XR
-                '''
+                    
+                # If ROI is in scene_XR
                 if self.selected_XR == 1:
                     # Calculate TimeLeft
                     self.timeLeft = self.width_XR * self.height_XR / (self.dwellTime * 1000)
                     # Show TimeLeft
                     self.ui.TimeLeft.setText(unicode(self.timeLeft)+"s")
-                    # Print out coordinates of X and Y
+                    # Print coordinates of x & y
                     print "Y Position Change:"
                     for j in range(0,self.height_XR,self.scanStepY):
                         self.yPos += self.scanStepY
@@ -555,16 +592,20 @@ class MyForm(QtGui.QDialog):
                         self.xPos += self.scanStepX
                         print self.xPos
                         self.ui.MotorPositionX.setText(unicode(self.xPos))
-                    # Set selected_XR = 0
+                    # Set selected_XR back to 0
                     self.selected_XR = 0
     
-    # Move the motor to selected start point
+    '''
+    "MoveToStartPoint clicked" event handler
+    '''
     @QtCore.pyqtSlot()
     def on_MoveToStartPoint_clicked(self, checked=None):
+        # Check if ROI has been selected
         if (self.selected_VL == 1 or self.selected_XR == 1):
+            # Update xPos & yPos
             self.xPos = int(self.ui.TopLeftX.text())
             self.yPos = int(self.ui.TopLeftY.text())
-
+            # Show current MotorPositionX & MotorPositionY
             self.ui.MotorPositionX.setText(unicode(self.xPos))
             self.ui.MotorPositionY.setText(unicode(self.yPos))
         else:
@@ -572,29 +613,31 @@ class MyForm(QtGui.QDialog):
             QMessageBox.about(self, "Error",
                                   "Please select ROI first!")
     
-    # Transfer numpy array to QImage
+    '''
+    Transfer 2D numpy array to QImage
+    '''
     def gray2qimage(self,gray):
         if (len(gray.shape) != 2):
             raise ValueError("gray2QImage can only convert 2D arrays")    
         gray = np.require(gray, np.uint8, 'C')
-        
         (h, w) = gray.shape
-        
         result = QImage(gray.data, w, h, QImage.Format_Indexed8)
         result.ndarray = gray
         for i in range(256):
                 result.setColor(i, QColor(i, i, i).rgb())
         return result
-    # Paint the plot in graphics scene_Plot
+    '''
+    Plot in scene_Plot
+    '''
     def paintPlot(self):
-        # Set the size of the whole figure
+        # Set the size of figure
         self.figure = plt.Figure(figsize=(5.5,2.0),dpi=100, facecolor='w')
         self.canvas = FigureCanvas(self.figure)
-        # Add the canvas into he graphics scene
+        # Add canvas into scene_Plot
         self.scene_Plot.addWidget(self.canvas)
-        # Draw the plot
+        # Add subplot (Only 1 subplot in this case)
         self.axes = self.figure.add_subplot(111)
-
+        # If Energy is checked
         if (self.ui.Energy.isChecked()):
             self.axes.plot(self.energy,
                            self.plotData,
@@ -603,6 +646,7 @@ class MyForm(QtGui.QDialog):
                            color = 'green',
                            #label = 'XANES'
                            )
+        # If Channel is checked
         elif (self.ui.Channel.isChecked()):
             self.axes.plot(self.plotData,
                            linestyle = 'solid',
@@ -619,7 +663,7 @@ class MyForm(QtGui.QDialog):
         # self.axes.set_ylim(0,190000)
         # self.axes.set_yticks([5000,50000,150000])
         '''
-        # Show a title
+        # Show title
         self.axes.set_title('SRX',size = 10)
         '''
         self.axes.annotate('Energy (eV)', xy=(0, 0.8),
@@ -633,325 +677,415 @@ class MyForm(QtGui.QDialog):
                        verticalalignment='bottom',
                        fontsize=10)
         '''
-        # Draw the canvas
+        # Draw canvas
         self.canvas.draw()
     
-    # Open a new Dialog
-    # Allow user to select elements
+    '''
+    "MOdifyElement clicked" event handler
+    '''
     def on_ModifyElement_clicked(self, checked=None):
         if checked==None:return
-        
-        # Open a periodic table for user to select elements
-        # Get user's selection
-        (self.tempSelectElements,ok) = PeriodicTable.getSelectedElements(self.SelectElements)
-        # If user click OK, store the selection results
-        # Else, discard the selection results
+        # Get result from PeriodicTable
+        (tempElementsStatus,ok) = PeriodicTable.updateElementsStatus(self.currentElementsStatus)
+        # Check if OK is clicked
         if ok == True:
-            self.SelectElements = self.tempSelectElements
-            # Show selection results in the table view
+            # Update currentElementsStatus
+            self.currentElementsStatus = tempElementsStatus 
+            # Set tableWidget to empty
             self.ui.tableWidget.setRowCount(0)
-            self.count = 0
-            for index in range(len(self.SelectElements)):
-                if self.SelectElements[index] == 1:
-                    self.label = [u"K\u03b11: ",u"K\u03b12: ",u"K\u03b21: ",
-                                  u"L\u03b11: ",u"L\u03b12: ",u"L\u03b21: ",
-                                  u"L\u03b22: ",u"L\u03b31: ",u"M\u03b11: "]
+            # number of lines in tableWidget
+            self.LineCount = 0
+            
+            for index in range(len(self.knownElements)):
+                # currentElementsStatus[] = 1 means being selected
+                if self.currentElementsStatus[index] == 1:
+                    # index == 0 means Li, index == 1 means Be, etc.
                     if index == 0:
-                        self.energyCount[0] = 0
-                        if (self.ui.tableWidget.rowCount() < self.count + 1):
-                            self.ui.tableWidget.insertRow(self.count)
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
                         self.comboBox_Li = QtGui.QComboBox()
-                        self.energyAvailable_Li = [0]*9
-                        for i in range(9):
-                            if (self.PhotonEnergy[index][i] > self.minEnergy) \
-                               and (self.PhotonEnergy[index][i] < self.maxEnergy):
-                                self.comboBox_Li.insertItem(self.energyCount[0], self.label[i]+ \
-                                                           QString(unicode(self.PhotonEnergy[index][i])) + "eV")
-                                self.energyAvailable_Li[self.energyCount[0]] = self.PhotonEnergy[index][i]
-                                self.energyCount[0] = self.energyCount[0] + 1
-                        self.comboBox_Li.insertItem(self.energyCount[0],"All")
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Li.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_Li.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
                         self.comboBox_Li.currentIndexChanged['QString'].connect(self.comboBox_Li_Changed)
-                        self.ui.tableWidget.setCellWidget(self.count,1,
-                                                          self.comboBox_Li)
-                        if self.energyCount[0] == 0:
-                            self.SelectElements[index] = 0
-                            self.ui.tableWidget.removeCellWidget(self.count,1)
-                            if self.ui.tableWidget.rowCount() != 1:
-                                self.ui.tableWidget.removeRow(self.count)
-                            print "Li is not available!"
-                        else:
-                            self.energySelection[0] = self.energyAvailable_Li[0]
-                            self.ui.tableWidget.setItem(self.count,0,
-                                                        QTableWidgetItem(QString(self.knownElements[index])))
-                            self.ui.tableWidget.setItem(self.count,2,
-                                                        QTableWidgetItem(QString(unicode(self.scanRange[index]))))
-                            self.count = self.count + 1
-                    
-                    elif index == 1:
-                        self.energyCount[1] = 0
-                        if (self.ui.tableWidget.rowCount() < self.count + 1):
-                            self.ui.tableWidget.insertRow(self.count)
-                        self.comboBox_Be = QtGui.QComboBox()
-                        self.energyAvailable_Be = [0]*9
-                        for i in range(9):
-                            if (self.PhotonEnergy[index][i] > self.minEnergy) \
-                               and (self.PhotonEnergy[index][i] < self.maxEnergy):
-                                self.comboBox_Be.insertItem(self.energyCount[1], self.label[i]+ \
-                                                           QString(unicode(self.PhotonEnergy[index][i])) + "eV")
-                                self.energyAvailable_Be[self.energyCount[1]] = self.PhotonEnergy[index][i]
-                                self.energyCount[1] = self.energyCount[1] + 1
-                        self.comboBox_Be.insertItem(self.energyCount[1],"All")
-                        self.comboBox_Be.currentIndexChanged['QString'].connect(self.comboBox_Be_Changed)
-                        self.ui.tableWidget.setCellWidget(self.count,1,
-                                                          self.comboBox_Be)
-                        if self.energyCount[1] == 0:
-                            self.SelectElements[index] = 0
-                            self.ui.tableWidget.removeCellWidget(self.count,1)
-                            if self.ui.tableWidget.rowCount() != 1:
-                                self.ui.tableWidget.removeRow(self.count)
-                            print "Be is not available!"
-                        else:
-                            self.energySelection[1] = self.energyAvailable_Be[0]
-                            self.ui.tableWidget.setItem(self.count,0,
-                                                        QTableWidgetItem(QString(self.knownElements[index])))
-                            self.ui.tableWidget.setItem(self.count,2,
-                                                        QTableWidgetItem(QString(unicode(self.scanRange[index]))))
-                            self.count = self.count + 1
-
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Li)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+    '''
+    "comboBox_Li changed" event handler
+    '''
     def comboBox_Li_Changed(self,event):
         print "Li:"
-        for i in range(self.energyCount[0]):
-            if self.comboBox_Li.currentIndex() == i:
-                self.energySelection[0] = self.energyAvailable_Li[i]
-        if self.comboBox_Li.currentIndex() == self.energyCount[0]:
-            self.energySelection[0] = -1
-        print self.energySelection[0]
-
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[0][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[0][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Li.currentIndex() == temp:
+            self.scanEnergyLevel[0] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[0] = level[self.comboBox_Li.currentIndex()]
+        
+        print self.scanEnergyLevel[0]
+    '''
+    "comboBox_Be changed" event handler
+    '''
     def comboBox_Be_Changed(self,event):
         print "Be:"
-        for i in range(self.energyCount[1]):
-            if self.comboBox_Be.currentIndex() == i:
-                self.energySelection[1] = self.energyAvailable_Be[i]
-        if self.comboBox_Be.currentIndex() == self.energyCount[1]:
-            self.energySelection[1] = -1
-        print self.energySelection[1]
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[1][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[1][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Be.currentIndex() == temp:
+            self.scanEnergyLevel[1] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[1] = level[self.comboBox_Be.currentIndex()]
+        
+        print self.scanEnergyLevel[1]
     
-    # Handle double clicked event in the table widget
+    '''
+    "CellDoubleClicked" event handler
+    '''
     def handleCellDoubleClicked(self,row,column):
+        # Check if column == 2 & line is not empty
         if column == 2 and (row < self.ui.tableWidget.rowCount()):
             self.ui.tableWidget.editItem(self.ui.tableWidget.item(row,column))
-    # Handle cell content change event in the table widget
+    '''
+    "CellChanged" event handler
+    '''
     def handleCellChanged(self,row,column):
+        # Check if column == 2
         if column == 2:
-            if (self.ui.tableWidget.item(row,0).text() == "Ti") and \
+            # If element == Li
+            if (self.ui.tableWidget.item(row,0).text() == "Li") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[0] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[0] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Be
+            elif (self.ui.tableWidget.item(row,0).text() == "Be") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                # Update scanEnergyRange
+                self.scanEnergyRange[1] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+
+            # If element == V
             elif (self.ui.tableWidget.item(row,0).text() == "V") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[1] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[20] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Cr
             elif (self.ui.tableWidget.item(row,0).text() == "Cr") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[2] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[21] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Mn
             elif (self.ui.tableWidget.item(row,0).text() == "Mn") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[3] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[22] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Fe
             elif (self.ui.tableWidget.item(row,0).text() == "Fe") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[4] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[23] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Co
             elif (self.ui.tableWidget.item(row,0).text() == "Co") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[5] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[24] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ni
             elif (self.ui.tableWidget.item(row,0).text() == "Ni") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[6] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[25] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Cu
             elif (self.ui.tableWidget.item(row,0).text() == "Cu") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[7] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[26] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Zn
             elif (self.ui.tableWidget.item(row,0).text() == "Zn") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[8] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[27] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ga
             elif (self.ui.tableWidget.item(row,0).text() == "Ga") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[4] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[28] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ge 
             elif (self.ui.tableWidget.item(row,0).text() == "Ge") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[5] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[29] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == As
             elif (self.ui.tableWidget.item(row,0).text() == "As") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[6] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[30] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Se
             elif (self.ui.tableWidget.item(row,0).text() == "Se") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[7] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[31] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Br
             elif (self.ui.tableWidget.item(row,0).text() == "Br") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[8] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[32] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Kr
             elif (self.ui.tableWidget.item(row,0).text() == "Kr") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[4] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[33] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Rb
             elif (self.ui.tableWidget.item(row,0).text() == "Rb") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[5] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[34] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Sr
             elif (self.ui.tableWidget.item(row,0).text() == "Sr") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[6] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[35] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Y
             elif (self.ui.tableWidget.item(row,0).text() == "Y") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[7] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[36] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Zr
             elif (self.ui.tableWidget.item(row,0).text() == "Zr") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[8] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[37] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Nb
             elif (self.ui.tableWidget.item(row,0).text() == "Nb") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[4] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[38] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Mo
             elif (self.ui.tableWidget.item(row,0).text() == "Mo") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[5] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[39] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Tc
             elif (self.ui.tableWidget.item(row,0).text() == "Tc") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[6] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[40] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ru
             elif (self.ui.tableWidget.item(row,0).text() == "Ru") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[7] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+                # Update scanEnergyRange
+                self.scanEnergyRange[41] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Rh
             elif (self.ui.tableWidget.item(row,0).text() == "Rh") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
-                self.scanRange[8] = self.ui.tableWidget.item(row,column).text().toInt()[0]
-    # If user change the TopLeft X coordinate of the ROI
+                # Update scanEnergyRange
+                self.scanEnergyRange[42] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+
+            
+    '''
+    "TopLeftX editingFinished" event handler
+    '''
     def TopLeftX_EditingFinished(self):
         if self.ui.TopLeftX.isModified():
-            # Clear graphicsScene_VL and graphicsScene_XR
+            # Clear scene_VL, Reload pixmap_VL
             self.scene_VL.clear()
             self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
             self.scene_VL.addItem(self.pixmapItem_VL)
+            # Clear scene_XR, Reload pixmap_XR
             self.scene_XR.clear()
             self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
             self.scene_XR.addItem(self.pixmapItem_XR)
-            # Draw a red rectangle to show the selected area
+            # If ROI is in scene_VL
             if (self.selected_VL == 1):
+                # Update startPos_VL
                 self.startPos_VL.setX(self.ui.TopLeftX.text().toInt()[0])
+                # Draw a red rectangle to show new ROI
                 self.selectedRect_VL = QRectF(self.ui.graphicsView_VL.mapToScene(self.startPos_VL.x(),
                                                                                  self.startPos_VL.y()),
                                               QSizeF(self.width_VL,self.height_VL))
                 self.scene_VL.addRect(self.selectedRect_VL,QtCore.Qt.red)
+            # If ROI is in scene_XR
             elif (self.selected_XR == 1):
+                # Update startPos_XR
                 self.startPos_XR.setX(self.ui.TopLeftX.text().toInt()[0])
+                # Draw a red rectangle to show new ROI
                 self.selectedRect_XR = QRectF(self.ui.graphicsView_XR.mapToScene(self.startPos_XR.x(),
                                                                                  self.startPos_XR.y()),
                                               QSizeF(self.width_XR,self.height_XR))
                 self.scene_XR.addRect(self.selectedRect_XR,QtCore.Qt.red)
+            # If no ROI has been selected
             else:
                 self.ui.TopLeftX.setText("0")
                 print "Please select ROI first!"
                 QMessageBox.about(self, "Error",
                                   "Please select ROI first!")
         self.ui.TopLeftX.setModified(False)
-    
-    # If user change the TopLeft Y coordinate of the ROI
+    '''
+    "TopLeftY editingFinished" event handler
+    '''
     def TopLeftY_EditingFinished(self):
         if self.ui.TopLeftY.isModified():
-            # Clear graphicsScene_VL and graphicsScene_XR
+            # Clear scene_VL, Reload pixmap_VL
             self.scene_VL.clear()
             self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
             self.scene_VL.addItem(self.pixmapItem_VL)
+            # Clear scene_XR, Reload pixmap_XR
             self.scene_XR.clear()
             self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
             self.scene_XR.addItem(self.pixmapItem_XR)
-            # Draw a red rectangle to show the selected area
+            # If ROI is in scene_VL
             if (self.selected_VL == 1):
+                # Update startPos_VL
                 self.startPos_VL.setY(self.ui.TopLeftY.text().toInt()[0])
+                # Draw a red rectangle to show new ROI
                 self.selectedRect_VL = QRectF(self.ui.graphicsView_VL.mapToScene(self.startPos_VL.x(),
                                                                                  self.startPos_VL.y()),
                                               QSizeF(self.width_VL,self.height_VL))
                 self.scene_VL.addRect(self.selectedRect_VL,QtCore.Qt.red)
+            # If ROI is in scene_XR
             elif (self.selected_XR == 1):
+                # Update startPos_XR
                 self.startPos_XR.setY(self.ui.TopLeftY.text().toInt()[0])
+                # Draw a red rectangle to show new ROI
                 self.selectedRect_XR = QRectF(self.ui.graphicsView_XR.mapToScene(self.startPos_XR.x(),
                                                                                  self.startPos_XR.y()),
                                               QSizeF(self.width_XR,self.height_XR))
                 self.scene_XR.addRect(self.selectedRect_XR,QtCore.Qt.red)
+            # If no ROI has been selected
             else:
                 self.ui.TopLeftY.setText("0")
                 print "Please select ROI first!"
                 QMessageBox.about(self, "Error",
                                   "Please select ROI first!")
         self.ui.TopLeftY.setModified(False)
-    # If user change the width of the ROI
+    '''
+    "ScanAreaWidth editingFinished" event handler
+    '''
     def ScanAreaWidth_EditingFinished(self):
         if self.ui.ScanAreaWidth.isModified():
-            # Clear graphicsScene_VL and graphicsScene_XR
+            # Clear scene_VL, Reload pixmap_VL
             self.scene_VL.clear()
             self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
             self.scene_VL.addItem(self.pixmapItem_VL)
+            # Clear scene_XR, Reload pixmap_XR
             self.scene_XR.clear()
             self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
             self.scene_XR.addItem(self.pixmapItem_XR)
-            # Draw a red rectangle to show the selected area
+            # If ROI is in scene_VL
             if (self.selected_VL == 1):
+                # Update startPos_VL
                 self.width_VL = self.ui.ScanAreaWidth.text().toInt()[0]
+                # Draw a red rectangle to show new ROI
                 self.selectedRect_VL = QRectF(self.ui.graphicsView_VL.mapToScene(self.startPos_VL.x(),
                                                                                  self.startPos_VL.y()),
                                               QSizeF(self.width_VL,self.height_VL))
                 self.scene_VL.addRect(self.selectedRect_VL,QtCore.Qt.red)
+            # If ROI is in scene_XR
             elif (self.selected_XR == 1):
+                # Update startPos_XR
                 self.width_XR = self.ui.ScanAreaWidth.text().toInt()[0]
+                # Draw a red rectangle to show new ROI
                 self.selectedRect_XR = QRectF(self.ui.graphicsView_XR.mapToScene(self.startPos_XR.x(),
                                                                                  self.startPos_XR.y()),
                                               QSizeF(self.width_XR,self.height_XR))
                 self.scene_XR.addRect(self.selectedRect_XR,QtCore.Qt.red)
+            # If no ROI has been selected
             else:
                 self.ui.ScanAreaWidth.setText("0")
                 print "Please select ROI first!"
                 QMessageBox.about(self, "Error",
                                   "Please select ROI first!")
         self.ui.ScanAreaWidth.setModified(False)
-    
-    # If user change the height of the ROI
+    '''
+    "ScanAreaHeight editingFinished" event handler
+    '''
     def ScanAreaHeight_EditingFinished(self):
         if self.ui.ScanAreaHeight.isModified():
-            # Clear graphicsScene_VL and graphicsScene_XR
+            # Clear scene_VL, Reload pixmap_VL
             self.scene_VL.clear()
             self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
             self.scene_VL.addItem(self.pixmapItem_VL)
+            # Clear scene_XR, Reload pixmap_XR
             self.scene_XR.clear()
             self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
             self.scene_XR.addItem(self.pixmapItem_XR)
-            # Draw a red rectangle to show the selected area
+            # If ROI is in scene_VL
             if (self.selected_VL == 1):
+                # Update startPos_VL
                 self.height_VL = self.ui.ScanAreaHeight.text().toInt()[0]
+                # Draw a red rectangle to show new ROI
                 self.selectedRect_VL = QRectF(self.ui.graphicsView_VL.mapToScene(self.startPos_VL.x(),
                                                                                  self.startPos_VL.y()),
                                               QSizeF(self.width_VL,self.height_VL))
                 self.scene_VL.addRect(self.selectedRect_VL,QtCore.Qt.red)
+            # If ROI is in scene_XR
             elif (self.selected_XR == 1):
+                # Update startPos_XR
                 self.height_XR = self.ui.ScanAreaHeight.text().toInt()[0]
+                # Draw a red rectangle to show new ROI
                 self.selectedRect_XR = QRectF(self.ui.graphicsView_XR.mapToScene(self.startPos_XR.x(),
                                                                                  self.startPos_XR.y()),
                                               QSizeF(self.width_XR,self.height_XR))
                 self.scene_XR.addRect(self.selectedRect_XR,QtCore.Qt.red)
+            # If no ROI has been selected
             else:
                 self.ui.ScanAreaHeight.setText("0")
                 print "Please select ROI first!"
                 QMessageBox.about(self, "Error",
                                   "Please select ROI first!")
         self.ui.ScanAreaHeight.setModified(False)
-    # If user click radio button "Energy"
+
+    '''
+    "Energy clicked" event handler
+    '''
     def Energy_clicked(self, enabled):
         if enabled:
-            # Call plot method
+            # Call paintPlot
             self.paintPlot()
-
-    # If user click radio button "Channel"
+    '''
+    "Channel clicked" event handler
+    '''
     def Channel_clicked(self, enabled):
         if enabled:
-            # Call plot method
+            # Call paintPlot
             self.paintPlot()
     
-    # If user change min pixel value
+    '''
+    "minPixelValue editingFinished" event handler
+    '''
     def minPixelValue_EditingFinished(self):
         if self.ui.minPixelValue.isModified():
-            # Get the value enterd by the user
+            # Update scale_min
             self.scale_min = self.ui.minPixelValue.text().toDouble()[0]
             # Check if the max == min
             if (self.scale_max == self.scale_min):
+                # Change value back
                 self.scale_min = np.min(self.imageData_XR)
                 self.ui.minPixelValue.setText(unicode(self.scale_min))
                 
@@ -959,31 +1093,37 @@ class MyForm(QtGui.QDialog):
                 QMessageBox.about(self, "Error",
                                   "Min value cannot be equal to Max value!")
             else:
+                # Clear scene_XR
                 self.scene_XR.clear()
-                # Recalculate the data matrix
+                # Update newImageData_XR
                 self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
                 self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
                 self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
-                # Transfer numpy array to QImage
+                # Transfer newImageData_XR to Image_XR
                 self.Image_XR = self.numpy2qimage(np.array(255*self.newImageData_XR,
                                                             dtype=int))
-                # Transfer QImage to QPixmap
+                # Transfer Image_XR to pixmap_XR
                 self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
+                # Resize pixmap_XR
                 self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,
                                                        self.sizeHeight,
                                                        QtCore.Qt.IgnoreAspectRatio)
+                # Create pixmapItem_XR
                 self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+                # Add pixmapItem_XR in scene_XR
                 self.scene_XR.addItem(self.pixmapItem_XR)
         
         self.ui.minPixelValue.setModified(False)
-    
-    # If user change max pixel value
+    '''
+    "maxPixelValue editingFinished" event handler
+    '''
     def maxPixelValue_EditingFinished(self):
         if self.ui.maxPixelValue.isModified():
-            # Get the value enterd by the user
+            # Update scale_max
             self.scale_max = self.ui.maxPixelValue.text().toDouble()[0]
             # Check if the max == min
             if (self.scale_max == self.scale_min):
+                # Change value back
                 self.scale_max = np.max(self.imageData_XR)
                 self.ui.maxPixelValue.setText(unicode(self.scale_max))
                 
@@ -991,32 +1131,38 @@ class MyForm(QtGui.QDialog):
                 QMessageBox.about(self, "Error",
                                   "Max value cannot be equal to Min value!")
             else:
+                # Clear scene_XR
                 self.scene_XR.clear()
-                # Recalculate the data matrix
+                # Update newImageData_XR
                 self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
                 self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
                 self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
-                # Transfer numpy array to QImage
+                # Transfer newImageData_XR to Image_XR
                 self.Image_XR = self.numpy2qimage(np.array(255*self.newImageData_XR,
                                                             dtype=int))
-                # Transfer QImage to QPixmap
+                # Transfer Image_XR to pixmap_XR
                 self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
+                # Resize pixmap_XR
                 self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,
                                                        self.sizeHeight,
                                                        QtCore.Qt.IgnoreAspectRatio)
+                # Create pixmapItem_XR
                 self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+                # Add pixmapItem_XR in scene_XR
                 self.scene_XR.addItem(self.pixmapItem_XR)
         
         self.ui.maxPixelValue.setModified(False)
 
 '''
-# main method
+main method
 '''
 def main():
     app = QtGui.QApplication(sys.argv)
     mainWindow = MyForm()
     mainWindow.show()
+    # Show mainWindow on top
     mainWindow.raise_()
+    # Install event filter
     app.installEventFilter(mainWindow)
     
     sys.exit(app.exec_())

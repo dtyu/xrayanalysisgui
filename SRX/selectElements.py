@@ -8,14 +8,12 @@ from ElementsDialog import *
 
 # Class for the Periodic Table Dialog
 class PeriodicTable(QtGui.QDialog):
-    def __init__(self,SelectedElements,parent=None):
+    def __init__(self,previousElementsStatus,parent=None):
         QtGui.QWidget.__init__(self,parent)
         self.ui = Ui_PeriodicTableDialog()
         self.ui.setupUi(self)
-
-        self.Elements = SelectedElements
         
-        # Set properties of buttons for each element
+        # Set button properties (self.ui.X is the button for element X)
         self.ui.Li.setCheckable(True)
         self.ui.Li.clicked[bool].connect(self.modifyElement)
         self.ui.Li.setStyleSheet("QPushButton { background-color: white }"
@@ -388,411 +386,779 @@ class PeriodicTable(QtGui.QDialog):
         self.ui.Am.clicked[bool].connect(self.modifyElement)
         self.ui.Am.setStyleSheet("QPushButton { background-color: white }"
                       "QPushButton:pressed { background-color: red }" )
-        # Load user's previous selection
-        if self.Elements[0] == 1:  
+        # Load previous status (1 means selected, -1 means disabled)
+        self.status = previousElementsStatus
+        # status[0] represents Li, status[1] represents Be, etc.
+        if self.status[0] == 1:  
             self.ui.Li.click()
-        if self.Elements[1] == 1:  
+        elif self.status[0] == -1:
+            self.ui.Li.setEnabled(False)
+        if self.status[1] == 1:  
             self.ui.Be.click()
-        
-    # Handle user's selection
+        elif self.status[1] == -1:
+            self.ui.Be.setEnabled(False)
+        if self.status[2] == 1:  
+            self.ui.B.click()
+        elif self.status[2] == -1:
+            self.ui.B.setEnabled(False)
+        if self.status[3] == 1:  
+            self.ui.C.click()
+        elif self.status[3] == -1:
+            self.ui.C.setEnabled(False)
+        if self.status[4] == 1:  
+            self.ui.N.click()
+        elif self.status[4] == -1:
+            self.ui.N.setEnabled(False)
+        if self.status[5] == 1:  
+            self.ui.O.click()
+        elif self.status[5] == -1:
+            self.ui.O.setEnabled(False)
+        if self.status[6] == 1:  
+            self.ui.F.click()
+        elif self.status[6] == -1:
+            self.ui.F.setEnabled(False)
+        if self.status[7] == 1:  
+            self.ui.Ne.click()
+        elif self.status[7] == -1:
+            self.ui.Ne.setEnabled(False)
+        if self.status[8] == 1:  
+            self.ui.Na.click()
+        elif self.status[8] == -1:
+            self.ui.Na.setEnabled(False)
+        if self.status[9] == 1:  
+            self.ui.Mg.click()
+        elif self.status[9] == -1:
+            self.ui.Mg.setEnabled(False)
+        if self.status[10] == 1:  
+            self.ui.Al.click()
+        elif self.status[10] == -1:
+            self.ui.Al.setEnabled(False)
+        if self.status[11] == 1:  
+            self.ui.Si.click()
+        elif self.status[11] == -1:
+            self.ui.Si.setEnabled(False)
+        if self.status[12] == 1:  
+            self.ui.P.click()
+        elif self.status[12] == -1:
+            self.ui.P.setEnabled(False)
+        if self.status[13] == 1:  
+            self.ui.S.click()
+        elif self.status[13] == -1:
+            self.ui.S.setEnabled(False)
+        if self.status[14] == 1:  
+            self.ui.Cl.click()
+        elif self.status[14] == -1:
+            self.ui.Cl.setEnabled(False)
+        if self.status[15] == 1:  
+            self.ui.Ar.click()
+        elif self.status[15] == -1:
+            self.ui.Ar.setEnabled(False)
+        if self.status[16] == 1:  
+            self.ui.K.click()
+        elif self.status[16] == -1:
+            self.ui.K.setEnabled(False)
+        if self.status[17] == 1:  
+            self.ui.Ca.click()
+        elif self.status[17] == -1:
+            self.ui.Ca.setEnabled(False)
+        if self.status[18] == 1:  
+            self.ui.Sc.click()
+        elif self.status[18] == -1:
+            self.ui.Sc.setEnabled(False)
+        if self.status[19] == 1:  
+            self.ui.Ti.click()
+        elif self.status[19] == -1:
+            self.ui.Ti.setEnabled(False)
+        if self.status[20] == 1:  
+            self.ui.V.click()
+        elif self.status[20] == -1:
+            self.ui.V.setEnabled(False)
+        if self.status[21] == 1:  
+            self.ui.Cr.click()
+        elif self.status[21] == -1:
+            self.ui.Cr.setEnabled(False)
+        if self.status[22] == 1:  
+            self.ui.Mn.click()
+        elif self.status[22] == -1:
+            self.ui.Mn.setEnabled(False)
+        if self.status[23] == 1:  
+            self.ui.Fe.click()
+        elif self.status[23] == -1:
+            self.ui.Fe.setEnabled(False)
+        if self.status[24] == 1:  
+            self.ui.Co.click()
+        elif self.status[24] == -1:
+            self.ui.Co.setEnabled(False)
+        if self.status[25] == 1:  
+            self.ui.Ni.click()
+        elif self.status[25] == -1:
+            self.ui.Ni.setEnabled(False)
+        if self.status[26] == 1:  
+            self.ui.Cu.click()
+        elif self.status[26] == -1:
+            self.ui.Cu.setEnabled(False)
+        if self.status[27] == 1:  
+            self.ui.Zn.click()
+        elif self.status[27] == -1:
+            self.ui.Zn.setEnabled(False)
+        if self.status[28] == 1:  
+            self.ui.Ga.click()
+        elif self.status[28] == -1:
+            self.ui.Ga.setEnabled(False)
+        if self.status[29] == 1:  
+            self.ui.Ge.click()
+        elif self.status[29] == -1:
+            self.ui.Ge.setEnabled(False)
+        if self.status[30] == 1:  
+            self.ui.As.click()
+        elif self.status[30] == -1:
+            self.ui.As.setEnabled(False)
+        if self.status[31] == 1:  
+            self.ui.Se.click()
+        elif self.status[31] == -1:
+            self.ui.Se.setEnabled(False)
+        if self.status[32] == 1:  
+            self.ui.Br.click()
+        elif self.status[32] == -1:
+            self.ui.Br.setEnabled(False)
+        if self.status[33] == 1:  
+            self.ui.Kr.click()
+        elif self.status[33] == -1:
+            self.ui.Kr.setEnabled(False)
+        if self.status[34] == 1:  
+            self.ui.Rb.click()
+        elif self.status[34] == -1:
+            self.ui.Rb.setEnabled(False)
+        if self.status[35] == 1:  
+            self.ui.Sr.click()
+        elif self.status[35] == -1:
+            self.ui.Sr.setEnabled(False)
+        if self.status[36] == 1:  
+            self.ui.Y.click()
+        elif self.status[36] == -1:
+            self.ui.Y.setEnabled(False)
+        if self.status[37] == 1:  
+            self.ui.Zr.click()
+        elif self.status[37] == -1:
+            self.ui.Zr.setEnabled(False)
+        if self.status[38] == 1:  
+            self.ui.Nb.click()
+        elif self.status[38] == -1:
+            self.ui.Nb.setEnabled(False)
+        if self.status[39] == 1:  
+            self.ui.Mo.click()
+        elif self.status[39] == -1:
+            self.ui.Mo.setEnabled(False)
+        if self.status[40] == 1:  
+            self.ui.Tc.click()
+        elif self.status[40] == -1:
+            self.ui.Tc.setEnabled(False)
+        if self.status[41] == 1:  
+            self.ui.Ru.click()
+        elif self.status[41] == -1:
+            self.ui.Ru.setEnabled(False)
+        if self.status[42] == 1:  
+            self.ui.Rh.click()
+        elif self.status[42] == -1:
+            self.ui.Rh.setEnabled(False)
+        if self.status[43] == 1:  
+            self.ui.Pd.click()
+        elif self.status[43] == -1:
+            self.ui.Pd.setEnabled(False)
+        if self.status[44] == 1:  
+            self.ui.Ag.click()
+        elif self.status[44] == -1:
+            self.ui.Ag.setEnabled(False)
+        if self.status[45] == 1:  
+            self.ui.Cd.click()
+        elif self.status[45] == -1:
+            self.ui.Cd.setEnabled(False)
+        if self.status[46] == 1:  
+            self.ui.In.click()
+        elif self.status[46] == -1:
+            self.ui.In.setEnabled(False)
+        if self.status[47] == 1:  
+            self.ui.Sn.click()
+        elif self.status[47] == -1:
+            self.ui.Sn.setEnabled(False)
+        if self.status[48] == 1:  
+            self.ui.Sb.click()
+        elif self.status[48] == -1:
+            self.ui.Sb.setEnabled(False)
+        if self.status[49] == 1:  
+            self.ui.Te.click()
+        elif self.status[49] == -1:
+            self.ui.Te.setEnabled(False)
+        if self.status[50] == 1:  
+            self.ui.I.click()
+        elif self.status[50] == -1:
+            self.ui.I.setEnabled(False)
+        if self.status[51] == 1:  
+            self.ui.Xe.click()
+        elif self.status[51] == -1:
+            self.ui.Xe.setEnabled(False)
+        if self.status[52] == 1:  
+            self.ui.Cs.click()
+        elif self.status[52] == -1:
+            self.ui.Cs.setEnabled(False)
+        if self.status[53] == 1:  
+            self.ui.Ba.click()
+        elif self.status[53] == -1:
+            self.ui.Ba.setEnabled(False)
+        if self.status[54] == 1:  
+            self.ui.La.click()
+        elif self.status[54] == -1:
+            self.ui.La.setEnabled(False)
+        if self.status[55] == 1:  
+            self.ui.Ce.click()
+        elif self.status[55] == -1:
+            self.ui.Ce.setEnabled(False)
+        if self.status[56] == 1:  
+            self.ui.Pr.click()
+        elif self.status[56] == -1:
+            self.ui.Pr.setEnabled(False)
+        if self.status[57] == 1:  
+            self.ui.Nd.click()
+        elif self.status[57] == -1:
+            self.ui.Nd.setEnabled(False)
+        if self.status[58] == 1:  
+            self.ui.Pm.click()
+        elif self.status[58] == -1:
+            self.ui.Pm.setEnabled(False)
+        if self.status[59] == 1:  
+            self.ui.Sm.click()
+        elif self.status[59] == -1:
+            self.ui.Sm.setEnabled(False)
+        if self.status[60] == 1:  
+            self.ui.Eu.click()
+        elif self.status[60] == -1:
+            self.ui.Eu.setEnabled(False)
+        if self.status[61] == 1:  
+            self.ui.Gd.click()
+        elif self.status[61] == -1:
+            self.ui.Gd.setEnabled(False)
+        if self.status[62] == 1:  
+            self.ui.Tb.click()
+        elif self.status[62] == -1:
+            self.ui.Tb.setEnabled(False)
+        if self.status[63] == 1:  
+            self.ui.Dy.click()
+        elif self.status[63] == -1:
+            self.ui.Dy.setEnabled(False)
+        if self.status[64] == 1:  
+            self.ui.Ho.click()
+        elif self.status[64] == -1:
+            self.ui.Ho.setEnabled(False)
+        if self.status[65] == 1:  
+            self.ui.Er.click()
+        elif self.status[65] == -1:
+            self.ui.Er.setEnabled(False)
+        if self.status[66] == 1:  
+            self.ui.Tm.click()
+        elif self.status[66] == -1:
+            self.ui.Tm.setEnabled(False)
+        if self.status[67] == 1:  
+            self.ui.Yb.click()
+        elif self.status[67] == -1:
+            self.ui.Yb.setEnabled(False)
+        if self.status[68] == 1:  
+            self.ui.Lu.click()
+        elif self.status[68] == -1:
+            self.ui.Lu.setEnabled(False)
+        if self.status[69] == 1:  
+            self.ui.Hf.click()
+        elif self.status[69] == -1:
+            self.ui.Hf.setEnabled(False)
+        if self.status[70] == 1:  
+            self.ui.Ta.click()
+        elif self.status[70] == -1:
+            self.ui.Ta.setEnabled(False)
+        if self.status[71] == 1:  
+            self.ui.W.click()
+        elif self.status[71] == -1:
+            self.ui.W.setEnabled(False)
+        if self.status[72] == 1:  
+            self.ui.Re.click()
+        elif self.status[72] == -1:
+            self.ui.Re.setEnabled(False)
+        if self.status[73] == 1:  
+            self.ui.Os.click()
+        elif self.status[73] == -1:
+            self.ui.Os.setEnabled(False)
+        if self.status[74] == 1:  
+            self.ui.Ir.click()
+        elif self.status[74] == -1:
+            self.ui.Ir.setEnabled(False)
+        if self.status[75] == 1:  
+            self.ui.Pt.click()
+        elif self.status[75] == -1:
+            self.ui.Pt.setEnabled(False)
+        if self.status[76] == 1:  
+            self.ui.Au.click()
+        elif self.status[76] == -1:
+            self.ui.Au.setEnabled(False)
+        if self.status[77] == 1:  
+            self.ui.Hg.click()
+        elif self.status[77] == -1:
+            self.ui.Hg.setEnabled(False)
+        if self.status[78] == 1:  
+            self.ui.Tl.click()
+        elif self.status[78] == -1:
+            self.ui.Tl.setEnabled(False)
+        if self.status[79] == 1:  
+            self.ui.Pb.click()
+        elif self.status[79] == -1:
+            self.ui.Pb.setEnabled(False)
+        if self.status[80] == 1:  
+            self.ui.Bi.click()
+        elif self.status[80] == -1:
+            self.ui.Bi.setEnabled(False)
+        if self.status[81] == 1:  
+            self.ui.Po.click()
+        elif self.status[81] == -1:
+            self.ui.Po.setEnabled(False)
+        if self.status[82] == 1:  
+            self.ui.At.click()
+        elif self.status[82] == -1:
+            self.ui.At.setEnabled(False)
+        if self.status[83] == 1:  
+            self.ui.Rn.click()
+        elif self.status[83] == -1:
+            self.ui.Rn.setEnabled(False)
+        if self.status[84] == 1:  
+            self.ui.Fr.click()
+        elif self.status[84] == -1:
+            self.ui.Fr.setEnabled(False)
+        if self.status[85] == 1:  
+            self.ui.Ra.click()
+        elif self.status[85] == -1:
+            self.ui.Ra.setEnabled(False)
+        if self.status[86] == 1:  
+            self.ui.Ac.click()
+        elif self.status[86] == -1:
+            self.ui.Ac.setEnabled(False)
+        if self.status[87] == 1:  
+            self.ui.Th.click()
+        elif self.status[87] == -1:
+            self.ui.Th.setEnabled(False)
+        if self.status[88] == 1:  
+            self.ui.Pa.click()
+        elif self.status[88] == -1:
+            self.ui.Pa.setEnabled(False)
+        if self.status[89] == 1:  
+            self.ui.U.click()
+        elif self.status[89] == -1:
+            self.ui.U.setEnabled(False)
+        if self.status[90] == 1:  
+            self.ui.Np.click()
+        elif self.status[90] == -1:
+            self.ui.Np.setEnabled(False)
+        if self.status[91] == 1:  
+            self.ui.Pu.click()
+        elif self.status[91] == -1:
+            self.ui.Pu.setEnabled(False)
+        if self.status[92] == 1:  
+            self.ui.Am.click()
+        elif self.status[92] == -1:
+            self.ui.Am.setEnabled(False)
+    '''
+    "button-click" event handler
+    '''
     def modifyElement(self, pressed):
         source = self.sender()
-        # If user press the button down, set the value to 1
+        # If user press the button down, set the status value to 1
         if pressed:
             if source.text() == "Li":
-                self.Elements[0] = 1
+                self.status[0] = 1
             elif source.text() == "Be":
-                self.Elements[1] = 1
+                self.status[1] = 1
             elif source.text() == "B":
-                self.Elements[2] = 1
+                self.status[2] = 1
             elif source.text() == "C":
-                self.Elements[3] = 1
+                self.status[3] = 1
             elif source.text() == "N":
-                self.Elements[4] = 1
+                self.status[4] = 1
             elif source.text() == "O":
-                self.Elements[5] = 1
+                self.status[5] = 1
             elif source.text() == "F":
-                self.Elements[6] = 1
+                self.status[6] = 1
             elif source.text() == "Ne":
-                self.Elements[7] = 1
+                self.status[7] = 1
             elif source.text() == "Na":
-                self.Elements[8] = 1
+                self.status[8] = 1
             elif source.text() == "Mg":
-                self.Elements[9] = 1
+                self.status[9] = 1
             elif source.text() == "Al":
-                self.Elements[10] = 1
+                self.status[10] = 1
             elif source.text() == "Si":
-                self.Elements[11] = 1
+                self.status[11] = 1
             elif source.text() == "P":
-                self.Elements[12] = 1
+                self.status[12] = 1
             elif source.text() == "S":
-                self.Elements[13] = 1
+                self.status[13] = 1
             elif source.text() == "Cl":
-                self.Elements[14] = 1
+                self.status[14] = 1
             elif source.text() == "Ar":
-                self.Elements[15] = 1
+                self.status[15] = 1
             elif source.text() == "K":
-                self.Elements[16] = 1
+                self.status[16] = 1
             elif source.text() == "Ca":
-                self.Elements[17] = 1
+                self.status[17] = 1
             elif source.text() == "Sc":
-                self.Elements[18] = 1
+                self.status[18] = 1
             elif source.text() == "Ti":
-                self.Elements[19] = 1
+                self.status[19] = 1
             elif source.text() == "V":
-                self.Elements[20] = 1
+                self.status[20] = 1
             elif source.text() == "Cr":
-                self.Elements[21] = 1
+                self.status[21] = 1
             elif source.text() == "Mn":
-                self.Elements[22] = 1
+                self.status[22] = 1
             elif source.text() == "Fe":
-                self.Elements[23] = 1
+                self.status[23] = 1
             elif source.text() == "Co":
-                self.Elements[24] = 1
+                self.status[24] = 1
             elif source.text() == "Ni":
-                self.Elements[25] = 1
+                self.status[25] = 1
             elif source.text() == "Cu":
-                self.Elements[26] = 1
+                self.status[26] = 1
             elif source.text() == "Zn":
-                self.Elements[27] = 1
+                self.status[27] = 1
             elif source.text() == "Ga":
-                self.Elements[28] = 1
+                self.status[28] = 1
             elif source.text() == "Ge":
-                self.Elements[29] = 1
+                self.status[29] = 1
             elif source.text() == "As":
-                self.Elements[30] = 1
+                self.status[30] = 1
             elif source.text() == "Se":
-                self.Elements[31] = 1
+                self.status[31] = 1
             elif source.text() == "Br":
-                self.Elements[32] = 1
+                self.status[32] = 1
             elif source.text() == "Kr":
-                self.Elements[33] = 1
+                self.status[33] = 1
             elif source.text() == "Rb":
-                self.Elements[34] = 1
+                self.status[34] = 1
             elif source.text() == "Sr":
-                self.Elements[35] = 1
+                self.status[35] = 1
             elif source.text() == "Y":
-                self.Elements[36] = 1
+                self.status[36] = 1
             elif source.text() == "Zr":
-                self.Elements[37] = 1
+                self.status[37] = 1
             elif source.text() == "Nb":
-                self.Elements[38] = 1
+                self.status[38] = 1
             elif source.text() == "Mo":
-                self.Elements[39] = 1
+                self.status[39] = 1
             elif source.text() == "Tc":
-                self.Elements[40] = 1
+                self.status[40] = 1
             elif source.text() == "Ru":
-                self.Elements[41] = 1
+                self.status[41] = 1
             elif source.text() == "Rh":
-                self.Elements[42] = 1
+                self.status[42] = 1
             elif source.text() == "Pd":
-                self.Elements[43] = 1
+                self.status[43] = 1
             elif source.text() == "Ag":
-                self.Elements[44] = 1
+                self.status[44] = 1
             elif source.text() == "Cd":
-                self.Elements[45] = 1
+                self.status[45] = 1
             elif source.text() == "In":
-                self.Elements[46] = 1
+                self.status[46] = 1
             elif source.text() == "Sn":
-                self.Elements[47] = 1
+                self.status[47] = 1
             elif source.text() == "Sb":
-                self.Elements[48] = 1
+                self.status[48] = 1
             elif source.text() == "Te":
-                self.Elements[49] = 1
+                self.status[49] = 1
             elif source.text() == "I":
-                self.Elements[50] = 1
+                self.status[50] = 1
             elif source.text() == "Xe":
-                self.Elements[51] = 1
+                self.status[51] = 1
             elif source.text() == "Cs":
-                self.Elements[52] = 1
+                self.status[52] = 1
             elif source.text() == "Ba":
-                self.Elements[53] = 1
+                self.status[53] = 1
             elif source.text() == "La":
-                self.Elements[54] = 1
+                self.status[54] = 1
             elif source.text() == "Ce":
-                self.Elements[55] = 1
+                self.status[55] = 1
             elif source.text() == "Pr":
-                self.Elements[56] = 1
+                self.status[56] = 1
             elif source.text() == "Nd":
-                self.Elements[57] = 1
+                self.status[57] = 1
             elif source.text() == "Pm":
-                self.Elements[58] = 1
+                self.status[58] = 1
             elif source.text() == "Sm":
-                self.Elements[59] = 1
+                self.status[59] = 1
             elif source.text() == "Eu":
-                self.Elements[60] = 1
+                self.status[60] = 1
             elif source.text() == "Gd":
-                self.Elements[61] = 1
+                self.status[61] = 1
             elif source.text() == "Tb":
-                self.Elements[62] = 1
+                self.status[62] = 1
             elif source.text() == "Dy":
-                self.Elements[63] = 1
+                self.status[63] = 1
             elif source.text() == "Ho":
-                self.Elements[64] = 1
+                self.status[64] = 1
             elif source.text() == "Er":
-                self.Elements[65] = 1
+                self.status[65] = 1
             elif source.text() == "Tm":
-                self.Elements[66] = 1
+                self.status[66] = 1
             elif source.text() == "Yb":
-                self.Elements[67] = 1
+                self.status[67] = 1
             elif source.text() == "Lu":
-                self.Elements[68] = 1
+                self.status[68] = 1
             elif source.text() == "Hf":
-                self.Elements[69] = 1
+                self.status[69] = 1
             elif source.text() == "Ta":
-                self.Elements[70] = 1
+                self.status[70] = 1
             elif source.text() == "W":
-                self.Elements[71] = 1
+                self.status[71] = 1
             elif source.text() == "Re":
-                self.Elements[72] = 1
+                self.status[72] = 1
             elif source.text() == "Os":
-                self.Elements[73] = 1
+                self.status[73] = 1
             elif source.text() == "Ir":
-                self.Elements[74] = 1
+                self.status[74] = 1
             elif source.text() == "Pt":
-                self.Elements[75] = 1
+                self.status[75] = 1
             elif source.text() == "Au":
-                self.Elements[76] = 1
+                self.status[76] = 1
             elif source.text() == "Hg":
-                self.Elements[77] = 1
+                self.status[77] = 1
             elif source.text() == "Tl":
-                self.Elements[78] = 1
+                self.status[78] = 1
             elif source.text() == "Pb":
-                self.Elements[79] = 1
+                self.status[79] = 1
             elif source.text() == "Bi":
-                self.Elements[80] = 1
+                self.status[80] = 1
             elif source.text() == "Po":
-                self.Elements[81] = 1
+                self.status[81] = 1
             elif source.text() == "At":
-                self.Elements[82] = 1
+                self.status[82] = 1
             elif source.text() == "Rn":
-                self.Elements[83] = 1
+                self.status[83] = 1
             elif source.text() == "Fr":
-                self.Elements[84] = 1
+                self.status[84] = 1
             elif source.text() == "Ra":
-                self.Elements[85] = 1
+                self.status[85] = 1
             elif source.text() == "Ac":
-                self.Elements[86] = 1
+                self.status[86] = 1
             elif source.text() == "Th":
-                self.Elements[87] = 1
+                self.status[87] = 1
             elif source.text() == "Pa":
-                self.Elements[88] = 1
+                self.status[88] = 1
             elif source.text() == "U":
-                self.Elements[89] = 1
+                self.status[89] = 1
             elif source.text() == "Np":
-                self.Elements[90] = 1
+                self.status[90] = 1
             elif source.text() == "Pu":
-                self.Elements[91] = 1
+                self.status[91] = 1
             elif source.text() == "Am":
-                self.Elements[92] = 1
+                self.status[92] = 1
         
-        # If user press the button up, set the value to 0   
+        # If user press the button up, set the status value to 0   
         else:
             if source.text() == "Li":
-                self.Elements[0] = 0
+                self.status[0] = 0
             elif source.text() == "Be":
-                self.Elements[1] = 0
+                self.status[1] = 0
             elif source.text() == "B":
-                self.Elements[2] = 0
+                self.status[2] = 0
             elif source.text() == "C":
-                self.Elements[3] = 0
+                self.status[3] = 0
             elif source.text() == "N":
-                self.Elements[4] = 0
+                self.status[4] = 0
             elif source.text() == "O":
-                self.Elements[5] = 0
+                self.status[5] = 0
             elif source.text() == "F":
-                self.Elements[6] = 0
+                self.status[6] = 0
             elif source.text() == "Ne":
-                self.Elements[7] = 0
+                self.status[7] = 0
             elif source.text() == "Na":
-                self.Elements[8] = 0
+                self.status[8] = 0
             elif source.text() == "Mg":
-                self.Elements[9] = 0
+                self.status[9] = 0
             elif source.text() == "Al":
-                self.Elements[10] = 0
+                self.status[10] = 0
             elif source.text() == "Si":
-                self.Elements[11] = 0
+                self.status[11] = 0
             elif source.text() == "P":
-                self.Elements[12] = 0
+                self.status[12] = 0
             elif source.text() == "S":
-                self.Elements[13] = 0
+                self.status[13] = 0
             elif source.text() == "Cl":
-                self.Elements[14] = 0
+                self.status[14] = 0
             elif source.text() == "Ar":
-                self.Elements[15] = 0
+                self.status[15] = 0
             elif source.text() == "K":
-                self.Elements[16] = 0
+                self.status[16] = 0
             elif source.text() == "Ca":
-                self.Elements[17] = 0
+                self.status[17] = 0
             elif source.text() == "Sc":
-                self.Elements[18] = 0
+                self.status[18] = 0
             elif source.text() == "Ti":
-                self.Elements[19] = 0
+                self.status[19] = 0
             elif source.text() == "V":
-                self.Elements[20] = 0
+                self.status[20] = 0
             elif source.text() == "Cr":
-                self.Elements[21] = 0
+                self.status[21] = 0
             elif source.text() == "Mn":
-                self.Elements[22] = 0
+                self.status[22] = 0
             elif source.text() == "Fe":
-                self.Elements[23] = 0
+                self.status[23] = 0
             elif source.text() == "Co":
-                self.Elements[24] = 0
+                self.status[24] = 0
             elif source.text() == "Ni":
-                self.Elements[25] = 0
+                self.status[25] = 0
             elif source.text() == "Cu":
-                self.Elements[26] = 0
+                self.status[26] = 0
             elif source.text() == "Zn":
-                self.Elements[27] = 0
+                self.status[27] = 0
             elif source.text() == "Ga":
-                self.Elements[28] = 0
+                self.status[28] = 0
             elif source.text() == "Ge":
-                self.Elements[29] = 0
+                self.status[29] = 0
             elif source.text() == "As":
-                self.Elements[30] = 0
+                self.status[30] = 0
             elif source.text() == "Se":
-                self.Elements[31] = 0
+                self.status[31] = 0
             elif source.text() == "Br":
-                self.Elements[32] = 0
+                self.status[32] = 0
             elif source.text() == "Kr":
-                self.Elements[33] = 0
+                self.status[33] = 0
             elif source.text() == "Rb":
-                self.Elements[34] = 0
+                self.status[34] = 0
             elif source.text() == "Sr":
-                self.Elements[35] = 0
+                self.status[35] = 0
             elif source.text() == "Y":
-                self.Elements[36] = 0
+                self.status[36] = 0
             elif source.text() == "Zr":
-                self.Elements[37] = 0
+                self.status[37] = 0
             elif source.text() == "Nb":
-                self.Elements[38] = 0
+                self.status[38] = 0
             elif source.text() == "Mo":
-                self.Elements[39] = 0
+                self.status[39] = 0
             elif source.text() == "Tc":
-                self.Elements[40] = 0
+                self.status[40] = 0
             elif source.text() == "Ru":
-                self.Elements[41] = 0
+                self.status[41] = 0
             elif source.text() == "Rh":
-                self.Elements[42] = 0
+                self.status[42] = 0
             elif source.text() == "Pd":
-                self.Elements[43] = 0
+                self.status[43] = 0
             elif source.text() == "Ag":
-                self.Elements[44] = 0
+                self.status[44] = 0
             elif source.text() == "Cd":
-                self.Elements[45] = 0
+                self.status[45] = 0
             elif source.text() == "In":
-                self.Elements[46] = 0
+                self.status[46] = 0
             elif source.text() == "Sn":
-                self.Elements[47] = 0
+                self.status[47] = 0
             elif source.text() == "Sb":
-                self.Elements[48] = 0
+                self.status[48] = 0
             elif source.text() == "Te":
-                self.Elements[49] = 0
+                self.status[49] = 0
             elif source.text() == "I":
-                self.Elements[50] = 0
+                self.status[50] = 0
             elif source.text() == "Xe":
-                self.Elements[51] = 0
+                self.status[51] = 0
             elif source.text() == "Cs":
-                self.Elements[52] = 0
+                self.status[52] = 0
             elif source.text() == "Ba":
-                self.Elements[53] = 0
+                self.status[53] = 0
             elif source.text() == "La":
-                self.Elements[54] = 0
+                self.status[54] = 0
             elif source.text() == "Ce":
-                self.Elements[55] = 0
+                self.status[55] = 0
             elif source.text() == "Pr":
-                self.Elements[56] = 0
+                self.status[56] = 0
             elif source.text() == "Nd":
-                self.Elements[57] = 0
+                self.status[57] = 0
             elif source.text() == "Pm":
-                self.Elements[58] = 0
+                self.status[58] = 0
             elif source.text() == "Sm":
-                self.Elements[59] = 0
+                self.status[59] = 0
             elif source.text() == "Eu":
-                self.Elements[60] = 0
+                self.status[60] = 0
             elif source.text() == "Gd":
-                self.Elements[61] = 0
+                self.status[61] = 0
             elif source.text() == "Tb":
-                self.Elements[62] = 0
+                self.status[62] = 0
             elif source.text() == "Dy":
-                self.Elements[63] = 0
+                self.status[63] = 0
             elif source.text() == "Ho":
-                self.Elements[64] = 0
+                self.status[64] = 0
             elif source.text() == "Er":
-                self.Elements[65] = 0
+                self.status[65] = 0
             elif source.text() == "Tm":
-                self.Elements[66] = 0
+                self.status[66] = 0
             elif source.text() == "Yb":
-                self.Elements[67] = 0
+                self.status[67] = 0
             elif source.text() == "Lu":
-                self.Elements[68] = 0
+                self.status[68] = 0
             elif source.text() == "Hf":
-                self.Elements[69] = 0
+                self.status[69] = 0
             elif source.text() == "Ta":
-                self.Elements[70] = 0
+                self.status[70] = 0
             elif source.text() == "W":
-                self.Elements[71] = 0
+                self.status[71] = 0
             elif source.text() == "Re":
-                self.Elements[72] = 0
+                self.status[72] = 0
             elif source.text() == "Os":
-                self.Elements[73] = 0
+                self.status[73] = 0
             elif source.text() == "Ir":
-                self.Elements[74] = 0
+                self.status[74] = 0
             elif source.text() == "Pt":
-                self.Elements[75] = 0
+                self.status[75] = 0
             elif source.text() == "Au":
-                self.Elements[76] = 0
+                self.status[76] = 0
             elif source.text() == "Hg":
-                self.Elements[77] = 0
+                self.status[77] = 0
             elif source.text() == "Tl":
-                self.Elements[78] = 0
+                self.status[78] = 0
             elif source.text() == "Pb":
-                self.Elements[79] = 0
+                self.status[79] = 0
             elif source.text() == "Bi":
-                self.Elements[80] = 0
+                self.status[80] = 0
             elif source.text() == "Po":
-                self.Elements[81] = 0
+                self.status[81] = 0
             elif source.text() == "At":
-                self.Elements[82] = 0
+                self.status[82] = 0
             elif source.text() == "Rn":
-                self.Elements[83] = 0
+                self.status[83] = 0
             elif source.text() == "Fr":
-                self.Elements[84] = 0
+                self.status[84] = 0
             elif source.text() == "Ra":
-                self.Elements[85] = 0
+                self.status[85] = 0
             elif source.text() == "Ac":
-                self.Elements[86] = 0
+                self.status[86] = 0
             elif source.text() == "Th":
-                self.Elements[87] = 0
+                self.status[87] = 0
             elif source.text() == "Pa":
-                self.Elements[88] = 0
+                self.status[88] = 0
             elif source.text() == "U":
-                self.Elements[89] = 0
+                self.status[89] = 0
             elif source.text() == "Np":
-                self.Elements[90] = 0
+                self.status[90] = 0
             elif source.text() == "Pu":
-                self.Elements[91] = 0
+                self.status[91] = 0
             elif source.text() == "Am":
-                self.Elements[92] = 0
-            
-            
-    # Returen use's selection result
-    @staticmethod
-    def getSelectedElements(SelectedElements):
-        dialog = PeriodicTable(SelectedElements)
-        result = dialog.exec_()
-        return (dialog.Elements, result == QDialog.Accepted)
+                self.status[92] = 0      
+    '''      
+    Return user's modification
     '''
-    # If user click OK
-    # Accept the selection
-    # Close the Dialog
+    @staticmethod
+    def updateElementsStatus(previousElementsStatus):
+        dialog = PeriodicTable(previousElementsStatus)
+        result = dialog.exec_()
+        return (dialog.status, result == QDialog.Accepted)
+    '''
+    Click OK, Accept the modification & Close the dialog
     '''
     def on_OK_clicked(self, checked=None):
         self.accept()
         self.close()
     '''
-    # If user click Cancel
-    # Close the Dialog
+    Click Cancel, Discard modification & Close the dialog
     '''
     def on_Cancel_clicked(self, checked=None):
         self.close()

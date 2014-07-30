@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Tue Jul 29 11:10:52 2014
+# Created: Wed Jul 30 13:55:01 2014
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -28,9 +28,10 @@ class Ui_Dialog(object):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.setWindowModality(QtCore.Qt.NonModal)
         Dialog.resize(1339, 612)
-        # Dialog.setLayoutDirection(QtCore.Qt.LeftToRight)
+        Dialog.setLayoutDirection(QtCore.Qt.LeftToRight)
+        Dialog.setModal(False)
         self.ModifyElement = QtGui.QPushButton(Dialog)
-        self.ModifyElement.setGeometry(QtCore.QRect(230, 310, 101, 23))
+        self.ModifyElement.setGeometry(QtCore.QRect(230, 320, 101, 23))
         self.ModifyElement.setObjectName(_fromUtf8("ModifyElement"))
         self.TopLeftX = QtGui.QLineEdit(Dialog)
         self.TopLeftX.setGeometry(QtCore.QRect(70, 300, 41, 20))
@@ -199,7 +200,7 @@ class Ui_Dialog(object):
         self.graphicsView_XR.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.graphicsView_XR.setObjectName(_fromUtf8("graphicsView_XR"))
         self.tableWidget = QtGui.QTableWidget(Dialog)
-        self.tableWidget.setGeometry(QtCore.QRect(230, 340, 467, 231))
+        self.tableWidget.setGeometry(QtCore.QRect(230, 360, 467, 231))
         self.tableWidget.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
         self.tableWidget.setRowCount(1)
         self.tableWidget.setColumnCount(4)
@@ -216,17 +217,29 @@ class Ui_Dialog(object):
         self.Channel.setChecked(True)
         self.Channel.setObjectName(_fromUtf8("Channel"))
         self.maxPixelValue = QtGui.QLineEdit(Dialog)
-        self.maxPixelValue.setGeometry(QtCore.QRect(980, 80, 41, 20))
+        self.maxPixelValue.setGeometry(QtCore.QRect(1010, 80, 51, 20))
         self.maxPixelValue.setObjectName(_fromUtf8("maxPixelValue"))
         self.label_16 = QtGui.QLabel(Dialog)
-        self.label_16.setGeometry(QtCore.QRect(990, 60, 21, 21))
+        self.label_16.setGeometry(QtCore.QRect(990, 60, 101, 21))
         self.label_16.setObjectName(_fromUtf8("label_16"))
         self.minPixelValue = QtGui.QLineEdit(Dialog)
-        self.minPixelValue.setGeometry(QtCore.QRect(980, 220, 41, 20))
+        self.minPixelValue.setGeometry(QtCore.QRect(1010, 220, 51, 20))
         self.minPixelValue.setObjectName(_fromUtf8("minPixelValue"))
         self.label_25 = QtGui.QLabel(Dialog)
-        self.label_25.setGeometry(QtCore.QRect(990, 200, 21, 21))
+        self.label_25.setGeometry(QtCore.QRect(990, 200, 91, 21))
         self.label_25.setObjectName(_fromUtf8("label_25"))
+        self.MinPhotonEnergy = QtGui.QLineEdit(Dialog)
+        self.MinPhotonEnergy.setGeometry(QtCore.QRect(410, 330, 71, 20))
+        self.MinPhotonEnergy.setObjectName(_fromUtf8("MinPhotonEnergy"))
+        self.label_27 = QtGui.QLabel(Dialog)
+        self.label_27.setGeometry(QtCore.QRect(380, 310, 141, 21))
+        self.label_27.setObjectName(_fromUtf8("label_27"))
+        self.label_28 = QtGui.QLabel(Dialog)
+        self.label_28.setGeometry(QtCore.QRect(550, 310, 141, 21))
+        self.label_28.setObjectName(_fromUtf8("label_28"))
+        self.MaxPhotonEnergy = QtGui.QLineEdit(Dialog)
+        self.MaxPhotonEnergy.setGeometry(QtCore.QRect(580, 330, 71, 20))
+        self.MaxPhotonEnergy.setObjectName(_fromUtf8("MaxPhotonEnergy"))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -267,6 +280,8 @@ class Ui_Dialog(object):
         self.MoveToStartPoint.setText(_translate("Dialog", "Move to Start Point", None))
         self.Energy.setText(_translate("Dialog", "Energy", None))
         self.Channel.setText(_translate("Dialog", "Channel", None))
-        self.label_16.setText(_translate("Dialog", "Max:", None))
-        self.label_25.setText(_translate("Dialog", "Min:", None))
+        self.label_16.setText(_translate("Dialog", "Max Pixel Value:", None))
+        self.label_25.setText(_translate("Dialog", "Min Pixel Value:", None))
+        self.label_27.setText(_translate("Dialog", "Min Photon Energy(eV):", None))
+        self.label_28.setText(_translate("Dialog", "Max Photon Energy(eV):", None))
 
