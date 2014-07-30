@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'MainWindow.ui'
 #
-# Created: Mon Jul 28 14:36:13 2014
+# Created: Tue Jul 29 11:10:52 2014
 #      by: PyQt4 UI code generator 4.11.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -28,8 +28,7 @@ class Ui_Dialog(object):
         Dialog.setObjectName(_fromUtf8("Dialog"))
         Dialog.setWindowModality(QtCore.Qt.NonModal)
         Dialog.resize(1339, 612)
-        Dialog.setLayoutDirection(QtCore.Qt.LeftToRight)
-        Dialog.setModal(False)
+        # Dialog.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.ModifyElement = QtGui.QPushButton(Dialog)
         self.ModifyElement.setGeometry(QtCore.QRect(230, 310, 101, 23))
         self.ModifyElement.setObjectName(_fromUtf8("ModifyElement"))

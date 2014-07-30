@@ -12,82 +12,86 @@ class PeriodicTable(QtGui.QDialog):
         QtGui.QWidget.__init__(self,parent)
         self.ui = Ui_PeriodicTableDialog()
         self.ui.setupUi(self)
-        # Intialize variables
-        self.SelectTi = 0
-        self.SelectV = 0
-        self.SelectCr = 0
-        self.SelectMn = 0
-        self.SelectFe = 0
-        self.SelectCo = 0
-        self.SelectNi = 0
-        self.SelectCu = 0
-        self.SelectZn = 0
-        self.SelectGa = 0
-        self.SelectGe = 0
-        self.SelectAs = 0
-        self.SelectSe = 0
-        self.SelectBr = 0
-        self.SelectKr = 0
-        self.SelectRb = 0
-        self.SelectSr = 0
-        self.SelectY = 0
-        self.SelectZr = 0
-        self.SelectNb = 0
-        self.SelectMo = 0
-        self.SelectTc = 0
-        self.SelectRu = 0
-        self.SelectRh = 0
-        self.SelectPd = 0
-        self.SelectAg = 0
-        self.SelectCd = 0
-        self.SelectIn = 0
-        self.SelectSn = 0
-        self.SelectSb = 0
-        self.SelectTe = 0
-        self.SelectI = 0
-        self.SelectXe = 0
-        self.SelectCs = 0
-        self.SelectBa = 0
-        self.SelectHf = 0
-        self.SelectTa = 0
-        self.SelectW = 0
-        self.SelectRe = 0
-        self.SelectOs = 0
-        self.SelectIr = 0
-        self.SelectPt = 0
-        self.SelectAu = 0
-        self.SelectHg = 0
-        self.SelectTl = 0
-        self.SelectPb = 0
-        self.SelectBi = 0
-        self.SelectPo = 0
-        self.SelectAt = 0
-        self.SelectRn = 0
-        self.SelectFr = 0
-        self.SelectRa = 0
-        self.SelectLa = 0
-        self.SelectCe = 0
-        self.SelectPr = 0
-        self.SelectNd = 0
-        self.SelectPm = 0
-        self.SelectSm = 0
-        self.SelectEu = 0
-        self.SelectGd = 0
-        self.SelectTb = 0
-        self.SelectDy = 0
-        self.SelectHo = 0
-        self.SelectEr = 0
-        self.SelectTm = 0
-        self.SelectYb = 0
-        self.SelectLu = 0
-        self.SelectAc = 0
-        self.SelectTh = 0
-        self.SelectPa = 0
-        self.SelectU = 0
-        self.SelectNp = 0
-        self.SelectPu = 0
-        self.SelectAm = 0
+
+        self.Elements = SelectedElements
+        
         # Set properties of buttons for each element
+        self.ui.Li.setCheckable(True)
+        self.ui.Li.clicked[bool].connect(self.modifyElement)
+        self.ui.Li.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.Be.setCheckable(True)
+        self.ui.Be.clicked[bool].connect(self.modifyElement)
+        self.ui.Be.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.B.setCheckable(True)
+        self.ui.B.clicked[bool].connect(self.modifyElement)
+        self.ui.B.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.C.setCheckable(True)
+        self.ui.C.clicked[bool].connect(self.modifyElement)
+        self.ui.C.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.N.setCheckable(True)
+        self.ui.N.clicked[bool].connect(self.modifyElement)
+        self.ui.N.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.O.setCheckable(True)
+        self.ui.O.clicked[bool].connect(self.modifyElement)
+        self.ui.O.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.F.setCheckable(True)
+        self.ui.F.clicked[bool].connect(self.modifyElement)
+        self.ui.F.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.Ne.setCheckable(True)
+        self.ui.Ne.clicked[bool].connect(self.modifyElement)
+        self.ui.Ne.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.Na.setCheckable(True)
+        self.ui.Na.clicked[bool].connect(self.modifyElement)
+        self.ui.Na.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.Mg.setCheckable(True)
+        self.ui.Mg.clicked[bool].connect(self.modifyElement)
+        self.ui.Mg.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.Al.setCheckable(True)
+        self.ui.Al.clicked[bool].connect(self.modifyElement)
+        self.ui.Al.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.Si.setCheckable(True)
+        self.ui.Si.clicked[bool].connect(self.modifyElement)
+        self.ui.Si.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.P.setCheckable(True)
+        self.ui.P.clicked[bool].connect(self.modifyElement)
+        self.ui.P.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.S.setCheckable(True)
+        self.ui.S.clicked[bool].connect(self.modifyElement)
+        self.ui.S.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.Cl.setCheckable(True)
+        self.ui.Cl.clicked[bool].connect(self.modifyElement)
+        self.ui.Cl.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.Ar.setCheckable(True)
+        self.ui.Ar.clicked[bool].connect(self.modifyElement)
+        self.ui.Ar.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.K.setCheckable(True)
+        self.ui.K.clicked[bool].connect(self.modifyElement)
+        self.ui.K.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.Ca.setCheckable(True)
+        self.ui.Ca.clicked[bool].connect(self.modifyElement)
+        self.ui.Ca.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
+        self.ui.Sc.setCheckable(True)
+        self.ui.Sc.clicked[bool].connect(self.modifyElement)
+        self.ui.Sc.setStyleSheet("QPushButton { background-color: white }"
+                      "QPushButton:pressed { background-color: red }" )
         self.ui.Ti.setCheckable(True)
         self.ui.Ti.clicked[bool].connect(self.modifyElement)
         self.ui.Ti.setStyleSheet("QPushButton { background-color: white }"
@@ -385,487 +389,399 @@ class PeriodicTable(QtGui.QDialog):
         self.ui.Am.setStyleSheet("QPushButton { background-color: white }"
                       "QPushButton:pressed { background-color: red }" )
         # Load user's previous selection
-        if SelectedElements[0] == 1:  
-            self.ui.Ti.click()
-        if SelectedElements[1] == 1:
-            self.ui.V.click()
-        if SelectedElements[2] == 1:
-            self.ui.Cr.click()
-        if SelectedElements[3] == 1:
-            self.ui.Mn.click()
-        if SelectedElements[4] == 1:
-            self.ui.Fe.click()
-        if SelectedElements[5] == 1:  
-            self.ui.Co.click()
-        if SelectedElements[6] == 1:
-            self.ui.Ni.click()
-        if SelectedElements[7] == 1:
-            self.ui.Cu.click()
-        if SelectedElements[8] == 1:
-            self.ui.Zn.click()
-        if SelectedElements[9] == 1:
-            self.ui.Ga.click()
-        if SelectedElements[10] == 1:  
-            self.ui.Ge.click()
-        if SelectedElements[11] == 1:
-            self.ui.As.click()
-        if SelectedElements[12] == 1:
-            self.ui.Se.click()
-        if SelectedElements[13] == 1:
-            self.ui.Br.click()
-        if SelectedElements[14] == 1:
-            self.ui.Kr.click()
-        if SelectedElements[15] == 1:  
-            self.ui.Rb.click()
-        if SelectedElements[16] == 1:
-            self.ui.Sr.click()
-        if SelectedElements[17] == 1:
-            self.ui.Y.click()
-        if SelectedElements[18] == 1:
-            self.ui.Zr.click()
-        if SelectedElements[19] == 1:
-            self.ui.Nb.click()
-        if SelectedElements[20] == 1:
-            self.ui.Mo.click()
-        if SelectedElements[21] == 1:
-            self.ui.Tc.click()
-        if SelectedElements[22] == 1:  
-            self.ui.Ru.click()
-        if SelectedElements[23] == 1:
-            self.ui.Rh.click()
-        if SelectedElements[24] == 1:
-            self.ui.Pd.click()
-        if SelectedElements[25] == 1:
-            self.ui.Ag.click()
-        if SelectedElements[26] == 1:
-            self.ui.Cd.click()
-        if SelectedElements[27] == 1:  
-            self.ui.In.click()
-        if SelectedElements[28] == 1:
-            self.ui.Sn.click()
-        if SelectedElements[29] == 1:
-            self.ui.Sb.click()
-        if SelectedElements[30] == 1:
-            self.ui.Te.click()
-        if SelectedElements[31] == 1:
-            self.ui.I.click()
-        if SelectedElements[32] == 1:  
-            self.ui.Xe.click()
-        if SelectedElements[33] == 1:
-            self.ui.Cs.click()
-        if SelectedElements[34] == 1:
-            self.ui.Ba.click()
-        if SelectedElements[35] == 1:
-            self.ui.Hf.click()
-        if SelectedElements[36] == 1:
-            self.ui.Ta.click()
-        if SelectedElements[37] == 1:  
-            self.ui.W.click()
-        if SelectedElements[38] == 1:
-            self.ui.Re.click()
-        if SelectedElements[39] == 1:
-            self.ui.Os.click()
-        if SelectedElements[40] == 1:
-            self.ui.Ir.click()
-        if SelectedElements[41] == 1:
-            self.ui.Pt.click()
-        if SelectedElements[42] == 1:
-            self.ui.Au.click()
-        if SelectedElements[43] == 1:
-            self.ui.Hg.click()
-        if SelectedElements[44] == 1:  
-            self.ui.Tl.click()
-        if SelectedElements[45] == 1:
-            self.ui.Pb.click()
-        if SelectedElements[46] == 1:
-            self.ui.Bi.click()
-        if SelectedElements[47] == 1:
-            self.ui.Po.click()
-        if SelectedElements[48] == 1:
-            self.ui.At.click()
-        if SelectedElements[49] == 1:  
-            self.ui.Rn.click()
-        if SelectedElements[50] == 1:
-            self.ui.Fr.click()
-        if SelectedElements[51] == 1:
-            self.ui.Ra.click()
-        if SelectedElements[52] == 1:
-            self.ui.La.click()
-        if SelectedElements[53] == 1:
-            self.ui.Ce.click()
-        if SelectedElements[54] == 1:  
-            self.ui.Pr.click()
-        if SelectedElements[55] == 1:
-            self.ui.Nd.click()
-        if SelectedElements[56] == 1:
-            self.ui.Pm.click()
-        if SelectedElements[57] == 1:
-            self.ui.Sm.click()
-        if SelectedElements[58] == 1:
-            self.ui.Eu.click()
-        if SelectedElements[59] == 1:  
-            self.ui.Gd.click()
-        if SelectedElements[60] == 1:
-            self.ui.Tb.click()
-        if SelectedElements[61] == 1:
-            self.ui.Dy.click()
-        if SelectedElements[62] == 1:
-            self.ui.Ho.click()
-        if SelectedElements[63] == 1:
-            self.ui.Er.click()
-        if SelectedElements[64] == 1:
-            self.ui.Tm.click()
-        if SelectedElements[65] == 1:
-            self.ui.Yb.click()
-        if SelectedElements[66] == 1:  
-            self.ui.Lu.click()
-        if SelectedElements[67] == 1:
-            self.ui.Ac.click()
-        if SelectedElements[68] == 1:
-            self.ui.Th.click()
-        if SelectedElements[69] == 1:
-            self.ui.Pa.click()
-        if SelectedElements[70] == 1:
-            self.ui.U.click()
-        if SelectedElements[71] == 1:  
-            self.ui.Np.click()
-        if SelectedElements[72] == 1:
-            self.ui.Pu.click()
-        if SelectedElements[73] == 1:
-            self.ui.Am.click()
+        if self.Elements[0] == 1:  
+            self.ui.Li.click()
+        if self.Elements[1] == 1:  
+            self.ui.Be.click()
+        
     # Handle user's selection
     def modifyElement(self, pressed):
         source = self.sender()
+        # If user press the button down, set the value to 1
         if pressed:
-            if source.text() == "Ti":
-                self.SelectTi = 1
+            if source.text() == "Li":
+                self.Elements[0] = 1
+            elif source.text() == "Be":
+                self.Elements[1] = 1
+            elif source.text() == "B":
+                self.Elements[2] = 1
+            elif source.text() == "C":
+                self.Elements[3] = 1
+            elif source.text() == "N":
+                self.Elements[4] = 1
+            elif source.text() == "O":
+                self.Elements[5] = 1
+            elif source.text() == "F":
+                self.Elements[6] = 1
+            elif source.text() == "Ne":
+                self.Elements[7] = 1
+            elif source.text() == "Na":
+                self.Elements[8] = 1
+            elif source.text() == "Mg":
+                self.Elements[9] = 1
+            elif source.text() == "Al":
+                self.Elements[10] = 1
+            elif source.text() == "Si":
+                self.Elements[11] = 1
+            elif source.text() == "P":
+                self.Elements[12] = 1
+            elif source.text() == "S":
+                self.Elements[13] = 1
+            elif source.text() == "Cl":
+                self.Elements[14] = 1
+            elif source.text() == "Ar":
+                self.Elements[15] = 1
+            elif source.text() == "K":
+                self.Elements[16] = 1
+            elif source.text() == "Ca":
+                self.Elements[17] = 1
+            elif source.text() == "Sc":
+                self.Elements[18] = 1
+            elif source.text() == "Ti":
+                self.Elements[19] = 1
             elif source.text() == "V":
-                self.SelectV = 1
+                self.Elements[20] = 1
             elif source.text() == "Cr":
-                self.SelectCr = 1
+                self.Elements[21] = 1
             elif source.text() == "Mn":
-                self.SelectMn = 1
+                self.Elements[22] = 1
             elif source.text() == "Fe":
-                self.SelectFe = 1
+                self.Elements[23] = 1
             elif source.text() == "Co":
-                self.SelectCo = 1
+                self.Elements[24] = 1
             elif source.text() == "Ni":
-                self.SelectNi = 1
+                self.Elements[25] = 1
             elif source.text() == "Cu":
-                self.SelectCu = 1
+                self.Elements[26] = 1
             elif source.text() == "Zn":
-                self.SelectZn = 1
+                self.Elements[27] = 1
             elif source.text() == "Ga":
-                self.SelectGa = 1
+                self.Elements[28] = 1
             elif source.text() == "Ge":
-                self.SelectGe = 1
+                self.Elements[29] = 1
             elif source.text() == "As":
-                self.SelectAs = 1
+                self.Elements[30] = 1
             elif source.text() == "Se":
-                self.SelectSe = 1
+                self.Elements[31] = 1
             elif source.text() == "Br":
-                self.SelectBr = 1
+                self.Elements[32] = 1
             elif source.text() == "Kr":
-                self.SelectKr = 1
+                self.Elements[33] = 1
             elif source.text() == "Rb":
-                self.SelectRb = 1
+                self.Elements[34] = 1
             elif source.text() == "Sr":
-                self.SelectSr = 1
+                self.Elements[35] = 1
             elif source.text() == "Y":
-                self.SelectY = 1
+                self.Elements[36] = 1
             elif source.text() == "Zr":
-                self.SelectZr = 1
+                self.Elements[37] = 1
             elif source.text() == "Nb":
-                self.SelectNb = 1
+                self.Elements[38] = 1
             elif source.text() == "Mo":
-                self.SelectMo = 1
+                self.Elements[39] = 1
             elif source.text() == "Tc":
-                self.SelectTc = 1
+                self.Elements[40] = 1
             elif source.text() == "Ru":
-                self.SelectRu = 1
+                self.Elements[41] = 1
             elif source.text() == "Rh":
-                self.SelectRh = 1
+                self.Elements[42] = 1
             elif source.text() == "Pd":
-                self.SelectPd = 1
+                self.Elements[43] = 1
             elif source.text() == "Ag":
-                self.SelectAg = 1
+                self.Elements[44] = 1
             elif source.text() == "Cd":
-                self.SelectCd = 1
+                self.Elements[45] = 1
             elif source.text() == "In":
-                self.SelectIn = 1
+                self.Elements[46] = 1
             elif source.text() == "Sn":
-                self.SelectSn = 1
+                self.Elements[47] = 1
             elif source.text() == "Sb":
-                self.SelectSb = 1
+                self.Elements[48] = 1
             elif source.text() == "Te":
-                self.SelectTe = 1
+                self.Elements[49] = 1
             elif source.text() == "I":
-                self.SelectI = 1
+                self.Elements[50] = 1
             elif source.text() == "Xe":
-                self.SelectXe = 1
+                self.Elements[51] = 1
             elif source.text() == "Cs":
-                self.SelectCs = 1
+                self.Elements[52] = 1
             elif source.text() == "Ba":
-                self.SelectBa = 1
-            elif source.text() == "Hf":
-                self.SelectHf = 1
-            elif source.text() == "Ta":
-                self.SelectTa = 1
-            elif source.text() == "W":
-                self.SelectW = 1
-            elif source.text() == "Re":
-                self.SelectRe = 1
-            elif source.text() == "Os":
-                self.SelectOs = 1
-            elif source.text() == "Ir":
-                self.SelectIr = 1
-            elif source.text() == "Pt":
-                self.SelectPt = 1
-            elif source.text() == "Au":
-                self.SelectAu = 1
-            elif source.text() == "Hg":
-                self.SelectHg = 1
-            elif source.text() == "Tl":
-                self.SelectTl = 1
-            elif source.text() == "Pb":
-                self.SelectPb = 1
-            elif source.text() == "Bi":
-                self.SelectBi = 1
-            elif source.text() == "Po":
-                self.SelectPo = 1
-            elif source.text() == "At":
-                self.SelectAt = 1
-            elif source.text() == "Rn":
-                self.SelectRn = 1
-            elif source.text() == "Fr":
-                self.SelectFr = 1
-            elif source.text() == "Ra":
-                self.SelectRa = 1
+                self.Elements[53] = 1
             elif source.text() == "La":
-                self.SelectLa = 1
+                self.Elements[54] = 1
             elif source.text() == "Ce":
-                self.SelectCe = 1
+                self.Elements[55] = 1
             elif source.text() == "Pr":
-                self.SelectPr = 1
+                self.Elements[56] = 1
             elif source.text() == "Nd":
-                self.SelectNd = 1
+                self.Elements[57] = 1
             elif source.text() == "Pm":
-                self.SelectPm = 1
+                self.Elements[58] = 1
             elif source.text() == "Sm":
-                self.SelectSm = 1
+                self.Elements[59] = 1
             elif source.text() == "Eu":
-                self.SelectEu = 1
+                self.Elements[60] = 1
             elif source.text() == "Gd":
-                self.SelectGd = 1
+                self.Elements[61] = 1
             elif source.text() == "Tb":
-                self.SelectTb = 1
+                self.Elements[62] = 1
             elif source.text() == "Dy":
-                self.SelectDy = 1
+                self.Elements[63] = 1
             elif source.text() == "Ho":
-                self.SelectHo = 1
+                self.Elements[64] = 1
             elif source.text() == "Er":
-                self.SelectEr = 1
+                self.Elements[65] = 1
             elif source.text() == "Tm":
-                self.SelectTm = 1
+                self.Elements[66] = 1
             elif source.text() == "Yb":
-                self.SelectYb = 1
+                self.Elements[67] = 1
             elif source.text() == "Lu":
-                self.SelectLu = 1
+                self.Elements[68] = 1
+            elif source.text() == "Hf":
+                self.Elements[69] = 1
+            elif source.text() == "Ta":
+                self.Elements[70] = 1
+            elif source.text() == "W":
+                self.Elements[71] = 1
+            elif source.text() == "Re":
+                self.Elements[72] = 1
+            elif source.text() == "Os":
+                self.Elements[73] = 1
+            elif source.text() == "Ir":
+                self.Elements[74] = 1
+            elif source.text() == "Pt":
+                self.Elements[75] = 1
+            elif source.text() == "Au":
+                self.Elements[76] = 1
+            elif source.text() == "Hg":
+                self.Elements[77] = 1
+            elif source.text() == "Tl":
+                self.Elements[78] = 1
+            elif source.text() == "Pb":
+                self.Elements[79] = 1
+            elif source.text() == "Bi":
+                self.Elements[80] = 1
+            elif source.text() == "Po":
+                self.Elements[81] = 1
+            elif source.text() == "At":
+                self.Elements[82] = 1
+            elif source.text() == "Rn":
+                self.Elements[83] = 1
+            elif source.text() == "Fr":
+                self.Elements[84] = 1
+            elif source.text() == "Ra":
+                self.Elements[85] = 1
             elif source.text() == "Ac":
-                self.SelectAc = 1
+                self.Elements[86] = 1
             elif source.text() == "Th":
-                self.SelectTh = 1
+                self.Elements[87] = 1
             elif source.text() == "Pa":
-                self.SelectPa = 1
+                self.Elements[88] = 1
             elif source.text() == "U":
-                self.SelectU = 1
+                self.Elements[89] = 1
             elif source.text() == "Np":
-                self.SelectNp = 1
+                self.Elements[90] = 1
             elif source.text() == "Pu":
-                self.SelectPu = 1
+                self.Elements[91] = 1
             elif source.text() == "Am":
-                self.SelectAm = 1
+                self.Elements[92] = 1
+        
+        # If user press the button up, set the value to 0   
         else:
-            if source.text() == "Ti":
-                self.SelectTi = 0
+            if source.text() == "Li":
+                self.Elements[0] = 0
+            elif source.text() == "Be":
+                self.Elements[1] = 0
+            elif source.text() == "B":
+                self.Elements[2] = 0
+            elif source.text() == "C":
+                self.Elements[3] = 0
+            elif source.text() == "N":
+                self.Elements[4] = 0
+            elif source.text() == "O":
+                self.Elements[5] = 0
+            elif source.text() == "F":
+                self.Elements[6] = 0
+            elif source.text() == "Ne":
+                self.Elements[7] = 0
+            elif source.text() == "Na":
+                self.Elements[8] = 0
+            elif source.text() == "Mg":
+                self.Elements[9] = 0
+            elif source.text() == "Al":
+                self.Elements[10] = 0
+            elif source.text() == "Si":
+                self.Elements[11] = 0
+            elif source.text() == "P":
+                self.Elements[12] = 0
+            elif source.text() == "S":
+                self.Elements[13] = 0
+            elif source.text() == "Cl":
+                self.Elements[14] = 0
+            elif source.text() == "Ar":
+                self.Elements[15] = 0
+            elif source.text() == "K":
+                self.Elements[16] = 0
+            elif source.text() == "Ca":
+                self.Elements[17] = 0
+            elif source.text() == "Sc":
+                self.Elements[18] = 0
+            elif source.text() == "Ti":
+                self.Elements[19] = 0
             elif source.text() == "V":
-                self.SelectV = 0
+                self.Elements[20] = 0
             elif source.text() == "Cr":
-                self.SelectCr = 0
+                self.Elements[21] = 0
             elif source.text() == "Mn":
-                self.SelectMn = 0
+                self.Elements[22] = 0
             elif source.text() == "Fe":
-                self.SelectFe = 0
+                self.Elements[23] = 0
             elif source.text() == "Co":
-                self.SelectCo = 0
+                self.Elements[24] = 0
             elif source.text() == "Ni":
-                self.SelectNi = 0
+                self.Elements[25] = 0
             elif source.text() == "Cu":
-                self.SelectCu = 0
+                self.Elements[26] = 0
             elif source.text() == "Zn":
-                self.SelectZn = 0
+                self.Elements[27] = 0
             elif source.text() == "Ga":
-                self.SelectGa = 0
+                self.Elements[28] = 0
             elif source.text() == "Ge":
-                self.SelectGe = 0
+                self.Elements[29] = 0
             elif source.text() == "As":
-                self.SelectAs = 0
+                self.Elements[30] = 0
             elif source.text() == "Se":
-                self.SelectSe = 0
+                self.Elements[31] = 0
             elif source.text() == "Br":
-                self.SelectBr = 0
+                self.Elements[32] = 0
             elif source.text() == "Kr":
-                self.SelectKr = 0
+                self.Elements[33] = 0
             elif source.text() == "Rb":
-                self.SelectRb = 0
+                self.Elements[34] = 0
             elif source.text() == "Sr":
-                self.SelectSr = 0
+                self.Elements[35] = 0
             elif source.text() == "Y":
-                self.SelectY = 0
+                self.Elements[36] = 0
             elif source.text() == "Zr":
-                self.SelectZr = 0
+                self.Elements[37] = 0
             elif source.text() == "Nb":
-                self.SelectNb = 0
+                self.Elements[38] = 0
             elif source.text() == "Mo":
-                self.SelectMo = 0
+                self.Elements[39] = 0
             elif source.text() == "Tc":
-                self.SelectTc = 0
+                self.Elements[40] = 0
             elif source.text() == "Ru":
-                self.SelectRu = 0
+                self.Elements[41] = 0
             elif source.text() == "Rh":
-                self.SelectRh = 0
+                self.Elements[42] = 0
             elif source.text() == "Pd":
-                self.SelectPd = 0
+                self.Elements[43] = 0
             elif source.text() == "Ag":
-                self.SelectAg = 0
+                self.Elements[44] = 0
             elif source.text() == "Cd":
-                self.SelectCd = 0
+                self.Elements[45] = 0
             elif source.text() == "In":
-                self.SelectIn = 0
+                self.Elements[46] = 0
             elif source.text() == "Sn":
-                self.SelectSn = 0
+                self.Elements[47] = 0
             elif source.text() == "Sb":
-                self.SelectSb = 0
+                self.Elements[48] = 0
             elif source.text() == "Te":
-                self.SelectTe = 0
+                self.Elements[49] = 0
             elif source.text() == "I":
-                self.SelectI = 0
+                self.Elements[50] = 0
             elif source.text() == "Xe":
-                self.SelectXe = 0
+                self.Elements[51] = 0
             elif source.text() == "Cs":
-                self.SelectCs = 0
+                self.Elements[52] = 0
             elif source.text() == "Ba":
-                self.SelectBa = 0
-            elif source.text() == "Hf":
-                self.SelectHf = 0
-            elif source.text() == "Ta":
-                self.SelectTa = 0
-            elif source.text() == "W":
-                self.SelectW = 0
-            elif source.text() == "Re":
-                self.SelectRe = 0
-            elif source.text() == "Os":
-                self.SelectOs = 0
-            elif source.text() == "Ir":
-                self.SelectIr = 0
-            elif source.text() == "Pt":
-                self.SelectPt = 0
-            elif source.text() == "Au":
-                self.SelectAu = 0
-            elif source.text() == "Hg":
-                self.SelectHg = 0
-            elif source.text() == "Tl":
-                self.SelectTl = 0
-            elif source.text() == "Pb":
-                self.SelectPb = 0
-            elif source.text() == "Bi":
-                self.SelectBi = 0
-            elif source.text() == "Po":
-                self.SelectPo = 0
-            elif source.text() == "At":
-                self.SelectAt = 0
-            elif source.text() == "Rn":
-                self.SelectRn = 0
-            elif source.text() == "Fr":
-                self.SelectFr = 0
-            elif source.text() == "Ra":
-                self.SelectRa = 0
+                self.Elements[53] = 0
             elif source.text() == "La":
-                self.SelectLa = 0
+                self.Elements[54] = 0
             elif source.text() == "Ce":
-                self.SelectCe = 0
+                self.Elements[55] = 0
             elif source.text() == "Pr":
-                self.SelectPr = 0
+                self.Elements[56] = 0
             elif source.text() == "Nd":
-                self.SelectNd = 0
+                self.Elements[57] = 0
             elif source.text() == "Pm":
-                self.SelectPm = 0
+                self.Elements[58] = 0
             elif source.text() == "Sm":
-                self.SelectSm = 0
+                self.Elements[59] = 0
             elif source.text() == "Eu":
-                self.SelectEu = 0
+                self.Elements[60] = 0
             elif source.text() == "Gd":
-                self.SelectGd = 0
+                self.Elements[61] = 0
             elif source.text() == "Tb":
-                self.SelectTb = 0
+                self.Elements[62] = 0
             elif source.text() == "Dy":
-                self.SelectDy = 0
+                self.Elements[63] = 0
             elif source.text() == "Ho":
-                self.SelectHo = 0
+                self.Elements[64] = 0
             elif source.text() == "Er":
-                self.SelectEr = 0
+                self.Elements[65] = 0
             elif source.text() == "Tm":
-                self.SelectTm = 0
+                self.Elements[66] = 0
             elif source.text() == "Yb":
-                self.SelectYb = 0
+                self.Elements[67] = 0
             elif source.text() == "Lu":
-                self.SelectLu = 0
+                self.Elements[68] = 0
+            elif source.text() == "Hf":
+                self.Elements[69] = 0
+            elif source.text() == "Ta":
+                self.Elements[70] = 0
+            elif source.text() == "W":
+                self.Elements[71] = 0
+            elif source.text() == "Re":
+                self.Elements[72] = 0
+            elif source.text() == "Os":
+                self.Elements[73] = 0
+            elif source.text() == "Ir":
+                self.Elements[74] = 0
+            elif source.text() == "Pt":
+                self.Elements[75] = 0
+            elif source.text() == "Au":
+                self.Elements[76] = 0
+            elif source.text() == "Hg":
+                self.Elements[77] = 0
+            elif source.text() == "Tl":
+                self.Elements[78] = 0
+            elif source.text() == "Pb":
+                self.Elements[79] = 0
+            elif source.text() == "Bi":
+                self.Elements[80] = 0
+            elif source.text() == "Po":
+                self.Elements[81] = 0
+            elif source.text() == "At":
+                self.Elements[82] = 0
+            elif source.text() == "Rn":
+                self.Elements[83] = 0
+            elif source.text() == "Fr":
+                self.Elements[84] = 0
+            elif source.text() == "Ra":
+                self.Elements[85] = 0
             elif source.text() == "Ac":
-                self.SelectAc = 0
+                self.Elements[86] = 0
             elif source.text() == "Th":
-                self.SelectTh = 0
+                self.Elements[87] = 0
             elif source.text() == "Pa":
-                self.SelectPa = 0
+                self.Elements[88] = 0
             elif source.text() == "U":
-                self.SelectU = 0
+                self.Elements[89] = 0
             elif source.text() == "Np":
-                self.SelectNp = 0
+                self.Elements[90] = 0
             elif source.text() == "Pu":
-                self.SelectPu = 0
+                self.Elements[91] = 0
             elif source.text() == "Am":
-                self.SelectAm = 0
+                self.Elements[92] = 0
+            
+            
     # Returen use's selection result
     @staticmethod
     def getSelectedElements(SelectedElements):
         dialog = PeriodicTable(SelectedElements)
         result = dialog.exec_()
-        dialog.SelectElements = [dialog.SelectTi,dialog.SelectV,dialog.SelectCr,
-                                 dialog.SelectMn,dialog.SelectFe,dialog.SelectCo,
-                                 dialog.SelectNi,dialog.SelectCu,dialog.SelectZn,
-                                 dialog.SelectGa,dialog.SelectGe,dialog.SelectAs,
-                                 dialog.SelectSe,dialog.SelectBr,dialog.SelectKr,
-                                 dialog.SelectRb,dialog.SelectSr,dialog.SelectY,
-                                 dialog.SelectZr,dialog.SelectNb,dialog.SelectMo,
-                                 dialog.SelectTc,dialog.SelectRu,dialog.SelectRh,
-                                 dialog.SelectPd,dialog.SelectAg,dialog.SelectCd,
-                                 dialog.SelectIn,dialog.SelectSn,dialog.SelectSb,
-                                 dialog.SelectTe,dialog.SelectI,dialog.SelectXe,
-                                 dialog.SelectCs,dialog.SelectBa,dialog.SelectHf,
-                                 dialog.SelectTa,dialog.SelectW,dialog.SelectRe,
-                                 dialog.SelectOs,dialog.SelectIr,dialog.SelectPt,
-                                 dialog.SelectAu,dialog.SelectHg,dialog.SelectTl,
-                                 dialog.SelectPb,dialog.SelectBi,dialog.SelectPo,
-                                 dialog.SelectAt,dialog.SelectRn,dialog.SelectFr,
-                                 dialog.SelectRa,dialog.SelectLa,dialog.SelectCe,
-                                 dialog.SelectPr,dialog.SelectNd,dialog.SelectPm,
-                                 dialog.SelectSm,dialog.SelectEu,dialog.SelectGd,
-                                 dialog.SelectTb,dialog.SelectDy,dialog.SelectHo,
-                                 dialog.SelectEr,dialog.SelectTm,dialog.SelectYb,
-                                 dialog.SelectLu,dialog.SelectAc,dialog.SelectTh,
-                                 dialog.SelectPa,dialog.SelectU,dialog.SelectNp,
-                                 dialog.SelectPu,dialog.SelectAm,
-                                 ]
-        return (dialog.SelectElements, result == QDialog.Accepted)
+        return (dialog.Elements, result == QDialog.Accepted)
     '''
     # If user click OK
     # Accept the selection
