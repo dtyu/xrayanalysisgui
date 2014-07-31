@@ -15,6 +15,7 @@ import matplotlib
 from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
 import matplotlib.pyplot as plt
+from copy import deepcopy
 
 # Class for the main Dialog
 class MyForm(QtGui.QDialog):
@@ -160,7 +161,7 @@ class MyForm(QtGui.QDialog):
         [92] represents Am,
         '''
         # element symbol (93 in total, from Li to Am)
-        self.knownElements = ["Li","B","Be","C","N","O","F","Ne","Na","Mg",
+        self.knownElements = ["Li","Be","B","C","N","O","F","Ne","Na","Mg",
                               "Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti",
                               "V","Cr","Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge",
                               "As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo",
@@ -179,9 +180,9 @@ class MyForm(QtGui.QDialog):
         # photon energy data (from .txt file)
         self.PhotonEnergy = np.loadtxt('PhotonEnergy.txt')
         # modified photon energy data (using minEnergy & maxEnergy) 
-        self.modifiedPhotonEnergy = self.PhotonEnergy
+        self.modifiedPhotonEnergy = deepcopy(self.PhotonEnergy)
         # min energy(KeV)
-        self.minEnergy = 0
+        self.minEnergy = 1
         # max energy(KeV)
         self.maxEnergy = 26000
         # energy level label (e.g. Kalpha1)
@@ -205,9 +206,12 @@ class MyForm(QtGui.QDialog):
             # If no energy level is in range, currentElementsStatus = -1
             if (self.availableEnergyCount[i] == 0):
                 self.currentElementsStatus[i] = -1
-        # Show min energy & max energy
+        # Show min energy, Connect "editingFinished" event handler
         self.ui.MinPhotonEnergy.setText(unicode(self.minEnergy))
+        self.ui.MinPhotonEnergy.editingFinished.connect(self.MinPhotonEnergy_EditingFinished)
+        # Show max energy, Connect "editingFinished" event handler
         self.ui.MaxPhotonEnergy.setText(unicode(self.maxEnergy))
+        self.ui.MaxPhotonEnergy.editingFinished.connect(self.MaxPhotonEnergy_EditingFinished)
         
         # motor position (initialized as 353,252,305)
         self.xPos = 353
@@ -690,7 +694,7 @@ class MyForm(QtGui.QDialog):
         # Check if OK is clicked
         if ok == True:
             # Update currentElementsStatus
-            self.currentElementsStatus = tempElementsStatus 
+            self.currentElementsStatus = deepcopy(tempElementsStatus)
             # Set tableWidget to empty
             self.ui.tableWidget.setRowCount(0)
             # number of lines in tableWidget
@@ -722,6 +726,32 @@ class MyForm(QtGui.QDialog):
                                                     QTableWidgetItem(QString(self.knownElements[index])))
                         # Show comboBox in tableWidget
                         self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Li)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 1:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Be = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Be.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_Be.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Be.currentIndexChanged['QString'].connect(self.comboBox_Be_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Be)
                         # Show scanEnergyRange in tableWidget
                         self.ui.tableWidget.setItem(self.LineCount,2,
                                                     QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
@@ -782,15 +812,14 @@ class MyForm(QtGui.QDialog):
         if column == 2:
             # If element == Li
             if (self.ui.tableWidget.item(row,0).text() == "Li") and \
-               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
                 # Update scanEnergyRange
                 self.scanEnergyRange[0] = self.ui.tableWidget.item(row,column).text().toInt()[0]
             # If element == Be
-            elif (self.ui.tableWidget.item(row,0).text() == "Be") and \
-               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+            if (self.ui.tableWidget.item(row,0).text() == "Be") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
                 # Update scanEnergyRange
                 self.scanEnergyRange[1] = self.ui.tableWidget.item(row,column).text().toInt()[0]
-
             # If element == V
             elif (self.ui.tableWidget.item(row,0).text() == "V") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
@@ -906,8 +935,76 @@ class MyForm(QtGui.QDialog):
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
                 # Update scanEnergyRange
                 self.scanEnergyRange[42] = self.ui.tableWidget.item(row,column).text().toInt()[0]
-
+    
+    '''
+    "MinPhotonEnergy editingFinished" event handler
+    '''
+    def MinPhotonEnergy_EditingFinished(self):
+        if self.ui.MinPhotonEnergy.isModified():
+            # Update minEnergy
+            self.minEnergy = self.ui.MinPhotonEnergy.text().toDouble()[0]
+            # Set tableWidget to empty
+            self.ui.tableWidget.setRowCount(0)
+            # Set LineCount = 0
+            self.LineCount = 0
+            # Reset modifiedPhotonEnergy
+            self.modifiedPhotonEnergy = deepcopy(self.PhotonEnergy)
             
+            # Update availableEnergyCount, modifiedPhotonEnergy & currentElementsStatus
+            for i in range(len(self.PhotonEnergy)):
+                # Clear availableEnergyCount
+                self.availableEnergyCount[i] = 0
+                for j in range(len(self.PhotonEnergy[0])):
+                    # If PhotonEnergy[i][j] is in range, availableEnergyCount[i] ++
+                    if (self.PhotonEnergy[i][j] >= self.minEnergy) and (self.PhotonEnergy[i][j] <= self.maxEnergy):
+                        self.availableEnergyCount[i] = self.availableEnergyCount[i] + 1
+                    # Otherwise, modifiedEnergyCount[i][j] = 0
+                    else:
+                        self.modifiedPhotonEnergy[i][j] = 0
+                # If no energy level is in range, currentElementsStatus = -1
+                if (self.availableEnergyCount[i] == 0):
+                    self.currentElementsStatus[i] = -1
+                else:
+                    # If element is available now, set currentElementsStatus = 0
+                    if (self.currentElementsStatus[i] == -1):
+                        self.currentElementsStatus[i] = 0
+        
+        self.ui.MinPhotonEnergy.setModified(False)
+    '''
+    "MaxPhotonEnergy editingFinished" event handler
+    '''
+    def MaxPhotonEnergy_EditingFinished(self):
+        if self.ui.MaxPhotonEnergy.isModified():
+            # Update minEnergy
+            self.maxEnergy = self.ui.MaxPhotonEnergy.text().toDouble()[0]
+            # Set tableWidget to empty
+            self.ui.tableWidget.setRowCount(0)
+            # Set LineCount = 0
+            self.LineCount = 0
+            # Reset modifiedPhotonEnergy
+            self.modifiedPhotonEnergy = deepcopy(self.PhotonEnergy)
+            
+            # Update availableEnergyCount, modifiedPhotonEnergy & currentElementsStatus
+            for i in range(len(self.PhotonEnergy)):
+                # Clear availableEnergyCount
+                self.availableEnergyCount[i] = 0
+                for j in range(len(self.PhotonEnergy[0])):
+                    # If PhotonEnergy[i][j] is in range, availableEnergyCount[i] ++
+                    if (self.PhotonEnergy[i][j] >= self.minEnergy) and (self.PhotonEnergy[i][j] <= self.maxEnergy):
+                        self.availableEnergyCount[i] = self.availableEnergyCount[i] + 1
+                    # Otherwise, modifiedEnergyCount[i][j] = 0
+                    else:
+                        self.modifiedPhotonEnergy[i][j] = 0
+                # If no energy level is in range, currentElementsStatus = -1
+                if (self.availableEnergyCount[i] == 0):
+                    self.currentElementsStatus[i] = -1
+                else:
+                    # If element is available now, set currentElementsStatus = 0
+                    if (self.currentElementsStatus[i] == -1):
+                        self.currentElementsStatus[i] = 0
+        
+        self.ui.MaxPhotonEnergy.setModified(False)
+    
     '''
     "TopLeftX editingFinished" event handler
     '''
