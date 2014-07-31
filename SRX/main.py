@@ -50,71 +50,71 @@ class MyForm(QtGui.QDialog):
         self.ui.ExecuteScan.setDefault(False)
         self.ui.ExecuteScan.setAutoDefault(False)
         
-##        # Create scene_Plot
-##        self.scene_Plot = QGraphicsScene()
-##        self.ui.graphicsView_Plot.setScene(self.scene_Plot)
-##        # Open HDF5 file
-##        self.hdf5File = h5py.File('C:/Users/robinliheyi/Desktop/dataForHeyi/2xfm_0430.h5','r+')
-##        # Load data from HDF5 file
-##        self.loadData_XR = self.hdf5File['MAPS/XRF_roi']
-##        print "Open file 'XRF_roi'"
-##        self.loadData_Plot = self.hdf5File['MAPS/mca_arr']
-##        print "Open file 'mca_arr'"
-##        self.calib = self.hdf5File['MAPS/energy_calib']
-##        print "Open file 'energy_calib'"
-##        # data in y coordinates
-##        self.plotData = [0]*2000
-##        # data in x coordinates
-##        self.energy = [0]*2000
-##        # Calculate plotData & energy
-##        for i in range(2000):
-##            self.plotData[i] = np.sum(self.loadData_Plot[i])
-##            self.energy[i] = i * self.calib[1] + self.calib[0]
-##        # Plot
-##        self.paintPlot()
-##        # Retrieve data of one element (Mg in this case)
-##        self.imageData_XR = self.loadData_XR[0]
-##        # Get max & min pixel value
-##        self.scale_min = np.min(self.imageData_XR)
-##        self.scale_max = np.max(self.imageData_XR)
-##        # Show max & min value
-##        self.ui.minPixelValue.setText(unicode(self.scale_min))
-##        self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
-##        self.ui.maxPixelValue.setText(unicode(self.scale_max))
-##        self.ui.maxPixelValue.editingFinished.connect(self.maxPixelValue_EditingFinished)
-##        # Scale value into 0-255
-##        self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
-##        self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
-##        self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
-##        # Transfer newImageData_XR to Image_XR
-##        self.Image_XR = self.gray2qimage(np.array(255*self.newImageData_XR,
-##                                                    dtype=int))
-##        # Transfer Image_XR to pixmap_XR
-##        self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
-##        # Resize pixmap_XR
-##        self.sizeWidth = 200
-##        self.sizeHeight = 200
-##        self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
-##        # Create pixmapItem_XR
-##        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-##        # Create scene_XR
-##        self.scene_XR = QGraphicsScene()
-##        self.scene_XR.addItem(self.pixmapItem_XR)
-##        # Add scene_XR in graphicsView_XR
-##        self.ui.graphicsView_XR.setScene(self.scene_XR)
+        # Create scene_Plot
+        self.scene_Plot = QGraphicsScene()
+        self.ui.graphicsView_Plot.setScene(self.scene_Plot)
+        # Open HDF5 file
+        self.hdf5File = h5py.File('C:/Users/robinliheyi/Desktop/dataForHeyi/2xfm_0430.h5','r+')
+        # Load data from HDF5 file
+        self.loadData_XR = self.hdf5File['MAPS/XRF_roi']
+        print "Open file 'XRF_roi'"
+        self.loadData_Plot = self.hdf5File['MAPS/mca_arr']
+        print "Open file 'mca_arr'"
+        self.calib = self.hdf5File['MAPS/energy_calib']
+        print "Open file 'energy_calib'"
+        # data in y coordinates
+        self.plotData = [0]*2000
+        # data in x coordinates
+        self.energy = [0]*2000
+        # Calculate plotData & energy
+        for i in range(2000):
+            self.plotData[i] = np.sum(self.loadData_Plot[i])
+            self.energy[i] = i * self.calib[1] + self.calib[0]
+        # Plot
+        self.paintPlot()
+        # Retrieve data of one element (Mg in this case)
+        self.imageData_XR = self.loadData_XR[0]
+        # Get max & min pixel value
+        self.scale_min = np.min(self.imageData_XR)
+        self.scale_max = np.max(self.imageData_XR)
+        # Show max & min value
+        self.ui.minPixelValue.setText(unicode(self.scale_min))
+        self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
+        self.ui.maxPixelValue.setText(unicode(self.scale_max))
+        self.ui.maxPixelValue.editingFinished.connect(self.maxPixelValue_EditingFinished)
+        # Scale value into 0-255
+        self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
+        self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
+        self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
+        # Transfer newImageData_XR to Image_XR
+        self.Image_XR = self.gray2qimage(np.array(255*self.newImageData_XR,
+                                                    dtype=int))
+        # Transfer Image_XR to pixmap_XR
+        self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
+        # Resize pixmap_XR
+        self.sizeWidth = 200
+        self.sizeHeight = 200
+        self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
+        # Create pixmapItem_XR
+        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+        # Create scene_XR
+        self.scene_XR = QGraphicsScene()
+        self.scene_XR.addItem(self.pixmapItem_XR)
+        # Add scene_XR in graphicsView_XR
+        self.ui.graphicsView_XR.setScene(self.scene_XR)
 
         
-##        '''
-##        # Load the first image
-##        # Create the first GraphicsPixmapItem
-##        # Add the item to the first GraphicsScene
-##        # Set the scene in the first GraphicsView
-##        '''
-##        self.pixmap_VL = QtGui.QPixmap("image1.jpg")
-##        self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
-##        self.scene_VL = QGraphicsScene()
-##        self.scene_VL.addItem(self.pixmapItem_VL)
-##        self.ui.graphicsView_VL.setScene(self.scene_VL)
+        '''
+        # Load the first image
+        # Create the first GraphicsPixmapItem
+        # Add the item to the first GraphicsScene
+        # Set the scene in the first GraphicsView
+        '''
+        self.pixmap_VL = QtGui.QPixmap("image1.jpg")
+        self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
+        self.scene_VL = QGraphicsScene()
+        self.scene_VL.addItem(self.pixmapItem_VL)
+        self.ui.graphicsView_VL.setScene(self.scene_VL)
 ##        '''
 ##        # Load the second image
 ##        # Create the second GraphicsPixmapItem
