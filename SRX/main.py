@@ -17,6 +17,9 @@ from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as Naviga
 import matplotlib.pyplot as plt
 from copy import deepcopy
 
+import epics
+import time
+
 # Class for the main Dialog
 class MyForm(QtGui.QDialog):
     def __init__(self,parent=None):
@@ -50,6 +53,7 @@ class MyForm(QtGui.QDialog):
         self.ui.ExecuteScan.setDefault(False)
         self.ui.ExecuteScan.setAutoDefault(False)
         
+	'''
         # Create scene_Plot
         self.scene_Plot = QGraphicsScene()
         self.ui.graphicsView_Plot.setScene(self.scene_Plot)
@@ -102,7 +106,7 @@ class MyForm(QtGui.QDialog):
         self.scene_XR.addItem(self.pixmapItem_XR)
         # Add scene_XR in graphicsView_XR
         self.ui.graphicsView_XR.setScene(self.scene_XR)
-
+	'''
         
         '''
         # Load the first image
@@ -213,10 +217,20 @@ class MyForm(QtGui.QDialog):
         self.ui.MaxPhotonEnergy.setText(unicode(self.maxEnergy))
         self.ui.MaxPhotonEnergy.editingFinished.connect(self.MaxPhotonEnergy_EditingFinished)
         
-        # motor position (initialized as 353,252,305)
-        self.xPos = 353
-        self.yPos = 252
-        self.zPos = 305
+	# PyEpics
+	'''
+	val = p.get()
+	print val
+	p.put(11.0, wait=True)
+	print val
+	'''
+        # motor position
+	self.motor1 = epics.PV('test:motorx1.VAL')
+        self.xPos = self.motor1.get()
+	self.motor2 = epics.PV('test:motorx2.VAL')
+        self.yPos = self.motor2.get()
+	self.motor3 = epics.PV('test:motorx3.VAL')
+        self.zPos = self.motor3.get()
         # motor position shift (initialized as 0,0,0)
         self.xStep = 0
         self.yStep = 0
@@ -316,10 +330,13 @@ class MyForm(QtGui.QDialog):
                 self.scene_VL.clear()
                 self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
                 self.scene_VL.addItem(self.pixmapItem_VL)
+
                 # Clear scene_XR, Reload pixmap_XR
+		'''
                 self.scene_XR.clear()
                 self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
                 self.scene_XR.addItem(self.pixmapItem_XR)
+		'''
                 # Set selected_VL & selected_XR = 0
                 self.selected_VL = 0
                 self.selected_XR = 0
@@ -453,27 +470,48 @@ class MyForm(QtGui.QDialog):
     @QtCore.pyqtSlot()
     def on_changeMotorPositionX_clicked(self, checked=None):
         # Update xPos
-        self.xPos = int(self.ui.toMotorPositionX.text())
+        self.xPos = float(self.ui.toMotorPositionX.text())
+	# Move motor1
+	## self.motor1.put(self.xPos, wait=True)
+	self.motor1.put(self.xPos, use_complete=True)
+	waiting = True
+	while waiting:
+		time.sleep(0.001)
+    		waiting = not self.motor1.put_complete
         # Show current MotorPositionX 
-        self.ui.MotorPositionX.setText(unicode(self.xPos))
+        self.ui.MotorPositionX.setText(unicode(self.motor1.get()))
     '''
     "MotorPositionY clicked" event handler
     '''
     @QtCore.pyqtSlot()
     def on_changeMotorPositionY_clicked(self, checked=None):
         # Update yPos
-        self.yPos = int(self.ui.toMotorPositionY.text())
+        self.yPos = float(self.ui.toMotorPositionY.text())
+	# Move motor2
+	## self.motor2.put(self.yPos, wait=True)
+	self.motor2.put(self.yPos, use_complete=True)
+	waiting = True
+	while waiting:
+		time.sleep(0.001)
+    		waiting = not self.motor2.put_complete
         # Show current MotorPositionY
-        self.ui.MotorPositionY.setText(unicode(self.yPos))
+        self.ui.MotorPositionY.setText(unicode(self.motor2.get()))
     '''
     "MotorPositionZ clicked" event handler
     '''
     @QtCore.pyqtSlot()
     def on_changeMotorPositionZ_clicked(self, checked=None):
         # Update zPos
-        self.zPos = int(self.ui.toMotorPositionZ.text())
+        self.zPos = float(self.ui.toMotorPositionZ.text())
+	# Move motor3
+	## self.motor3.put(self.zPos, wait=True)
+	self.motor3.put(self.zPos, use_complete=True)
+	waiting = True
+	while waiting:
+		time.sleep(0.001)
+    		waiting = not self.motor3.put_complete
         # Show current MotorPositionZ
-        self.ui.MotorPositionZ.setText(unicode(self.zPos))
+        self.ui.MotorPositionZ.setText(unicode(self.motor3.get()))
     
     '''
     "minusMotorPositionX clicked" event handler
@@ -483,8 +521,14 @@ class MyForm(QtGui.QDialog):
         # Update xPos
         self.xStep = int(self.ui.shiftMotorPositionX.text())
         self.xPos -= self.xStep
+	# Move motor1
+	self.motor1.put(self.xPos, use_complete=True)
+	waiting = True
+	while waiting:
+		time.sleep(0.001)
+    		waiting = not self.motor1.put_complete
         # Show current MotorPositionX
-        self.ui.MotorPositionX.setText(unicode(self.xPos))
+        self.ui.MotorPositionX.setText(unicode(self.motor1.get()))
     '''
     "plusMotorPositionX clicked" event handler
     '''
@@ -493,8 +537,14 @@ class MyForm(QtGui.QDialog):
         # Update xPos
         self.xStep = int(self.ui.shiftMotorPositionX.text())
         self.xPos += self.xStep
+	# Move motor1
+	self.motor1.put(self.xPos, use_complete=True)
+	waiting = True
+	while waiting:
+		time.sleep(0.001)
+    		waiting = not self.motor1.put_complete
         # Show current MotorPositionX
-        self.ui.MotorPositionX.setText(unicode(self.xPos))
+        self.ui.MotorPositionX.setText(unicode(self.motor1.get()))
     '''
     "minusMotorPositionY clicked" event handler
     '''
@@ -503,8 +553,14 @@ class MyForm(QtGui.QDialog):
         # Update yPos
         self.yStep = int(self.ui.shiftMotorPositionY.text())
         self.yPos -= self.yStep
+	# Move motor2
+	self.motor2.put(self.yPos, use_complete=True)
+	waiting = True
+	while waiting:
+		time.sleep(0.001)
+    		waiting = not self.motor2.put_complete
         # Show current MotorPositionY
-        self.ui.MotorPositionY.setText(unicode(self.yPos))
+        self.ui.MotorPositionY.setText(unicode(self.motor2.get()))
     '''
     "plusMotorPositionY clicked" event handler
     '''
@@ -513,8 +569,14 @@ class MyForm(QtGui.QDialog):
         # Update yPos
         self.yStep = int(self.ui.shiftMotorPositionY.text())
         self.yPos += self.yStep
+	# Move motor2
+	self.motor2.put(self.yPos, use_complete=True)
+	waiting = True
+	while waiting:
+		time.sleep(0.001)
+    		waiting = not self.motor2.put_complete
         # Show current MotorPositionY
-        self.ui.MotorPositionY.setText(unicode(self.yPos))
+        self.ui.MotorPositionY.setText(unicode(self.motor2.get()))
     '''
     "minusMotorPositionZ clicked" event handler
     '''
@@ -523,8 +585,14 @@ class MyForm(QtGui.QDialog):
         # Update zPos
         self.zStep = int(self.ui.shiftMotorPositionZ.text())
         self.zPos -= self.zStep
+	# Move motor3
+	self.motor3.put(self.zPos, use_complete=True)
+	waiting = True
+	while waiting:
+		time.sleep(0.001)
+    		waiting = not self.motor3.put_complete
         # Show current MotorPositionZ
-        self.ui.MotorPositionZ.setText(unicode(self.zPos))
+        self.ui.MotorPositionZ.setText(unicode(self.motor3.get()))
     '''
     "plusMotorPositionZ clicked" event handler
     '''
@@ -533,8 +601,14 @@ class MyForm(QtGui.QDialog):
         # Update zPos
         self.zStep = int(self.ui.shiftMotorPositionZ.text())
         self.zPos += self.zStep
+	# Move motor3
+	self.motor3.put(self.zPos, use_complete=True)
+	waiting = True
+	while waiting:
+		time.sleep(0.001)
+    		waiting = not self.motor3.put_complete
         # Show current MotorPositionZ
-        self.ui.MotorPositionZ.setText(unicode(self.zPos))
+        self.ui.MotorPositionZ.setText(unicode(self.motor3.get()))
 
     '''
     "ExecuteScan clicked" event handler
@@ -606,12 +680,25 @@ class MyForm(QtGui.QDialog):
     def on_MoveToStartPoint_clicked(self, checked=None):
         # Check if ROI has been selected
         if (self.selected_VL == 1 or self.selected_XR == 1):
-            # Update xPos & yPos
+	    # Update xPos & yPos
             self.xPos = int(self.ui.TopLeftX.text())
             self.yPos = int(self.ui.TopLeftY.text())
-            # Show current MotorPositionX & MotorPositionY
-            self.ui.MotorPositionX.setText(unicode(self.xPos))
-            self.ui.MotorPositionY.setText(unicode(self.yPos))
+	    # Move motor1
+            self.motor1.put(self.xPos, use_complete=True)
+	    waiting = True
+	    while waiting:
+                time.sleep(0.001)
+    		waiting = not self.motor1.put_complete
+            # Show current MotorPositionX
+            self.ui.MotorPositionX.setText(unicode(self.motor1.get()))
+	    # Move motor2
+            self.motor2.put(self.yPos, use_complete=True)
+	    waiting = True
+	    while waiting:
+                time.sleep(0.001)
+    		waiting = not self.motor2.put_complete
+            # Show current MotorPositionY
+            self.ui.MotorPositionY.setText(unicode(self.motor2.get()))
         else:
             print "Please select ROI first!"
             QMessageBox.about(self, "Error",

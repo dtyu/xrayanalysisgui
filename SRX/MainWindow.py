@@ -26,10 +26,9 @@ except AttributeError:
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.setWindowModality(QtCore.Qt.NonModal)
-        Dialog.resize(1339, 612)
-        Dialog.setLayoutDirection(QtCore.Qt.LeftToRight)
-        Dialog.setModal(False)
+	Dialog.setAttribute(QtCore.Qt.WA_DeleteOnClose)
+	Dialog.setWindowFlags(QtCore.Qt.Window)
+        Dialog.resize(1339, 650)
         self.ModifyElement = QtGui.QPushButton(Dialog)
         self.ModifyElement.setGeometry(QtCore.QRect(230, 320, 101, 23))
         self.ModifyElement.setObjectName(_fromUtf8("ModifyElement"))
