@@ -1,0 +1,42 @@
+Naiyun's work logs:
+
+June 09, 2014
+I wrote a new version of matlab gui with modification of image display scalebar and display order selection. The third axes displaying fitting result was added. I will show it to Karen to fix bug and add exception to control working flow. 
+This week plan: finish matlab version and start using python to read data and display the images.
+
+June 13, 2014
+This week, I have fixed all the GUI related bugs in my first version with help of Karen. The work procedure is organized by 'enable' and 'disable' components.
+
+June 20, 2014
+This week: added 'xrm' file loading function
+           error messages when needed
+           put reference plot choices into the listbox
+           made 'export spectrum' available to all types of spectrum
+           displayed image with any size in axes1
+           added 'export Athena' functionality
+           installed numpy,scipy,matplotlib,etc.(libraries needed when doing python GUI data processing)
+Next week plan: program txrm&xrm file import and image stack display function with PyQT
+
+June 26, 2014
+This week: implemented a function of saving fitting tiff image with higher bit depth
+           fixed image display colorbar error
+           read 'LoadStack' class written in PyQT for loading data
+Next week plan: program txrm&xrm file import and image stack display function with PyQT
+
+July 11, 2014
+This week: implemented 'Input Data' module by PyQt
+           input data in 'txrm' & 'xrm'
+           display filepath & filename in the panel
+           input reference data in 'txt'
+           display corrected image in QGraphicsView
+Next week: implement 'Processing' module by PyQt
+           learn mantis modules (PCA, clustering, etc.)
+
+July 25, 2014
+This week: finished all UI widgets
+           widget callback functionality implementation: 
+           1) data input and display with grayscale adjust & image number adjust
+           2) point & ROI selection and ROI display
+	   3) 3 normalization methods
+           4) 7 spectrum types plottting (raw_roi, bulk_roi, norm_roi, bulk_roi, ref1, ref2, ref3)
+Next week: implement callback functions of fitting part correctly

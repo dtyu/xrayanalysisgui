@@ -1,0 +1,16 @@
+record(calcout,"test:gauss") {
+  field(INPA,"-5")
+  field(INPB,"5")
+  field(INPC,"2.71828")
+  field(INPD,"test:pos CPP")
+  field(INPE,"test:gauss.VAL NPP")
+  field(CALC,"(D<A)||(D>B)?RNDM*0.3:EXP(-1.0*(D**2))")
+  field(FLNK,"test:ai")
+}
+
+record(ai,"test:ai") {
+  field(INP,"test:gauss.VAL NPP")
+}
+
+record(ai,"test:pos") {
+}
