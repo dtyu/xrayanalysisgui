@@ -1,8 +1,0 @@
-record(calcout,"$(P):sensor") {
-  field(PINI,"1")
-  field(INPA,"-5")
-  field(INPB,"5")
-  field(INPC,"$(P):$(M).RBV CP")
-  field(CALC,"(C<A)||(C>B)?RNDM*0.3:EXP(-1.0*(C**2))")
-}
-
