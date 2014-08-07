@@ -53,71 +53,71 @@ class MyForm(QtGui.QDialog):
         self.ui.ExecuteScan.setDefault(False)
         self.ui.ExecuteScan.setAutoDefault(False)
         
-	'''
         # Create scene_Plot
         self.scene_Plot = QGraphicsScene()
+        # Set scene_Plot in graphicsView_Plot
         self.ui.graphicsView_Plot.setScene(self.scene_Plot)
-        # Open HDF5 file
-        self.hdf5File = h5py.File('C:/Users/robinliheyi/Desktop/dataForHeyi/2xfm_0430.h5','r+')
-        # Load data from HDF5 file
-        self.loadData_XR = self.hdf5File['MAPS/XRF_roi']
-        print "Open file 'XRF_roi'"
-        self.loadData_Plot = self.hdf5File['MAPS/mca_arr']
-        print "Open file 'mca_arr'"
-        self.calib = self.hdf5File['MAPS/energy_calib']
-        print "Open file 'energy_calib'"
-        # data in y coordinates
-        self.plotData = [0]*2000
-        # data in x coordinates
-        self.energy = [0]*2000
-        # Calculate plotData & energy
-        for i in range(2000):
-            self.plotData[i] = np.sum(self.loadData_Plot[i])
-            self.energy[i] = i * self.calib[1] + self.calib[0]
-        # Plot
-        self.paintPlot()
-        # Retrieve data of one element (Mg in this case)
-        self.imageData_XR = self.loadData_XR[0]
-        # Get max & min pixel value
-        self.scale_min = np.min(self.imageData_XR)
-        self.scale_max = np.max(self.imageData_XR)
-        # Show max & min value
-        self.ui.minPixelValue.setText(unicode(self.scale_min))
-        self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
-        self.ui.maxPixelValue.setText(unicode(self.scale_max))
-        self.ui.maxPixelValue.editingFinished.connect(self.maxPixelValue_EditingFinished)
-        # Scale value into 0-255
-        self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
-        self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
-        self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
-        # Transfer newImageData_XR to Image_XR
-        self.Image_XR = self.gray2qimage(np.array(255*self.newImageData_XR,
-                                                    dtype=int))
-        # Transfer Image_XR to pixmap_XR
-        self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
-        # Resize pixmap_XR
-        self.sizeWidth = 200
-        self.sizeHeight = 200
-        self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
-        # Create pixmapItem_XR
-        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
         # Create scene_XR
         self.scene_XR = QGraphicsScene()
-        self.scene_XR.addItem(self.pixmapItem_XR)
-        # Add scene_XR in graphicsView_XR
+        # Set scene_XR in graphicsView_XR
         self.ui.graphicsView_XR.setScene(self.scene_XR)
-	'''
         
-        '''
+##        # Open HDF5 file
+##        self.hdf5File = h5py.File('2xfm_0430.h5','r+')
+##        # Load data from HDF5 file
+##        self.loadData_XR = self.hdf5File['MAPS/XRF_roi']
+##        print "Open file 'XRF_roi'"
+##        self.loadData_Plot = self.hdf5File['MAPS/mca_arr']
+##        print "Open file 'mca_arr'"
+##        self.calib = self.hdf5File['MAPS/energy_calib']
+##        print "Open file 'energy_calib'"
+##        # data in y coordinates
+##        self.plotData = [0]*2000
+##        # data in x coordinates
+##        self.energy = [0]*2000
+##        # Calculate plotData & energy
+##        for i in range(2000):
+##            self.plotData[i] = np.sum(self.loadData_Plot[i])
+##            self.energy[i] = i * self.calib[1] + self.calib[0]
+##        # Plot
+##        self.paintPlot()
+##        # Retrieve data of one element (Mg in this case)
+##        self.imageData_XR = self.loadData_XR[0]
+##        # Get max & min pixel value
+##        self.scale_min = np.min(self.imageData_XR)
+##        self.scale_max = np.max(self.imageData_XR)
+##        # Show max & min value
+##        self.ui.minPixelValue.setText(unicode(self.scale_min))
+##        self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
+##        self.ui.maxPixelValue.setText(unicode(self.scale_max))
+##        self.ui.maxPixelValue.editingFinished.connect(self.maxPixelValue_EditingFinished)
+##        # Scale value into 0-255
+##        self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
+##        self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
+##        self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
+##        # Transfer newImageData_XR to Image_XR
+##        self.Image_XR = self.gray2qimage(np.array(255*self.newImageData_XR,
+##                                                    dtype=int))
+##        # Transfer Image_XR to pixmap_XR
+##        self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
+##        # Resize pixmap_XR
+##        self.sizeWidth = 200
+##        self.sizeHeight = 200
+##        self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
+##        # Create pixmapItem_XR
+##        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+##        # Add pixmapItem_XR
+##        self.scene_XR.addItem(self.pixmapItem_XR)
+        
+        
         # Load the first image
-        # Create the first GraphicsPixmapItem
-        # Add the item to the first GraphicsScene
-        # Set the scene in the first GraphicsView
-        '''
         self.pixmap_VL = QtGui.QPixmap("image1.jpg")
+        # Create the first GraphicsPixmapItem
         self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
         self.scene_VL = QGraphicsScene()
+        # Add the item to the first GraphicsScene
         self.scene_VL.addItem(self.pixmapItem_VL)
+        # Set the scene in the first GraphicsView
         self.ui.graphicsView_VL.setScene(self.scene_VL)
 ##        '''
 ##        # Load the second image
@@ -217,19 +217,19 @@ class MyForm(QtGui.QDialog):
         self.ui.MaxPhotonEnergy.setText(unicode(self.maxEnergy))
         self.ui.MaxPhotonEnergy.editingFinished.connect(self.MaxPhotonEnergy_EditingFinished)
         
-	# PyEpics
-	'''
-	val = p.get()
-	print val
-	p.put(11.0, wait=True)
-	print val
-	'''
+        # PyEpics
+        '''
+        val = p.get()
+        print val
+        p.put(11.0, wait=True)
+        print val
+        '''
         # motor position
-	self.motor1 = epics.PV('test:motorx1.VAL')
+        self.motor1 = epics.PV('test:motorx1.VAL')
         self.xPos = self.motor1.get()
-	self.motor2 = epics.PV('test:motorx2.VAL')
+        self.motor2 = epics.PV('test:motorx2.VAL')
         self.yPos = self.motor2.get()
-	self.motor3 = epics.PV('test:motorx3.VAL')
+        self.motor3 = epics.PV('test:motorx3.VAL')
         self.zPos = self.motor3.get()
         # motor position shift (initialized as 0,0,0)
         self.xStep = 0
@@ -332,11 +332,11 @@ class MyForm(QtGui.QDialog):
                 self.scene_VL.addItem(self.pixmapItem_VL)
 
                 # Clear scene_XR, Reload pixmap_XR
-		'''
+                '''
                 self.scene_XR.clear()
                 self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
                 self.scene_XR.addItem(self.pixmapItem_XR)
-		'''
+                '''
                 # Set selected_VL & selected_XR = 0
                 self.selected_VL = 0
                 self.selected_XR = 0
@@ -471,13 +471,12 @@ class MyForm(QtGui.QDialog):
     def on_changeMotorPositionX_clicked(self, checked=None):
         # Update xPos
         self.xPos = float(self.ui.toMotorPositionX.text())
-	# Move motor1
-	## self.motor1.put(self.xPos, wait=True)
-	self.motor1.put(self.xPos, use_complete=True)
-	waiting = True
-	while waiting:
-		time.sleep(0.001)
-    		waiting = not self.motor1.put_complete
+        # Move motor1
+        self.motor1.put(self.xPos, use_complete=True)
+        waiting = True
+        while waiting:
+            time.sleep(0.001)
+            waiting = not self.motor1.put_complete
         # Show current MotorPositionX 
         self.ui.MotorPositionX.setText(unicode(self.motor1.get()))
     '''
@@ -487,13 +486,12 @@ class MyForm(QtGui.QDialog):
     def on_changeMotorPositionY_clicked(self, checked=None):
         # Update yPos
         self.yPos = float(self.ui.toMotorPositionY.text())
-	# Move motor2
-	## self.motor2.put(self.yPos, wait=True)
-	self.motor2.put(self.yPos, use_complete=True)
-	waiting = True
-	while waiting:
-		time.sleep(0.001)
-    		waiting = not self.motor2.put_complete
+        # Move motor2
+        self.motor2.put(self.yPos, use_complete=True)
+        waiting = True
+        while waiting:
+            time.sleep(0.001)
+            waiting = not self.motor2.put_complete
         # Show current MotorPositionY
         self.ui.MotorPositionY.setText(unicode(self.motor2.get()))
     '''
@@ -503,13 +501,12 @@ class MyForm(QtGui.QDialog):
     def on_changeMotorPositionZ_clicked(self, checked=None):
         # Update zPos
         self.zPos = float(self.ui.toMotorPositionZ.text())
-	# Move motor3
-	## self.motor3.put(self.zPos, wait=True)
-	self.motor3.put(self.zPos, use_complete=True)
-	waiting = True
-	while waiting:
-		time.sleep(0.001)
-    		waiting = not self.motor3.put_complete
+        # Move motor3
+        self.motor3.put(self.zPos, use_complete=True)
+        waiting = True
+        while waiting:
+            time.sleep(0.001)
+            waiting = not self.motor3.put_complete
         # Show current MotorPositionZ
         self.ui.MotorPositionZ.setText(unicode(self.motor3.get()))
     
@@ -521,12 +518,12 @@ class MyForm(QtGui.QDialog):
         # Update xPos
         self.xStep = int(self.ui.shiftMotorPositionX.text())
         self.xPos -= self.xStep
-	# Move motor1
-	self.motor1.put(self.xPos, use_complete=True)
-	waiting = True
-	while waiting:
-		time.sleep(0.001)
-    		waiting = not self.motor1.put_complete
+        # Move motor1
+        self.motor1.put(self.xPos, use_complete=True)
+        waiting = True
+        while waiting:
+            time.sleep(0.001)
+            waiting = not self.motor1.put_complete
         # Show current MotorPositionX
         self.ui.MotorPositionX.setText(unicode(self.motor1.get()))
     '''
@@ -537,12 +534,12 @@ class MyForm(QtGui.QDialog):
         # Update xPos
         self.xStep = int(self.ui.shiftMotorPositionX.text())
         self.xPos += self.xStep
-	# Move motor1
-	self.motor1.put(self.xPos, use_complete=True)
-	waiting = True
-	while waiting:
-		time.sleep(0.001)
-    		waiting = not self.motor1.put_complete
+        # Move motor1
+        self.motor1.put(self.xPos, use_complete=True)
+        waiting = True
+        while waiting:
+            time.sleep(0.001)
+            waiting = not self.motor1.put_complete
         # Show current MotorPositionX
         self.ui.MotorPositionX.setText(unicode(self.motor1.get()))
     '''
@@ -553,12 +550,12 @@ class MyForm(QtGui.QDialog):
         # Update yPos
         self.yStep = int(self.ui.shiftMotorPositionY.text())
         self.yPos -= self.yStep
-	# Move motor2
-	self.motor2.put(self.yPos, use_complete=True)
-	waiting = True
-	while waiting:
-		time.sleep(0.001)
-    		waiting = not self.motor2.put_complete
+        # Move motor2
+        self.motor2.put(self.yPos, use_complete=True)
+        waiting = True
+        while waiting:
+            time.sleep(0.001)
+            waiting = not self.motor2.put_complete
         # Show current MotorPositionY
         self.ui.MotorPositionY.setText(unicode(self.motor2.get()))
     '''
@@ -569,12 +566,12 @@ class MyForm(QtGui.QDialog):
         # Update yPos
         self.yStep = int(self.ui.shiftMotorPositionY.text())
         self.yPos += self.yStep
-	# Move motor2
-	self.motor2.put(self.yPos, use_complete=True)
-	waiting = True
-	while waiting:
-		time.sleep(0.001)
-    		waiting = not self.motor2.put_complete
+        # Move motor2
+        self.motor2.put(self.yPos, use_complete=True)
+        waiting = True
+        while waiting:
+            time.sleep(0.001)
+            waiting = not self.motor2.put_complete
         # Show current MotorPositionY
         self.ui.MotorPositionY.setText(unicode(self.motor2.get()))
     '''
@@ -585,12 +582,12 @@ class MyForm(QtGui.QDialog):
         # Update zPos
         self.zStep = int(self.ui.shiftMotorPositionZ.text())
         self.zPos -= self.zStep
-	# Move motor3
-	self.motor3.put(self.zPos, use_complete=True)
-	waiting = True
-	while waiting:
-		time.sleep(0.001)
-    		waiting = not self.motor3.put_complete
+        # Move motor3
+        self.motor3.put(self.zPos, use_complete=True)
+        waiting = True
+        while waiting:
+            time.sleep(0.001)
+            waiting = not self.motor3.put_complete
         # Show current MotorPositionZ
         self.ui.MotorPositionZ.setText(unicode(self.motor3.get()))
     '''
@@ -601,12 +598,12 @@ class MyForm(QtGui.QDialog):
         # Update zPos
         self.zStep = int(self.ui.shiftMotorPositionZ.text())
         self.zPos += self.zStep
-	# Move motor3
-	self.motor3.put(self.zPos, use_complete=True)
-	waiting = True
-	while waiting:
-		time.sleep(0.001)
-    		waiting = not self.motor3.put_complete
+        # Move motor3
+        self.motor3.put(self.zPos, use_complete=True)
+        waiting = True
+        while waiting:
+            time.sleep(0.001)
+            waiting = not self.motor3.put_complete
         # Show current MotorPositionZ
         self.ui.MotorPositionZ.setText(unicode(self.motor3.get()))
 
@@ -621,8 +618,8 @@ class MyForm(QtGui.QDialog):
             QMessageBox.about(self, "Error","Please select ROI first!")
         else:
             # Check if motor has moved to top-left point
-            if (self.xPos != int(self.ui.TopLeftX.text())
-                    or self.yPos != int(self.ui.TopLeftY.text())):
+            if (self.xPos == int(self.ui.TopLeftX.text())
+                    or self.yPos == int(self.ui.TopLeftY.text())):
                 print "Please click MoveToStartPoint button first!"
                 QMessageBox.about(self, "Error","Please click MoveToStartPoint button first!")
             else:
@@ -639,17 +636,72 @@ class MyForm(QtGui.QDialog):
                     self.timeLeft = self.width_VL * self.height_VL / (self.dwellTime * 1000)
                     # Show TimeLeft
                     self.ui.TimeLeft.setText(unicode(self.timeLeft)+"s")
-                    # Print coordinates of x & y
-                    print "Y Position Change:"
-                    for j in range(0,self.height_VL,self.scanStepY):
-                        self.yPos += self.scanStepY
-                        print self.yPos
-                        self.ui.MotorPositionY.setText(unicode(self.yPos))
-                    print "X Position Change:"  
-                    for i in range(0,self.width_VL,self.scanStepX):
-                        self.xPos += self.scanStepX
-                        print self.xPos
-                        self.ui.MotorPositionX.setText(unicode(self.xPos))
+
+                    # Open HDF5 file
+                    self.hdf5File = h5py.File('2xfm_0430.h5','r+')
+                    # Load data from HDF5 file
+                    self.loadData_XR = self.hdf5File['MAPS/XRF_roi']
+                    print "Open file 'XRF_roi'"
+                    self.loadData_Plot = self.hdf5File['MAPS/mca_arr']
+                    print "Open file 'mca_arr'"
+                    self.calib = self.hdf5File['MAPS/energy_calib']
+                    print "Open file 'energy_calib'"
+                    # data in y coordinates
+                    self.plotData = [0]*2000
+                    # data in x coordinates
+                    self.energy = [0]*2000
+                    # Calculate plotData & energy
+                    for i in range(2000):
+                        self.plotData[i] = np.sum(self.loadData_Plot[i])
+                        self.energy[i] = i * self.calib[1] + self.calib[0]
+                    # Plot
+                    self.paintPlot()
+                    # Retrieve data of one element (Mg in this case)
+                    self.imageData_XR = self.loadData_XR[0]
+
+                    # Write HDF5 file
+                    self.testFile = h5py.File("mytestfile.hdf5", "w")
+                    dset = self.testFile.create_dataset('subgroup/dataset',
+                                                        (len(self.imageData_XR),
+                                                         len(self.imageData_XR[0])),
+                                                        dtype='d')
+                    # len(self.imageData_XR)
+                    for i in range(2):
+                        # Write data
+                        dset[i,:] = self.imageData_XR[i]
+
+                        # self.tempFile = h5py.File('mytestfile.h5','r+')
+                        self.imageData_XR = self.testFile['subgroup/dataset'] 
+                        
+                        # Get max & min pixel value
+                        self.scale_min = np.min(self.imageData_XR)
+                        self.scale_max = np.max(self.imageData_XR)
+                        # Show max & min value
+                        self.ui.minPixelValue.setText(unicode(self.scale_min))
+                        self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
+                        self.ui.maxPixelValue.setText(unicode(self.scale_max))
+                        self.ui.maxPixelValue.editingFinished.connect(self.maxPixelValue_EditingFinished)
+                        # Scale value into 0-255
+                        self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
+                        self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
+                        self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
+                        # Transfer newImageData_XR to Image_XR
+                        self.Image_XR = self.gray2qimage(np.array(255*self.newImageData_XR,
+                                                                  dtype=int))
+                        # Transfer Image_XR to pixmap_XR
+                        self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
+                        # Resize pixmap_XR
+                        self.sizeWidth = 200
+                        self.sizeHeight = 200
+                        self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
+                        # Create pixmapItem_XR
+                        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+                        # Add pixmapItem_XR
+                        self.scene_XR.addItem(self.pixmapItem_XR)
+
+                        print "Done!"
+                        time.sleep(5)
+                        
                     # Set selected_VL back to 0
                     self.selected_VL = 0
                     
@@ -659,17 +711,9 @@ class MyForm(QtGui.QDialog):
                     self.timeLeft = self.width_XR * self.height_XR / (self.dwellTime * 1000)
                     # Show TimeLeft
                     self.ui.TimeLeft.setText(unicode(self.timeLeft)+"s")
-                    # Print coordinates of x & y
-                    print "Y Position Change:"
-                    for j in range(0,self.height_XR,self.scanStepY):
-                        self.yPos += self.scanStepY
-                        print self.yPos
-                        self.ui.MotorPositionY.setText(unicode(self.yPos))
-                    print "X Position Change:"  
-                    for i in range(0,self.width_XR,self.scanStepX):
-                        self.xPos += self.scanStepX
-                        print self.xPos
-                        self.ui.MotorPositionX.setText(unicode(self.xPos))
+
+                    # Do something # 
+                    
                     # Set selected_XR back to 0
                     self.selected_XR = 0
     
@@ -680,23 +724,23 @@ class MyForm(QtGui.QDialog):
     def on_MoveToStartPoint_clicked(self, checked=None):
         # Check if ROI has been selected
         if (self.selected_VL == 1 or self.selected_XR == 1):
-	    # Update xPos & yPos
+            # Update xPos & yPos
             self.xPos = int(self.ui.TopLeftX.text())
             self.yPos = int(self.ui.TopLeftY.text())
-	    # Move motor1
+            # Move motor1
             self.motor1.put(self.xPos, use_complete=True)
-	    waiting = True
-	    while waiting:
+            waiting = True
+            while waiting:
                 time.sleep(0.001)
-    		waiting = not self.motor1.put_complete
+                waiting = not self.motor1.put_complete
             # Show current MotorPositionX
             self.ui.MotorPositionX.setText(unicode(self.motor1.get()))
-	    # Move motor2
+            # Move motor2
             self.motor2.put(self.yPos, use_complete=True)
-	    waiting = True
-	    while waiting:
+            waiting = True
+            while waiting:
                 time.sleep(0.001)
-    		waiting = not self.motor2.put_complete
+                waiting = not self.motor2.put_complete
             # Show current MotorPositionY
             self.ui.MotorPositionY.setText(unicode(self.motor2.get()))
         else:
