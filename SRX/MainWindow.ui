@@ -676,6 +676,12 @@
    <property name="cursor" stdset="0">
     <cursorShape>CrossCursor</cursorShape>
    </property>
+   <property name="viewportUpdateMode">
+    <enum>QGraphicsView::FullViewportUpdate</enum>
+   </property>
+   <property name="rubberBandSelectionMode">
+    <enum>Qt::IntersectsItemShape</enum>
+   </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">

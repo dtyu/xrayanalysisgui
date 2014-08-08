@@ -58,9 +58,7 @@ class MyForm(QtGui.QDialog):
         # Set scene_Plot in graphicsView_Plot
         self.ui.graphicsView_Plot.setScene(self.scene_Plot)
         # Create scene_XR
-        self.scene_XR = QGraphicsScene()
-        # Set scene_XR in graphicsView_XR
-        self.ui.graphicsView_XR.setScene(self.scene_XR)
+        self.scene_XR = QGraphicsScene(self)
         
 ##        # Open HDF5 file
 ##        self.hdf5File = h5py.File('2xfm_0430.h5','r+')
@@ -646,29 +644,31 @@ class MyForm(QtGui.QDialog):
                     print "Open file 'mca_arr'"
                     self.calib = self.hdf5File['MAPS/energy_calib']
                     print "Open file 'energy_calib'"
-                    # data in y coordinates
-                    self.plotData = [0]*2000
-                    # data in x coordinates
-                    self.energy = [0]*2000
-                    # Calculate plotData & energy
-                    for i in range(2000):
-                        self.plotData[i] = np.sum(self.loadData_Plot[i])
-                        self.energy[i] = i * self.calib[1] + self.calib[0]
-                    # Plot
-                    self.paintPlot()
+##                    # data in y coordinates
+##                    self.plotData = [0]*2000
+##                    # data in x coordinates
+##                    self.energy = [0]*2000
+##                    # Calculate plotData & energy
+##                    for i in range(2000):
+##                        self.plotData[i] = np.sum(self.loadData_Plot[i])
+##                        self.energy[i] = i * self.calib[1] + self.calib[0]
+##                    # Plot
+##                    self.paintPlot()
                     # Retrieve data of one element (Mg in this case)
-                    self.imageData_XR = self.loadData_XR[0]
+                    self.oriImageData_XR = self.loadData_XR[0]
 
                     # Write HDF5 file
                     self.testFile = h5py.File("mytestfile.hdf5", "w")
                     dset = self.testFile.create_dataset('subgroup/dataset',
-                                                        (len(self.imageData_XR),
-                                                         len(self.imageData_XR[0])),
+                                                        (len(self.oriImageData_XR),
+                                                         len(self.oriImageData_XR[0])),
                                                         dtype='d')
-                    # len(self.imageData_XR)
-                    for i in range(2):
+                    
+                    print "Start"
+                    # len(self.oriImageData_XR)
+                    for i in range(5):
                         # Write data
-                        dset[i,:] = self.imageData_XR[i]
+                        dset[i,:] = self.oriImageData_XR[i]
 
                         # self.tempFile = h5py.File('mytestfile.h5','r+')
                         self.imageData_XR = self.testFile['subgroup/dataset'] 
@@ -678,30 +678,42 @@ class MyForm(QtGui.QDialog):
                         self.scale_max = np.max(self.imageData_XR)
                         # Show max & min value
                         self.ui.minPixelValue.setText(unicode(self.scale_min))
-                        self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
+                        self.ui.minPixelValue.repaint()
+                        # self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
                         self.ui.maxPixelValue.setText(unicode(self.scale_max))
-                        self.ui.maxPixelValue.editingFinished.connect(self.maxPixelValue_EditingFinished)
+                        self.ui.maxPixelValue.repaint()
+                        # self.ui.maxPixelValue.editingFinished.connect(self.maxPixelValue_EditingFinished)
+                        
                         # Scale value into 0-255
-                        self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
-                        self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
-                        self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
+                        self.newImageData_XR = 255 * (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
+                        # self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
+                        # self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
+                        
                         # Transfer newImageData_XR to Image_XR
-                        self.Image_XR = self.gray2qimage(np.array(255*self.newImageData_XR,
-                                                                  dtype=int))
+                        self.Image_XR = self.gray2qimage(np.array(self.newImageData_XR,
+                                                                  dtype = int))
                         # Transfer Image_XR to pixmap_XR
                         self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
+                        
                         # Resize pixmap_XR
                         self.sizeWidth = 200
                         self.sizeHeight = 200
                         self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
-                        # Create pixmapItem_XR
-                        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-                        # Add pixmapItem_XR
-                        self.scene_XR.addItem(self.pixmapItem_XR)
+
+                        self.scene_XR.clear()
+                        # Update pixmapItem_XR
+                        pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+                        # Add pixapItem_XR
+                        self.scene_XR.addItem(pixmapItem_XR)
+                        # Set scene_XR in graphicsView_XR
+                        self.ui.graphicsView_XR.setScene(self.scene_XR)
+                        self.ui.graphicsView_XR.show()
 
                         print "Done!"
-                        time.sleep(5)
-                        
+                        time.sleep(10)
+
+                    print "Finished"
+                    
                     # Set selected_VL back to 0
                     self.selected_VL = 0
                     
