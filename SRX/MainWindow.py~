@@ -32,7 +32,7 @@ class Ui_Dialog(object):
         Dialog.setModal(False)
         # IMPORTANT: show max, min, close button on the dialog
         Dialog.setWindowFlags(QtCore.Qt.Window)
-        
+
         self.ModifyElement = QtGui.QPushButton(Dialog)
         self.ModifyElement.setGeometry(QtCore.QRect(230, 320, 101, 23))
         self.ModifyElement.setObjectName(_fromUtf8("ModifyElement"))
