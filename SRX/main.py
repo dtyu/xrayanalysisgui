@@ -131,8 +131,14 @@ class MyForm(QtGui.QDialog):
         
         # Create RubberBand in GraphicsView_VL
         self.rubberBand_VL = QtGui.QRubberBand(QtGui.QRubberBand.Rectangle,self.ui.graphicsView_VL)
+        # Create rectangle & rectangleItem in GraphicsScene_VL
+        self.selectedRect_VL = QRectF()
+        self.selectedRectItem_VL = self.scene_VL.addRect(self.selectedRect_VL,QtCore.Qt.red)
         # Create RubberBand in GraphicsView_XR
         self.rubberBand_XR = QtGui.QRubberBand(QtGui.QRubberBand.Rectangle,self.ui.graphicsView_XR)
+        # Create rectangle & rectangleItem in GraphicsScene_XR
+        self.selectedRect_XR = QRectF()
+        self.selectedRectItem_XR = self.scene_XR.addRect(self.selectedRect_XR,QtCore.Qt.red)
         
         '''
         [0] represents Li, [1] represents Be, [2] represents B, [3] represents C,
@@ -323,17 +329,11 @@ class MyForm(QtGui.QDialog):
         if (event.type() == QtCore.QEvent.GraphicsSceneMousePress
                 and source is self.scene_VL):
             if event.button() == QtCore.Qt.LeftButton:
-                # Clear scene_VL, Reload pixmap_VL
-                self.scene_VL.clear()
-                self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
-                self.scene_VL.addItem(self.pixmapItem_VL)
-
-                # Clear scene_XR, Reload pixmap_XR
-                '''
-                self.scene_XR.clear()
-                self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-                self.scene_XR.addItem(self.pixmapItem_XR)
-                '''
+                # Remove selectedRectItem_VL OR selectedRectItem_XR
+                if (self.selected_VL == 1):
+                    self.scene_VL.removeItem(self.selectedRectItem_VL)
+                elif (self.selected_XR == 1):
+                    self.scene_XR.removeItem(self.selectedRectItem_XR)
                 # Set selected_VL & selected_XR = 0
                 self.selected_VL = 0
                 self.selected_XR = 0
@@ -384,7 +384,7 @@ class MyForm(QtGui.QDialog):
                 self.selectedRect_VL = QRectF(self.ui.graphicsView_VL.mapToScene(self.startPos_VL.x(),
                                                                                  self.startPos_VL.y()),
                                               QSizeF(self.width_VL,self.height_VL))
-                self.scene_VL.addRect(self.selectedRect_VL,QtCore.Qt.red)
+                self.selectedRectItem_VL = self.scene_VL.addRect(self.selectedRect_VL,QtCore.Qt.red)
                 # Show width & height of ROI
                 self.ui.ScanAreaWidth.setText(unicode(self.width_VL))
                 self.ui.ScanAreaHeight.setText(unicode(self.height_VL))
