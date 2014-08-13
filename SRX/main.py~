@@ -644,7 +644,7 @@ class MyForm(QtGui.QDialog):
                     
                     print "Start"
                     # len(self.oriImageData_XR)
-                    for i in range(2):
+                    for i in range(len(self.oriImageData_XR)):
                         # Write data
                         dset[i,:] = self.oriImageData_XR[i]
 
@@ -673,7 +673,6 @@ class MyForm(QtGui.QDialog):
                         self.sizeHeight = 200
                         self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
 
-                        # self.scene_XR.clear()
                         # Update pixmapItem_XR
                         pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
                         # Add pixapItem_XR
@@ -681,7 +680,7 @@ class MyForm(QtGui.QDialog):
                         # Set scene_XR in graphicsView_XR
                         self.ui.graphicsView_XR.setScene(self.scene_XR)
                         # Call repaint method to refresh GUI
-                        self.ui.maxPixelValue.repaint()
+                        self.ui.graphicsView_XR.repaint()
 
                         print "Done!"
                         time.sleep(10)
@@ -707,6 +706,8 @@ class MyForm(QtGui.QDialog):
                     
                     # Set selected_XR back to 0
                     self.selected_XR = 0
+                    # Remove selectedRectItem_XR
+                    self.scene_XR.removeItem(self.selectedRectItem_XR)
     
     '''
     "MoveToStartPoint clicked" event handler

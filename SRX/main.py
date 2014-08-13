@@ -644,7 +644,7 @@ class MyForm(QtGui.QDialog):
                     
                     print "Start"
                     # len(self.oriImageData_XR)
-                    for i in range(2):
+                    for i in range(len(self.oriImageData_XR)):
                         # Write data
                         dset[i,:] = self.oriImageData_XR[i]
 
@@ -673,7 +673,6 @@ class MyForm(QtGui.QDialog):
                         self.sizeHeight = 200
                         self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
 
-                        # self.scene_XR.clear()
                         # Update pixmapItem_XR
                         pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
                         # Add pixapItem_XR
