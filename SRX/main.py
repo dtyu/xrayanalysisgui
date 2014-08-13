@@ -16,6 +16,7 @@ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
 import matplotlib.pyplot as plt
 from copy import deepcopy
+from qimage2ndarray import gray2qimage
 
 import epics
 import time
@@ -664,7 +665,7 @@ class MyForm(QtGui.QDialog):
                         # self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
                         
                         # Transfer newImageData_XR to Image_XR
-                        self.Image_XR = self.gray2qimage(np.array(self.newImageData_XR,dtype = int))
+                        self.Image_XR = gray2qimage(np.array(self.newImageData_XR,dtype = int))
                         # Transfer Image_XR to pixmap_XR
                         self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
                         
