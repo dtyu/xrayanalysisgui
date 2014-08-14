@@ -16,7 +16,7 @@ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
 import matplotlib.pyplot as plt
 from copy import deepcopy
-from qimage2ndarray import gray2qimage
+import qimage2ndarray
 
 import epics
 import time
@@ -60,6 +60,12 @@ class MyForm(QtGui.QDialog):
         self.ui.graphicsView_Plot.setScene(self.scene_Plot)
         # Create scene_XR
         self.scene_XR = QGraphicsScene(self)
+        # Set scene_XR in graphicsView_XR
+        self.ui.graphicsView_XR.setScene(self.scene_XR)
+        # Create scene_VL
+        self.scene_VL = QGraphicsScene()
+        # Set the scene in the first GraphicsView
+        self.ui.graphicsView_VL.setScene(self.scene_VL)
         
 ##        # Open HDF5 file
 ##        self.hdf5File = h5py.File('2xfm_0430.h5','r+')
@@ -113,11 +119,9 @@ class MyForm(QtGui.QDialog):
         self.pixmap_VL = QtGui.QPixmap("image1.jpg")
         # Create the first GraphicsPixmapItem
         self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
-        self.scene_VL = QGraphicsScene()
         # Add the item to the first GraphicsScene
         self.scene_VL.addItem(self.pixmapItem_VL)
-        # Set the scene in the first GraphicsView
-        self.ui.graphicsView_VL.setScene(self.scene_VL)
+        
 ##        '''
 ##        # Load the second image
 ##        # Create the second GraphicsPixmapItem
@@ -660,12 +664,13 @@ class MyForm(QtGui.QDialog):
                         self.ui.maxPixelValue.setText(unicode(self.scale_max))
                         
                         # Scale value into 0-255
-                        self.newImageData_XR = 255 * (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
+                        # self.newImageData_XR = 255 * (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
                         # self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
                         # self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
                         
                         # Transfer newImageData_XR to Image_XR
-                        self.Image_XR = gray2qimage(np.array(self.newImageData_XR,dtype = int))
+                        
+                        self.Image_XR = qimage2ndarray.array2qimage(np.array(self.imageData_XR,dtype = float),normalize=True)
                         # Transfer Image_XR to pixmap_XR
                         self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
                         
@@ -680,11 +685,11 @@ class MyForm(QtGui.QDialog):
                         self.scene_XR.addItem(pixmapItem_XR)
                         # Set scene_XR in graphicsView_XR
                         self.ui.graphicsView_XR.setScene(self.scene_XR)
+                        
                         # Call repaint method to refresh GUI
-                        self.ui.maxPixelValue.repaint()
-
-                        print "Done!"
-                        time.sleep(10)
+                        self.ui.graphicsView_XR.viewport().repaint()
+                        # Wait for 1 second
+                        time.sleep(1)
 
                     print "Finished"
                     # Connect editingFinished event with event handlers
@@ -695,6 +700,9 @@ class MyForm(QtGui.QDialog):
                     self.selected_VL = 0
                     # Remove selectedRectItem_VL
                     self.scene_VL.removeItem(self.selectedRectItem_VL)
+                    # Close HDF5 file
+                    self.testFile.close()
+                    self.hdf5File.close()
                     
                 # If ROI is in scene_XR
                 if self.selected_XR == 1:
@@ -737,19 +745,19 @@ class MyForm(QtGui.QDialog):
             QMessageBox.about(self, "Error",
                                   "Please select ROI first!")
     
-    '''
-    Transfer 2D numpy array to QImage
-    '''
-    def gray2qimage(self,gray):
-        if (len(gray.shape) != 2):
-            raise ValueError("gray2QImage can only convert 2D arrays")    
-        gray = np.require(gray, np.uint8, 'C')
-        (h, w) = gray.shape
-        result = QImage(gray.data, w, h, QImage.Format_Indexed8)
-        result.ndarray = gray
-        for i in range(256):
-                result.setColor(i, QColor(i, i, i).rgb())
-        return result
+##    '''
+##    Transfer 2D numpy array to QImage
+##    '''
+##    def gray2qimage(self,gray):
+##        if (len(gray.shape) != 2):
+##            raise ValueError("gray2QImage can only convert 2D arrays")    
+##        gray = np.require(gray, np.uint8, 'C')
+##        (h, w) = gray.shape
+##        result = QImage(gray.data, w, h, QImage.Format_Indexed8)
+##        result.ndarray = gray
+##        for i in range(256):
+##                result.setColor(i, QColor(i, i, i).rgb())
+##        return result
     '''
     Plot in scene_Plot
     '''

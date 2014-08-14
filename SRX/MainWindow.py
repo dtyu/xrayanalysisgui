@@ -26,10 +26,8 @@ except AttributeError:
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName(_fromUtf8("Dialog"))
-        Dialog.setWindowModality(QtCore.Qt.NonModal)
         Dialog.resize(1339, 612)
         Dialog.setLayoutDirection(QtCore.Qt.LeftToRight)
-        Dialog.setModal(False)
         # IMPORTANT: show max, min, close button on the dialog
         Dialog.setWindowFlags(QtCore.Qt.Window)
         
@@ -201,7 +199,6 @@ class Ui_Dialog(object):
         self.graphicsView_XR = QtGui.QGraphicsView(Dialog)
         self.graphicsView_XR.setGeometry(QtCore.QRect(720, 30, 250, 250))
         self.graphicsView_XR.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.CrossCursor))
-        self.graphicsView_XR.setViewportUpdateMode(QtGui.QGraphicsView.FullViewportUpdate)
         self.graphicsView_XR.setRubberBandSelectionMode(QtCore.Qt.IntersectsItemShape)
         self.graphicsView_XR.setObjectName(_fromUtf8("graphicsView_XR"))
         self.tableWidget = QtGui.QTableWidget(Dialog)
