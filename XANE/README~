@@ -44,4 +44,4 @@ Next week: implement callback functions of fitting part correctly
 August 1, 2014
 This week: converted all widgests and callback functions from matlab to pyqt
            updated some features in matlab 
-Next week: accelarated fitting algorithms
+Next week: add accelarated fitting algorithms

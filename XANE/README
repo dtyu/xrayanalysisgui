@@ -45,3 +45,6 @@ August 1, 2014
 This week: converted all widgests and callback functions from matlab to pyqt
            updated some features in matlab 
 Next week: add accelarated fitting algorithms
+
+August 15, 2014:
+This week: finished three fitting algorithms, display fitted results in QGraphicsView
