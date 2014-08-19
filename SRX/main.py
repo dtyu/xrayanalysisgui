@@ -16,7 +16,6 @@ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QTAgg as NavigationToolbar
 import matplotlib.pyplot as plt
 from copy import deepcopy
-import qimage2ndarray
 
 import epics
 import time
@@ -53,6 +52,8 @@ class MyForm(QtGui.QDialog):
         self.ui.MoveToStartPoint.setAutoDefault(False)
         self.ui.ExecuteScan.setDefault(False)
         self.ui.ExecuteScan.setAutoDefault(False)
+        self.ui.ChangeDirectory.setDefault(False)
+        self.ui.ChangeDirectory.setAutoDefault(False)
         
         # Create scene_Plot
         self.scene_Plot = QGraphicsScene()
@@ -67,72 +68,12 @@ class MyForm(QtGui.QDialog):
         # Set the scene in the first GraphicsView
         self.ui.graphicsView_VL.setScene(self.scene_VL)
         
-##        # Open HDF5 file
-##        self.hdf5File = h5py.File('2xfm_0430.h5','r+')
-##        # Load data from HDF5 file
-##        self.loadData_XR = self.hdf5File['MAPS/XRF_roi']
-##        print "Open file 'XRF_roi'"
-##        self.loadData_Plot = self.hdf5File['MAPS/mca_arr']
-##        print "Open file 'mca_arr'"
-##        self.calib = self.hdf5File['MAPS/energy_calib']
-##        print "Open file 'energy_calib'"
-##        # data in y coordinates
-##        self.plotData = [0]*2000
-##        # data in x coordinates
-##        self.energy = [0]*2000
-##        # Calculate plotData & energy
-##        for i in range(2000):
-##            self.plotData[i] = np.sum(self.loadData_Plot[i])
-##            self.energy[i] = i * self.calib[1] + self.calib[0]
-##        # Plot
-##        self.paintPlot()
-##        # Retrieve data of one element (Mg in this case)
-##        self.imageData_XR = self.loadData_XR[0]
-##        # Get max & min pixel value
-##        self.scale_min = np.min(self.imageData_XR)
-##        self.scale_max = np.max(self.imageData_XR)
-##        # Show max & min value
-##        self.ui.minPixelValue.setText(unicode(self.scale_min))
-##        self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
-##        self.ui.maxPixelValue.setText(unicode(self.scale_max))
-##        self.ui.maxPixelValue.editingFinished.connect(self.maxPixelValue_EditingFinished)
-##        # Scale value into 0-255
-##        self.newImageData_XR = (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
-##        self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
-##        self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
-##        # Transfer newImageData_XR to Image_XR
-##        self.Image_XR = self.gray2qimage(np.array(255*self.newImageData_XR,
-##                                                    dtype=int))
-##        # Transfer Image_XR to pixmap_XR
-##        self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
-##        # Resize pixmap_XR
-##        self.sizeWidth = 200
-##        self.sizeHeight = 200
-##        self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
-##        # Create pixmapItem_XR
-##        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-##        # Add pixmapItem_XR
-##        self.scene_XR.addItem(self.pixmapItem_XR)
-        
-        
         # Load the first image
         self.pixmap_VL = QtGui.QPixmap("image1.jpg")
         # Create the first GraphicsPixmapItem
         self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
         # Add the item to the first GraphicsScene
         self.scene_VL.addItem(self.pixmapItem_VL)
-        
-##        '''
-##        # Load the second image
-##        # Create the second GraphicsPixmapItem
-##        # Add the item to the second GraphicsScene
-##        # Set the scene in the second GraphicsView
-##        '''
-##        self.pixmap_XR = QtGui.QPixmap("image2.jpg")
-##        self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-##        self.scene_XR = QGraphicsScene()
-##        self.scene_XR.addItem(self.pixmapItem_XR)
-##        self.ui.graphicsView_XR.setScene(self.scene_XR)
         
         # Create RubberBand in GraphicsView_VL
         self.rubberBand_VL = QtGui.QRubberBand(QtGui.QRubberBand.Rectangle,self.ui.graphicsView_VL)
@@ -223,16 +164,26 @@ class MyForm(QtGui.QDialog):
         # Show max energy, Connect "editingFinished" event handler
         self.ui.MaxPhotonEnergy.setText(unicode(self.maxEnergy))
         self.ui.MaxPhotonEnergy.editingFinished.connect(self.MaxPhotonEnergy_EditingFinished)
+
+        # Total Scan Count
+        self.scanCount = 1
+        # File Directory (Default is current working directory)
+        self.directory = QDir.currentPath() + "/"
+        # Show File Directory
+        self.ui.Directory.setText(self.directory)
+        # File Name
+        self.fileName = unicode(QDate.currentDate().year()) \
+                        + unicode(format(QDate.currentDate().month(), '02d')) \
+                        + unicode(format(QDate.currentDate().day(), '02d')) \
+                        + "_" + unicode(format(self.scanCount, '03d')) \
+                        + "_Sample"
+        # Show File Name
+        self.ui.FileName.setText(self.fileName)
+        # Connect "editingFinished" event handler
+        self.ui.FileName.editingFinished.connect(self.FileName_EditingFinished)
         
-        # PyEpics
-        '''
-        val = p.get()
-        print val
-        p.put(11.0, wait=True)
-        print val
-        '''
         # motor position
-        # self.motor1 = epics.PV('test:motorx1.VAL')
+        ## self.motor1 = epics.PV('test:motorx1.VAL')
         self.motor1 = epics.Device('test:motorx1.', attrs=('VAL', 'RBV', 'DESC', 'RVAL', 'LVIO', 'HLS', 'LLS'))
         self.xPos = self.motor1.get('RBV')
         self.motor2 = epics.Device('test:motorx2.', attrs=('VAL', 'RBV', 'DESC', 'RVAL', 'LVIO', 'HLS', 'LLS'))
@@ -613,10 +564,10 @@ class MyForm(QtGui.QDialog):
                 
                 # If ROI is in scene_VL
                 if self.selected_VL == 1:
-                    # Calculate TimeLeft
-                    self.timeLeft = self.width_VL * self.height_VL / (self.dwellTime * 1000)
-                    # Show TimeLeft
-                    self.ui.TimeLeft.setText(unicode(self.timeLeft)+"s")
+                    ## Calculate TimeLeft
+                    # self.timeLeft = self.width_VL * self.height_VL / (self.dwellTime * 1000)
+                    ## Show TimeLeft
+                    # self.ui.TimeLeft.setText(unicode(self.timeLeft)+"s")
 
                     # Open HDF5 file
                     self.hdf5File = h5py.File('2xfm_0430.h5','r+')
@@ -641,7 +592,8 @@ class MyForm(QtGui.QDialog):
                     self.oriImageData_XR = self.loadData_XR[0]
 
                     # Write HDF5 file
-                    self.testFile = h5py.File("mytestfile.hdf5", "w")
+                    myfile = unicode(self.directory + self.fileName + ".hdf5")
+                    self.testFile = h5py.File(myfile, "w")
                     dset = self.testFile.create_dataset('subgroup/dataset',
                                                         (len(self.oriImageData_XR),
                                                          len(self.oriImageData_XR[0])),
@@ -650,6 +602,9 @@ class MyForm(QtGui.QDialog):
                     print "Start"
                     # len(self.oriImageData_XR)
                     for i in range(len(self.oriImageData_XR)):
+                        # Show TimeLeft
+                        self.ui.TimeLeft.setText(unicode(i+1)+" / "+unicode(len(self.oriImageData_XR)))
+                        
                         # Write data
                         dset[i,:] = self.oriImageData_XR[i]
 
@@ -669,10 +624,13 @@ class MyForm(QtGui.QDialog):
                         # self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
                         
                         # Transfer newImageData_XR to Image_XR
+                        myimage = unicode(self.directory+self.fileName+".png")
+                        plt.imsave(myimage, self.imageData_XR, cmap=plt.cm.gray)
                         
-                        self.Image_XR = qimage2ndarray.array2qimage(np.array(self.imageData_XR,dtype = float),normalize=True)
-                        # Transfer Image_XR to pixmap_XR
-                        self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
+                        # self.Image_XR = qimage2ndarray.array2qimage(np.array(self.imageData_XR,dtype = float),normalize=True)
+                        ## Transfer Image_XR to pixmap_XR
+                        # self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
+                        self.pixmap_XR = QtGui.QPixmap("temp.png")
                         
                         # Resize pixmap_XR
                         self.sizeWidth = 200
@@ -745,19 +703,6 @@ class MyForm(QtGui.QDialog):
             QMessageBox.about(self, "Error",
                                   "Please select ROI first!")
     
-##    '''
-##    Transfer 2D numpy array to QImage
-##    '''
-##    def gray2qimage(self,gray):
-##        if (len(gray.shape) != 2):
-##            raise ValueError("gray2QImage can only convert 2D arrays")    
-##        gray = np.require(gray, np.uint8, 'C')
-##        (h, w) = gray.shape
-##        result = QImage(gray.data, w, h, QImage.Format_Indexed8)
-##        result.ndarray = gray
-##        for i in range(256):
-##                result.setColor(i, QColor(i, i, i).rgb())
-##        return result
     '''
     Plot in scene_Plot
     '''
@@ -1377,6 +1322,16 @@ class MyForm(QtGui.QDialog):
                 self.scene_XR.addItem(self.pixmapItem_XR)
         
         self.ui.maxPixelValue.setModified(False)
+
+    '''
+    "FileName editingFinished" event handler
+    '''
+    def FileName_EditingFinished(self):
+        if self.ui.FileName.isModified():
+            # Update self.fileName
+            self.fileName = self.ui.FileName.text()
+        
+        self.ui.FileName.setModified(False)
 
 '''
 main method
