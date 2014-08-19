@@ -630,7 +630,7 @@ class MyForm(QtGui.QDialog):
                         # self.Image_XR = qimage2ndarray.array2qimage(np.array(self.imageData_XR,dtype = float),normalize=True)
                         ## Transfer Image_XR to pixmap_XR
                         # self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
-                        self.pixmap_XR = QtGui.QPixmap("temp.png")
+                        self.pixmap_XR = QtGui.QPixmap(unicode(self.directory+self.fileName+".png"))
                         
                         # Resize pixmap_XR
                         self.sizeWidth = 200
