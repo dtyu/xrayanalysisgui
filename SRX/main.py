@@ -1333,6 +1333,21 @@ class MyForm(QtGui.QDialog):
         
         self.ui.FileName.setModified(False)
 
+    '''
+    "ChangeDirectory clicked" event handler
+    '''
+    @QtCore.pyqtSlot()
+    def on_ChangeDirectory_clicked(self, checked=None):
+        # Open QFileDialog
+        dir = QFileDialog.getExistingDirectory(self,
+                                               "Open Directory",
+                                               self.directory,
+                                               QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks);
+        # Update self.directory
+        self.directory = dir + "\\"
+        # Show self.directory
+        self.ui.Directory.setText(self.directory)
+
 '''
 main method
 '''
