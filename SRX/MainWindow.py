@@ -260,7 +260,7 @@ class Ui_Dialog(object):
         self.ChangeDirectory.setGeometry(QtCore.QRect(1100, 110, 121, 23))
         self.ChangeDirectory.setObjectName(_fromUtf8("ChangeDirectory"))
         self.AbortScan = QtGui.QPushButton(Dialog)
-        self.AbortScan.setGeometry(QtCore.QRect(1100, 310, 121, 23))
+        self.AbortScan.setGeometry(QtCore.QRect(1100, 250, 101, 23))
         self.AbortScan.setObjectName(_fromUtf8("AbortScan"))
 
         self.retranslateUi(Dialog)

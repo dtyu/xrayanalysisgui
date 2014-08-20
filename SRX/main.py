@@ -54,6 +54,8 @@ class MyForm(QtGui.QDialog):
         self.ui.ExecuteScan.setAutoDefault(False)
         self.ui.ChangeDirectory.setDefault(False)
         self.ui.ChangeDirectory.setAutoDefault(False)
+        self.ui.AbortScan.setDefault(False)
+        self.ui.AbortScan.setAutoDefault(False)
         
         # Create scene_Plot
         self.scene_Plot = QGraphicsScene()
@@ -634,81 +636,79 @@ class MyForm(QtGui.QDialog):
                                     time.sleep(0.001)
                                     self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
                                     self.ui.MotorPositionX.repaint()
+                                self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
+                                self.ui.MotorPositionX.repaint()
                                 # Acquire scan data #
                                 time.sleep(0.5)
-                            else:
-                                 # Increase total scan count by 1
-                                self.scanCount = self.scanCount + 1
-                                # Update file name
-                                self.fileName = unicode(QDate.currentDate().year()) \
-                                                + unicode(format(QDate.currentDate().month(), '02d')) \
-                                                + unicode(format(QDate.currentDate().day(), '02d')) \
-                                                + "_" + unicode(format(self.scanCount, '03d')) \
-                                                + "_Sample"
-                                # Show file name
-                                self.ui.FileName.setText(self.fileName)
-                                # Set abort signal back to 0
-                                self.abort = 0
 
-                                return
-                         
-                        # Write data
-                        dset[i,:] = self.oriImageData_XR[i]
+                        if (self.abort != 1): 
+                            # Write data
+                            dset[i-startPosY,:] = self.oriImageData_XR[i-startPosY]
 
-                        # self.tempFile = h5py.File('mytestfile.h5','r+')
-                        self.imageData_XR = self.testFile['subgroup/dataset'] 
+                            # self.tempFile = h5py.File('mytestfile.h5','r+')
+                            self.imageData_XR = self.testFile['subgroup/dataset'] 
                         
-                        # Get max & min pixel value
-                        self.scale_min = np.min(self.imageData_XR)
-                        self.scale_max = np.max(self.imageData_XR)
-                        # Show max & min value
-                        self.ui.minPixelValue.setText(unicode(self.scale_min))
-                        self.ui.maxPixelValue.setText(unicode(self.scale_max))
+                            # Get max & min pixel value
+                            self.scale_min = np.min(self.imageData_XR)
+                            self.scale_max = np.max(self.imageData_XR)
+                        	# Show max & min value
+                            self.ui.minPixelValue.setText(unicode(self.scale_min))
+                            self.ui.maxPixelValue.setText(unicode(self.scale_max))
                         
-                        # Scale value into 0-255
-                        # self.newImageData_XR = 255 * (self.imageData_XR - self.scale_min) / (self.scale_max - self.scale_min)
-                        # self.newImageData_XR[self.imageData_XR >= (self.scale_max)] = 1
-                        # self.newImageData_XR[self.imageData_XR <= (self.scale_min)] = 0
+                            # Transfer newImageData_XR to Image_XR
+                            myimage = unicode(self.directory+self.fileName+".tif")
+                            plt.imsave(myimage, self.imageData_XR, cmap=plt.cm.gray)
+                            
+                            self.pixmap_XR = QtGui.QPixmap(unicode(self.directory+self.fileName+".tif"))
                         
-                        # Transfer newImageData_XR to Image_XR
-                        myimage = unicode(self.directory+self.fileName+".png")
-                        plt.imsave(myimage, self.imageData_XR, cmap=plt.cm.gray)
-                        
-                        # self.Image_XR = qimage2ndarray.array2qimage(np.array(self.imageData_XR,dtype = float),normalize=True)
-                        ## Transfer Image_XR to pixmap_XR
-                        # self.pixmap_XR = QtGui.QPixmap.fromImage(self.Image_XR)
-                        self.pixmap_XR = QtGui.QPixmap(unicode(self.directory+self.fileName+".png"))
-                        
-                        # Resize pixmap_XR
-                        self.sizeWidth = 200
-                        self.sizeHeight = 200
-                        self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
+                            # Resize pixmap_XR
+                            self.sizeWidth = 200
+                            self.sizeHeight = 200
+                            self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
 
-                        # Update pixmapItem_XR
-                        pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-                        # Add pixapItem_XR
-                        self.scene_XR.addItem(pixmapItem_XR)
-                        # Set scene_XR in graphicsView_XR
-                        self.ui.graphicsView_XR.setScene(self.scene_XR)
+                            # Update pixmapItem_XR
+                            pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+                            # Add pixapItem_XR
+                            self.scene_XR.addItem(pixmapItem_XR)
+                            # Set scene_XR in graphicsView_XR
+                            self.ui.graphicsView_XR.setScene(self.scene_XR)
                         
-                        # Call repaint method to refresh GUI
-                        self.ui.graphicsView_XR.viewport().repaint()
-                        # Wait for 1 second
-                        time.sleep(1)
+                            # Call repaint method to refresh GUI
+                            self.ui.graphicsView_XR.viewport().repaint()
+                            # Wait for 1 second
+                            time.sleep(1)
 
-                        # Move motor1 back to startPosX
-                        self.motor1.put('VAL',startPosX)
-                        while (self.motor1.get('RBV') != startPosX):
-                            time.sleep(0.001)
-                            self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
-                            self.ui.MotorPositionX.repaint()
-                        # Move motor2 to next line
-                        self.yPos = i
-                        self.motor2.put('VAL',self.yPos)
-                        while (self.motor2.get('RBV') != self.yPos):
-                            time.sleep(0.001)
+                        	# Move motor1 back to startPosX
+                            self.motor1.put('VAL',startPosX)
+                            while (self.motor1.get('RBV') != startPosX):
+                                time.sleep(0.001)
+                                self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
+                                self.ui.MotorPositionX.repaint()
+                            # Move motor2 to next line
+                            self.yPos = i+self.scanStepY
+                            print self.yPos
+                            self.motor2.put('VAL',self.yPos)
+                            while (self.motor2.get('RBV') != self.yPos):
+                                time.sleep(0.001)
+                                self.ui.MotorPositionY.setText(unicode(self.motor2.get('RBV')))
+                                self.ui.MotorPositionY.repaint()
                             self.ui.MotorPositionY.setText(unicode(self.motor2.get('RBV')))
                             self.ui.MotorPositionY.repaint()
+                        else:
+							# Show warning message
+                            QMessageBox.about(self, "Warning","Abort scan Progress!")
+                            # Increase total scan count by 1
+                            self.scanCount = self.scanCount + 1
+                            # Update file name
+                            self.fileName = unicode(QDate.currentDate().year()) \
+                                            + unicode(format(QDate.currentDate().month(), '02d')) \
+                                            + unicode(format(QDate.currentDate().day(), '02d')) \
+                                            + "_" + unicode(format(self.scanCount, '03d')) \
+                                            + "_Sample"
+                            # Show file name
+                            self.ui.FileName.setText(self.fileName)
+                            # Set abort signal back to 0
+                            self.abort = 0
 
                     print "Finished"
                     # Connect editingFinished event with event handlers
@@ -1417,6 +1417,7 @@ class MyForm(QtGui.QDialog):
     '''
     @QtCore.pyqtSlot()
     def on_AbortScan_clicked(self, checked=None):
+        print "Abort"
         self.abort = 1
 
 '''
