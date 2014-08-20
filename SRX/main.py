@@ -167,6 +167,8 @@ class MyForm(QtGui.QDialog):
 
         # Total Scan Count
         self.scanCount = 1
+        # Abort Signal
+        self.abort = 0
         # File Directory (Default is current working directory)
         self.directory = QDir.currentPath() + "/"
         # Show File Directory
@@ -624,15 +626,31 @@ class MyForm(QtGui.QDialog):
                             self.ui.MotorPositionX.repaint()
                         '''
                         for j in xrange(startPosX,endPosX,self.scanStepX):
-                            # Move motor1 to next position
-                            self.xPos = j
-                            self.motor1.put('VAL',self.xPos)
-                            while (self.motor1.get('RBV') != self.xPos):
-                                time.sleep(0.001)
-                                self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
-                                self.ui.MotorPositionX.repaint()
-                            # Acquire scan data #
-                            time.sleep(0.5)
+                            if (self.abort != 1):
+                                # Move motor1 to next position
+                                self.xPos = j
+                                self.motor1.put('VAL',self.xPos)
+                                while (self.motor1.get('RBV') != self.xPos):
+                                    time.sleep(0.001)
+                                    self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
+                                    self.ui.MotorPositionX.repaint()
+                                # Acquire scan data #
+                                time.sleep(0.5)
+                            else:
+                                 # Increase total scan count by 1
+                                self.scanCount = self.scanCount + 1
+                                # Update file name
+                                self.fileName = unicode(QDate.currentDate().year()) \
+                                                + unicode(format(QDate.currentDate().month(), '02d')) \
+                                                + unicode(format(QDate.currentDate().day(), '02d')) \
+                                                + "_" + unicode(format(self.scanCount, '03d')) \
+                                                + "_Sample"
+                                # Show file name
+                                self.ui.FileName.setText(self.fileName)
+                                # Set abort signal back to 0
+                                self.abort = 0
+
+                                return
                          
                         # Write data
                         dset[i,:] = self.oriImageData_XR[i]
@@ -722,7 +740,11 @@ class MyForm(QtGui.QDialog):
                 # Increase total scan count by 1
                 self.scanCount = self.scanCount + 1
                 # Update file name
-                self.fileName = unicode(QDate.currentDate().year()) \ + unicode(format(QDate.currentDate().month(), '02d')) \ + unicode(format(QDate.currentDate().day(), '02d')) \ + "_" + unicode(format(self.scanCount, '03d')) \ + "_Sample"
+                self.fileName = unicode(QDate.currentDate().year()) \
+                                + unicode(format(QDate.currentDate().month(), '02d')) \
+                                + unicode(format(QDate.currentDate().day(), '02d')) \
+                                + "_" + unicode(format(self.scanCount, '03d')) \
+                                + "_Sample"
                 # Show file name
                 self.ui.FileName.setText(self.fileName)
     
@@ -1389,6 +1411,13 @@ class MyForm(QtGui.QDialog):
         self.directory = dir + "/"
         # Show self.directory
         self.ui.Directory.setText(self.directory)
+
+    '''
+    "AbortScan clicked" event handler
+    '''
+    @QtCore.pyqtSlot()
+    def on_AbortScan_clicked(self, checked=None):
+        self.abort = 1
 
 '''
 main method
