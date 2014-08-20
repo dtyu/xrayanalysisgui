@@ -612,8 +612,7 @@ class MyForm(QtGui.QDialog):
                     endPosY = self.yPos + self.height_VL                    
 
                     print "Start"
-                    # len(self.oriImageData_XR)
-                    # for i in range(len(self.oriImageData_XR)):
+
                     for i in xrange(startPosY,endPosY,self.scanStepY):
                         # Show TimeLeft
                         self.ui.TimeLeft.setText(unicode(i-startPosY+1)+" / "+unicode(len(self.oriImageData_XR)))
@@ -675,6 +674,8 @@ class MyForm(QtGui.QDialog):
                         
                             # Call repaint method to refresh GUI
                             self.ui.graphicsView_XR.viewport().repaint()
+                            # Adjust viewport to fit pixmapItem
+                            self.ui.graphicsView_XR.fitInView(pixmapItem_XR)
                             # Wait for 1 second
                             time.sleep(1)
 
