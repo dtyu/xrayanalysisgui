@@ -550,8 +550,8 @@ class MyForm(QtGui.QDialog):
             QMessageBox.about(self, "Error","Please select ROI first!")
         else:
             # Check if motor has moved to top-left point
-            if (self.xPos == int(self.ui.TopLeftX.text())
-                    or self.yPos == int(self.ui.TopLeftY.text())):
+            if (self.xPos != int(self.ui.TopLeftX.text())
+                    or self.yPos != int(self.ui.TopLeftY.text())):
                 print "Please click MoveToStartPoint button first!"
                 QMessageBox.about(self, "Error","Please click MoveToStartPoint button first!")
             else:
@@ -599,12 +599,41 @@ class MyForm(QtGui.QDialog):
                                                          len(self.oriImageData_XR[0])),
                                                         dtype='d')
                     
+                    self.width_VL = 25
+                    self.height_VL = 23
+                    # motor coordinates of ROI
+                    startPosX = self.xPos
+                    endPosX = self.xPos + self.width_VL
+                    startPosY = self.yPos
+                    endPosY = self.yPos + self.height_VL                    
+
                     print "Start"
                     # len(self.oriImageData_XR)
-                    for i in range(len(self.oriImageData_XR)):
+                    # for i in range(len(self.oriImageData_XR)):
+                    for i in xrange(startPosY,endPosY,self.scanStepY):
                         # Show TimeLeft
-                        self.ui.TimeLeft.setText(unicode(i+1)+" / "+unicode(len(self.oriImageData_XR)))
-                        
+                        self.ui.TimeLeft.setText(unicode(i-startPosY+1)+" / "+unicode(len(self.oriImageData_XR)))
+
+                        '''
+                        # Move motor1 to endPosX
+                        self.motor1.put('VAL',endPosX)
+                        while (self.motor1.get('RBV') != endPosX):
+                            time.sleep(0.001)
+                            self.xPos = self.motor1.get('RBV')
+                            self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
+                            self.ui.MotorPositionX.repaint()
+                        '''
+                        for j in xrange(startPosX,endPosX,self.scanStepX):
+                            # Move motor1 to next position
+                            self.xPos = j
+                            self.motor1.put('VAL',self.xPos)
+                            while (self.motor1.get('RBV') != self.xPos):
+                                time.sleep(0.001)
+                                self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
+                                self.ui.MotorPositionX.repaint()
+                            # Acquire scan data #
+                            time.sleep(0.5)
+                         
                         # Write data
                         dset[i,:] = self.oriImageData_XR[i]
 
@@ -649,6 +678,20 @@ class MyForm(QtGui.QDialog):
                         # Wait for 1 second
                         time.sleep(1)
 
+                        # Move motor1 back to startPosX
+                        self.motor1.put('VAL',startPosX)
+                        while (self.motor1.get('RBV') != startPosX):
+                            time.sleep(0.001)
+                            self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
+                            self.ui.MotorPositionX.repaint()
+                        # Move motor2 to next line
+                        self.yPos = i
+                        self.motor2.put('VAL',self.yPos)
+                        while (self.motor2.get('RBV') != self.yPos):
+                            time.sleep(0.001)
+                            self.ui.MotorPositionY.setText(unicode(self.motor2.get('RBV')))
+                            self.ui.MotorPositionY.repaint()
+
                     print "Finished"
                     # Connect editingFinished event with event handlers
                     self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
@@ -675,6 +718,13 @@ class MyForm(QtGui.QDialog):
                     self.selected_XR = 0
                     # Remove selectedRectItem_XR
                     self.scene_XR.removeItem(self.selectedRectItem_XR)
+                
+                # Increase total scan count by 1
+                self.scanCount = self.scanCount + 1
+                # Update file name
+                self.fileName = unicode(QDate.currentDate().year()) \ + unicode(format(QDate.currentDate().month(), '02d')) \ + unicode(format(QDate.currentDate().day(), '02d')) \ + "_" + unicode(format(self.scanCount, '03d')) \ + "_Sample"
+                # Show file name
+                self.ui.FileName.setText(self.fileName)
     
     '''
     "MoveToStartPoint clicked" event handler
@@ -1087,10 +1137,8 @@ class MyForm(QtGui.QDialog):
             self.scene_VL.clear()
             self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
             self.scene_VL.addItem(self.pixmapItem_VL)
-            # Clear scene_XR, Reload pixmap_XR
+            # Clear scene_XR
             self.scene_XR.clear()
-            self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-            self.scene_XR.addItem(self.pixmapItem_XR)
             # If ROI is in scene_VL
             if (self.selected_VL == 1):
                 # Update startPos_VL
@@ -1125,10 +1173,8 @@ class MyForm(QtGui.QDialog):
             self.scene_VL.clear()
             self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
             self.scene_VL.addItem(self.pixmapItem_VL)
-            # Clear scene_XR, Reload pixmap_XR
+            # Clear scene_XR
             self.scene_XR.clear()
-            self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-            self.scene_XR.addItem(self.pixmapItem_XR)
             # If ROI is in scene_VL
             if (self.selected_VL == 1):
                 # Update startPos_VL
@@ -1163,10 +1209,8 @@ class MyForm(QtGui.QDialog):
             self.scene_VL.clear()
             self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
             self.scene_VL.addItem(self.pixmapItem_VL)
-            # Clear scene_XR, Reload pixmap_XR
+            # Clear scene_XR
             self.scene_XR.clear()
-            self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-            self.scene_XR.addItem(self.pixmapItem_XR)
             # If ROI is in scene_VL
             if (self.selected_VL == 1):
                 # Update startPos_VL
@@ -1201,10 +1245,8 @@ class MyForm(QtGui.QDialog):
             self.scene_VL.clear()
             self.pixmapItem_VL = QtGui.QGraphicsPixmapItem(self.pixmap_VL)
             self.scene_VL.addItem(self.pixmapItem_VL)
-            # Clear scene_XR, Reload pixmap_XR
+            # Clear scene_XR
             self.scene_XR.clear()
-            self.pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-            self.scene_XR.addItem(self.pixmapItem_XR)
             # If ROI is in scene_VL
             if (self.selected_VL == 1):
                 # Update startPos_VL
@@ -1344,7 +1386,7 @@ class MyForm(QtGui.QDialog):
                                                self.directory,
                                                QFileDialog.ShowDirsOnly | QFileDialog.DontResolveSymlinks);
         # Update self.directory
-        self.directory = dir + "\\"
+        self.directory = dir + "/"
         # Show self.directory
         self.ui.Directory.setText(self.directory)
 
