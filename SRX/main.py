@@ -19,6 +19,7 @@ from copy import deepcopy
 
 import epics
 import time
+import threading
 
 # Class for the main Dialog
 class MyForm(QtGui.QDialog):
@@ -602,116 +603,11 @@ class MyForm(QtGui.QDialog):
                                                         (len(self.oriImageData_XR),
                                                          len(self.oriImageData_XR[0])),
                                                         dtype='d')
+
+                    self.abort_event = threading.Event()
+                    self.c_thread = threading.Thread(target=self.scanControl, args=(self.abort_event,))
+                    self.c_thread.start()                   
                     
-                    self.width_VL = 25
-                    self.height_VL = 23
-                    # motor coordinates of ROI
-                    startPosX = self.xPos
-                    endPosX = self.xPos + self.width_VL
-                    startPosY = self.yPos
-                    endPosY = self.yPos + self.height_VL                    
-
-                    print "Start"
-
-                    for i in xrange(startPosY,endPosY,self.scanStepY):
-                        # Show TimeLeft
-                        self.ui.TimeLeft.setText(unicode(i-startPosY+1)+" / "+unicode(len(self.oriImageData_XR)))
-
-                        '''
-                        # Move motor1 to endPosX
-                        self.motor1.put('VAL',endPosX)
-                        while (self.motor1.get('RBV') != endPosX):
-                            time.sleep(0.001)
-                            self.xPos = self.motor1.get('RBV')
-                            self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
-                            self.ui.MotorPositionX.repaint()
-                        '''
-                        for j in xrange(startPosX,endPosX,self.scanStepX):
-                            if (self.abort != 1):
-                                # Move motor1 to next position
-                                self.xPos = j
-                                self.motor1.put('VAL',self.xPos)
-                                while (self.motor1.get('RBV') != self.xPos):
-                                    time.sleep(0.001)
-                                    self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
-                                    self.ui.MotorPositionX.repaint()
-                                self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
-                                self.ui.MotorPositionX.repaint()
-                                # Acquire scan data #
-                                time.sleep(0.5)
-
-                        if (self.abort != 1): 
-                            # Write data
-                            dset[i-startPosY,:] = self.oriImageData_XR[i-startPosY]
-
-                            # self.tempFile = h5py.File('mytestfile.h5','r+')
-                            self.imageData_XR = self.testFile['subgroup/dataset'] 
-                        
-                            # Get max & min pixel value
-                            self.scale_min = np.min(self.imageData_XR)
-                            self.scale_max = np.max(self.imageData_XR)
-                        	# Show max & min value
-                            self.ui.minPixelValue.setText(unicode(self.scale_min))
-                            self.ui.maxPixelValue.setText(unicode(self.scale_max))
-                        
-                            # Transfer newImageData_XR to Image_XR
-                            myimage = unicode(self.directory+self.fileName+".tif")
-                            plt.imsave(myimage, self.imageData_XR, cmap=plt.cm.gray)
-                            
-                            self.pixmap_XR = QtGui.QPixmap(unicode(self.directory+self.fileName+".tif"))
-                        
-                            # Resize pixmap_XR
-                            self.sizeWidth = 200
-                            self.sizeHeight = 200
-                            self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
-
-                            # Update pixmapItem_XR
-                            pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
-                            # Add pixapItem_XR
-                            self.scene_XR.addItem(pixmapItem_XR)
-                            # Set scene_XR in graphicsView_XR
-                            self.ui.graphicsView_XR.setScene(self.scene_XR)
-                        
-                            # Call repaint method to refresh GUI
-                            self.ui.graphicsView_XR.viewport().repaint()
-                            # Adjust viewport to fit pixmapItem
-                            self.ui.graphicsView_XR.fitInView(pixmapItem_XR)
-                            # Wait for 1 second
-                            time.sleep(1)
-
-                        	# Move motor1 back to startPosX
-                            self.motor1.put('VAL',startPosX)
-                            while (self.motor1.get('RBV') != startPosX):
-                                time.sleep(0.001)
-                                self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
-                                self.ui.MotorPositionX.repaint()
-                            # Move motor2 to next line
-                            self.yPos = i+self.scanStepY
-                            print self.yPos
-                            self.motor2.put('VAL',self.yPos)
-                            while (self.motor2.get('RBV') != self.yPos):
-                                time.sleep(0.001)
-                                self.ui.MotorPositionY.setText(unicode(self.motor2.get('RBV')))
-                                self.ui.MotorPositionY.repaint()
-                            self.ui.MotorPositionY.setText(unicode(self.motor2.get('RBV')))
-                            self.ui.MotorPositionY.repaint()
-                        else:
-							# Show warning message
-                            QMessageBox.about(self, "Warning","Abort scan Progress!")
-                            # Increase total scan count by 1
-                            self.scanCount = self.scanCount + 1
-                            # Update file name
-                            self.fileName = unicode(QDate.currentDate().year()) \
-                                            + unicode(format(QDate.currentDate().month(), '02d')) \
-                                            + unicode(format(QDate.currentDate().day(), '02d')) \
-                                            + "_" + unicode(format(self.scanCount, '03d')) \
-                                            + "_Sample"
-                            # Show file name
-                            self.ui.FileName.setText(self.fileName)
-                            # Set abort signal back to 0
-                            self.abort = 0
-
-                    print "Finished"
                     # Connect editingFinished event with event handlers
                     self.ui.minPixelValue.editingFinished.connect(self.minPixelValue_EditingFinished)
                     self.ui.maxPixelValue.editingFinished.connect(self.maxPixelValue_EditingFinished)
@@ -749,6 +645,115 @@ class MyForm(QtGui.QDialog):
                 # Show file name
                 self.ui.FileName.setText(self.fileName)
     
+    def scanControl(self,abort_event):
+
+        while not abort_event.isSet():
+            self.width_VL = 25
+            self.height_VL = 23
+            # motor coordinates of ROI
+            startPosX = self.xPos
+            endPosX = self.xPos + self.width_VL
+            startPosY = self.yPos
+            endPosY = self.yPos + self.height_VL                    
+
+            print "Start"
+
+            for i in xrange(startPosY,endPosY,self.scanStepY):
+                # Show TimeLeft
+                self.ui.TimeLeft.setText(unicode(i-startPosY+1)+" / "+unicode(len(self.oriImageData_XR)))
+
+                '''
+                # Move motor1 to endPosX
+                self.motor1.put('VAL',endPosX)
+                while (self.motor1.get('RBV') != endPosX):
+                    time.sleep(0.001)
+                    self.xPos = self.motor1.get('RBV')
+                    self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
+                    self.ui.MotorPositionX.repaint()
+                '''
+                for j in xrange(startPosX,endPosX,self.scanStepX):
+                    # Move motor1 to next position
+                    self.xPos = j
+                    self.motor1.put('VAL',self.xPos)
+                    while (self.motor1.get('RBV') != self.xPos):
+                        time.sleep(0.001)
+                        self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
+                        self.ui.MotorPositionX.repaint()
+                    self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
+                    self.ui.MotorPositionX.repaint()
+                    # Acquire scan data #
+                    time.sleep(0.5)
+
+                # Write data
+                dset[i-startPosY,:] = self.oriImageData_XR[i-startPosY]
+
+                # self.tempFile = h5py.File('mytestfile.h5','r+')
+                self.imageData_XR = self.testFile['subgroup/dataset'] 
+                        
+                # Get max & min pixel value
+                self.scale_min = np.min(self.imageData_XR)
+                self.scale_max = np.max(self.imageData_XR)
+                # Show max & min value
+                self.ui.minPixelValue.setText(unicode(self.scale_min))
+                self.ui.maxPixelValue.setText(unicode(self.scale_max))
+                        
+                # Transfer newImageData_XR to Image_XR
+                myimage = unicode(self.directory+self.fileName+".tif")
+                plt.imsave(myimage, self.imageData_XR, cmap=plt.cm.gray)
+                            
+                self.pixmap_XR = QtGui.QPixmap(unicode(self.directory+self.fileName+".tif"))
+                        
+                # Resize pixmap_XR
+                self.sizeWidth = 200
+                self.sizeHeight = 200
+                self.pixmap_XR = self.pixmap_XR.scaled(self.sizeWidth,self.sizeHeight,QtCore.Qt.IgnoreAspectRatio)
+
+                # Update pixmapItem_XR
+                pixmapItem_XR = QtGui.QGraphicsPixmapItem(self.pixmap_XR)
+                # Add pixapItem_XR
+                self.scene_XR.addItem(pixmapItem_XR)
+                # Set scene_XR in graphicsView_XR
+                self.ui.graphicsView_XR.setScene(self.scene_XR)
+                        
+                # Call repaint method to refresh GUI
+                self.ui.graphicsView_XR.viewport().repaint()
+                # Adjust viewport to fit pixmapItem
+                self.ui.graphicsView_XR.fitInView(pixmapItem_XR)
+                # Wait for 1 second
+                time.sleep(1)
+
+                # Move motor1 back to startPosX
+                self.motor1.put('VAL',startPosX)
+                while (self.motor1.get('RBV') != startPosX):
+                    time.sleep(0.001)
+                    self.ui.MotorPositionX.setText(unicode(self.motor1.get('RBV')))
+                    self.ui.MotorPositionX.repaint()
+                # Move motor2 to next line
+                self.yPos = i+self.scanStepY
+                print self.yPos
+                self.motor2.put('VAL',self.yPos)
+                while (self.motor2.get('RBV') != self.yPos):
+                    time.sleep(0.001)
+                    self.ui.MotorPositionY.setText(unicode(self.motor2.get('RBV')))
+                    self.ui.MotorPositionY.repaint()
+                self.ui.MotorPositionY.setText(unicode(self.motor2.get('RBV')))
+                self.ui.MotorPositionY.repaint()
+##                        # Show warning message
+##                        QMessageBox.about(self, "Warning","Abort scan Progress!")
+##                        # Increase total scan count by 1
+##                        self.scanCount = self.scanCount + 1
+##                        # Update file name
+##                        self.fileName = unicode(QDate.currentDate().year()) \
+##                                        + unicode(format(QDate.currentDate().month(), '02d')) \
+##                                        + unicode(format(QDate.currentDate().day(), '02d')) \
+##                                        + "_" + unicode(format(self.scanCount, '03d')) \
+##                                        + "_Sample"
+##                        # Show file name
+##                        self.ui.FileName.setText(self.fileName)
+##                        # Set abort signal back to 0
+##                        self.abort = 0
+
+            print "Finished"
     '''
     "MoveToStartPoint clicked" event handler
     '''
@@ -1419,7 +1424,7 @@ class MyForm(QtGui.QDialog):
     @QtCore.pyqtSlot()
     def on_AbortScan_clicked(self, checked=None):
         print "Abort"
-        self.abort = 1
+        self.abort_event.set()
 
 '''
 main method
