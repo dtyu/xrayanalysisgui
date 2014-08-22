@@ -375,7 +375,7 @@ class MyForm(QtGui.QDialog):
                 # Show top-left point coordinates
                 self.ui.TopLeftX.setText(unicode(self.startPos_XR.x()))
                 self.ui.TopLeftY.setText(unicode(self.startPos_XR.y()))
-                # Start rubberBnad
+                # Start rubberBand
                 self.rubberBand_XR.setGeometry(QtCore.QRect(self.startPos_XR, QtCore.QSize()))
                 self.rubberBand_XR.show()
                 
@@ -582,16 +582,15 @@ class MyForm(QtGui.QDialog):
                     print "Open file 'mca_arr'"
                     self.calib = self.hdf5File['MAPS/energy_calib']
                     print "Open file 'energy_calib'"
-##                    # data in y coordinates
-##                    self.plotData = [0]*2000
-##                    # data in x coordinates
-##                    self.energy = [0]*2000
-##                    # Calculate plotData & energy
-##                    for i in range(2000):
-##                        self.plotData[i] = np.sum(self.loadData_Plot[i])
-##                        self.energy[i] = i * self.calib[1] + self.calib[0]
-##                    # Plot
-##                    self.paintPlot()
+
+                    # data in y coordinates
+                    self.plotData = [0]*2000
+                    # data in x coordinates
+                    self.energy = [0]*2000
+                    # Calculate energy
+                    for i in range(2000):
+                        self.energy[i] = i * self.calib[1] + self.calib[0]
+
                     # Retrieve data of one element (Mg in this case)
                     self.oriImageData_XR = self.loadData_XR[0]
 
@@ -671,11 +670,21 @@ class MyForm(QtGui.QDialog):
                             self.scene_XR.addItem(pixmapItem_XR)
                             # Set scene_XR in graphicsView_XR
                             self.ui.graphicsView_XR.setScene(self.scene_XR)
-                        
-                            # Call repaint method to refresh GUI
+                            
+                            # Calculate plotData
+                            for k in range(2000):
+                                self.plotData[k] = self.plotData[k] + np.sum(self.loadData_Plot[k,i-startPosY])
+                            # Plot
+                            self.paintPlot()
+                            # Call repaint method to refresh graphicsView_Plot
+                            self.ui.graphicsView_Plot.viewport().repaint()
+                            # Adjust viewport to fit scene_Plot
+                            self.ui.graphicsView_XR.fitInView(self.scene_Plot.sceneRect())
+                            # Call repaint method to refresh graphicsView_XR
                             self.ui.graphicsView_XR.viewport().repaint()
-                            # Adjust viewport to fit the pixmapItem
+                            # Adjust viewport to fit pixmapItem_XR
                             self.ui.graphicsView_XR.fitInView(pixmapItem_XR)
+
                             # Wait for 1 second
                             time.sleep(1)
 
