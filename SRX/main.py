@@ -676,14 +676,14 @@ class MyForm(QtGui.QDialog):
                                 self.plotData[k] = self.plotData[k] + np.sum(self.loadData_Plot[k,i-startPosY])
                             # Plot
                             self.paintPlot()
-                            # Call repaint method to refresh graphicsView_Plot
-                            self.ui.graphicsView_Plot.viewport().repaint()
                             # Adjust viewport to fit scene_Plot
                             self.ui.graphicsView_XR.fitInView(self.scene_Plot.sceneRect())
-                            # Call repaint method to refresh graphicsView_XR
-                            self.ui.graphicsView_XR.viewport().repaint()
                             # Adjust viewport to fit pixmapItem_XR
                             self.ui.graphicsView_XR.fitInView(pixmapItem_XR)
+                            # Call repaint method to refresh graphicsView_Plot
+                            self.ui.graphicsView_Plot.viewport().repaint()
+                            # Call repaint method to refresh graphicsView_XR
+                            self.ui.graphicsView_XR.viewport().repaint()
 
                             # Wait for 1 second
                             time.sleep(1)
