@@ -950,6 +950,1826 @@ class MyForm(QtGui.QDialog):
             self.scanEnergyLevel[1] = level[self.comboBox_Be.currentIndex()]
         
         print self.scanEnergyLevel[1]
+    '''
+    "comboBox_B changed" event handler
+    '''
+    def comboBox_B_Changed(self,event):
+        print "B:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[2][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[2][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_B.currentIndex() == temp:
+            self.scanEnergyLevel[2] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[2] = level[self.comboBox_B.currentIndex()]
+        
+        print self.scanEnergyLevel[2]
+    '''
+    "comboBox_C changed" event handler
+    '''
+    def comboBox_C_Changed(self,event):
+        print "C:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[3][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[3][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_C.currentIndex() == temp:
+            self.scanEnergyLevel[3] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[3] = level[self.comboBox_C.currentIndex()]
+        
+        print self.scanEnergyLevel[3]
+    '''
+    "comboBox_N changed" event handler
+    '''
+    def comboBox_N_Changed(self,event):
+        print "N:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[4][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[4][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_N.currentIndex() == temp:
+            self.scanEnergyLevel[4] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[4] = level[self.comboBox_N.currentIndex()]
+        
+        print self.scanEnergyLevel[4]
+    '''
+    "comboBox_O changed" event handler
+    '''
+    def comboBox_O_Changed(self,event):
+        print "O:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[5][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[5][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_O.currentIndex() == temp:
+            self.scanEnergyLevel[5] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[5] = level[self.comboBox_O.currentIndex()]
+        
+        print self.scanEnergyLevel[5]
+    '''
+    "comboBox_F changed" event handler
+    '''
+    def comboBox_F_Changed(self,event):
+        print "F:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[6][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[6][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_F.currentIndex() == temp:
+            self.scanEnergyLevel[6] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[6] = level[self.comboBox_F.currentIndex()]
+        
+        print self.scanEnergyLevel[6]
+    '''
+    "comboBox_Ne changed" event handler
+    '''
+    def comboBox_Ne_Changed(self,event):
+        print "Ne:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[7][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[7][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ne.currentIndex() == temp:
+            self.scanEnergyLevel[7] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[7] = level[self.comboBox_Ne.currentIndex()]
+        
+        print self.scanEnergyLevel[7]
+    '''
+    "comboBox_Na changed" event handler
+    '''
+    def comboBox_Na_Changed(self,event):
+        print "Na:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[8][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[8][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Na.currentIndex() == temp:
+            self.scanEnergyLevel[8] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[8] = level[self.comboBox_Na.currentIndex()]
+        
+        print self.scanEnergyLevel[8]
+    '''
+    "comboBox_Mg changed" event handler
+    '''
+    def comboBox_Mg_Changed(self,event):
+        print "Mg:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[9][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[9][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Mg.currentIndex() == temp:
+            self.scanEnergyLevel[9] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[9] = level[self.comboBox_Mg.currentIndex()]
+        
+        print self.scanEnergyLevel[9]
+    '''
+    "comboBox_Al changed" event handler
+    '''
+    def comboBox_Al_Changed(self,event):
+        print "B:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[10][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[10][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Al.currentIndex() == temp:
+            self.scanEnergyLevel[10] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[10] = level[self.comboBox_Al.currentIndex()]
+        
+        print self.scanEnergyLevel[10]
+    '''
+    "comboBox_Si changed" event handler
+    '''
+    def comboBox_Si_Changed(self,event):
+        print "Si:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[11][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[11][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Si.currentIndex() == temp:
+            self.scanEnergyLevel[11] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[11] = level[self.comboBox_Si.currentIndex()]
+        
+        print self.scanEnergyLevel[11]
+    '''
+    "comboBox_P changed" event handler
+    '''
+    def comboBox_P_Changed(self,event):
+        print "P:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[12][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[12][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_P.currentIndex() == temp:
+            self.scanEnergyLevel[12] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[12] = level[self.comboBox_P.currentIndex()]
+        
+        print self.scanEnergyLevel[12]
+    '''
+    "comboBox_S changed" event handler
+    '''
+    def comboBox_S_Changed(self,event):
+        print "S:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[13][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[13][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_S.currentIndex() == temp:
+            self.scanEnergyLevel[13] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[13] = level[self.comboBox_S.currentIndex()]
+        
+        print self.scanEnergyLevel[13]
+    '''
+    "comboBox_Cl changed" event handler
+    '''
+    def comboBox_Cl_Changed(self,event):
+        print "Cl:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[14][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[14][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Cl.currentIndex() == temp:
+            self.scanEnergyLevel[14] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[14] = level[self.comboBox_Cl.currentIndex()]
+        
+        print self.scanEnergyLevel[14]
+    '''
+    "comboBox_Ar changed" event handler
+    '''
+    def comboBox_Ar_Changed(self,event):
+        print "Ar:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[15][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[15][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ar.currentIndex() == temp:
+            self.scanEnergyLevel[15] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[15] = level[self.comboBox_Ar.currentIndex()]
+        
+        print self.scanEnergyLevel[15]
+    '''
+    "comboBox_K changed" event handler
+    '''
+    def comboBox_K_Changed(self,event):
+        print "K:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[16][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[16][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_K.currentIndex() == temp:
+            self.scanEnergyLevel[16] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[16] = level[self.comboBox_K.currentIndex()]
+        
+        print self.scanEnergyLevel[16]
+    '''
+    "comboBox_Ca changed" event handler
+    '''
+    def comboBox_Ca_Changed(self,event):
+        print "Ca:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[17][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[17][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ca.currentIndex() == temp:
+            self.scanEnergyLevel[17] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[17] = level[self.comboBox_Ca.currentIndex()]
+        
+        print self.scanEnergyLevel[17]
+    '''
+    "comboBox_Sc changed" event handler
+    '''
+    def comboBox_Sc_Changed(self,event):
+        print "Sc:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[18][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[18][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Sc.currentIndex() == temp:
+            self.scanEnergyLevel[18] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[18] = level[self.comboBox_Sc.currentIndex()]
+        
+        print self.scanEnergyLevel[18]
+    '''
+    "comboBox_Ti changed" event handler
+    '''
+    def comboBox_Ti_Changed(self,event):
+        print "Ti:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[19][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[19][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ti.currentIndex() == temp:
+            self.scanEnergyLevel[19] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[19] = level[self.comboBox_Ti.currentIndex()]
+        
+        print self.scanEnergyLevel[19]
+    '''
+    "comboBox_V changed" event handler
+    '''
+    def comboBox_V_Changed(self,event):
+        print "V:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[20][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[20][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_V.currentIndex() == temp:
+            self.scanEnergyLevel[20] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[20] = level[self.comboBox_V.currentIndex()]
+        
+        print self.scanEnergyLevel[20]
+    '''
+    "comboBox_Cr changed" event handler
+    '''
+    def comboBox_Cr_Changed(self,event):
+        print "Cr:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[21][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[21][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Cr.currentIndex() == temp:
+            self.scanEnergyLevel[21] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[21] = level[self.comboBox_Cr.currentIndex()]
+        
+        print self.scanEnergyLevel[21]
+    '''
+    "comboBox_Mn changed" event handler
+    '''
+    def comboBox_Mn_Changed(self,event):
+        print "Mn:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[22][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[22][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Mn.currentIndex() == temp:
+            self.scanEnergyLevel[22] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[22] = level[self.comboBox_Mn.currentIndex()]
+        
+        print self.scanEnergyLevel[22]
+    '''
+    "comboBox_Fe changed" event handler
+    '''
+    def comboBox_Fe_Changed(self,event):
+        print "Fe:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[23][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[23][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Fe.currentIndex() == temp:
+            self.scanEnergyLevel[23] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[23] = level[self.comboBox_Fe.currentIndex()]
+        
+        print self.scanEnergyLevel[23]
+    '''
+    "comboBox_Co changed" event handler
+    '''
+    def comboBox_Co_Changed(self,event):
+        print "Co:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[24][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[24][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Co.currentIndex() == temp:
+            self.scanEnergyLevel[24] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[24] = level[self.comboBox_Co.currentIndex()]
+        
+        print self.scanEnergyLevel[24]
+    '''
+    "comboBox_Ni changed" event handler
+    '''
+    def comboBox_Ni_Changed(self,event):
+        print "Ni:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[25][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[25][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ni.currentIndex() == temp:
+            self.scanEnergyLevel[25] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[25] = level[self.comboBox_Ni.currentIndex()]
+        
+        print self.scanEnergyLevel[25]
+    '''
+    "comboBox_Cu changed" event handler
+    '''
+    def comboBox_Cu_Changed(self,event):
+        print "Cu:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[26][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[26][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Cu.currentIndex() == temp:
+            self.scanEnergyLevel[26] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[26] = level[self.comboBox_Cu.currentIndex()]
+        
+        print self.scanEnergyLevel[26]
+    '''
+    "comboBox_Zn changed" event handler
+    '''
+    def comboBox_Zn_Changed(self,event):
+        print "Zn:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[27][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[27][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Zn.currentIndex() == temp:
+            self.scanEnergyLevel[27] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[27] = level[self.comboBox_Zn.currentIndex()]
+        
+        print self.scanEnergyLevel[27]
+    '''
+    "comboBox_Ga changed" event handler
+    '''
+    def comboBox_Ga_Changed(self,event):
+        print "Ga:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[28][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[28][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ga.currentIndex() == temp:
+            self.scanEnergyLevel[28] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[28] = level[self.comboBox_Ga.currentIndex()]
+        
+        print self.scanEnergyLevel[28]
+    '''
+    "comboBox_Ge changed" event handler
+    '''
+    def comboBox_Ge_Changed(self,event):
+        print "Ge:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[29][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[29][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ge.currentIndex() == temp:
+            self.scanEnergyLevel[29] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[29] = level[self.comboBox_Ge.currentIndex()]
+        
+        print self.scanEnergyLevel[29]
+    '''
+    "comboBox_As changed" event handler
+    '''
+    def comboBox_As_Changed(self,event):
+        print "As:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[30][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[30][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_As.currentIndex() == temp:
+            self.scanEnergyLevel[30] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[30] = level[self.comboBox_As.currentIndex()]
+        
+        print self.scanEnergyLevel[30]
+    '''
+    "comboBox_Se changed" event handler
+    '''
+    def comboBox_Se_Changed(self,event):
+        print "Se:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[31][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[31][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Se.currentIndex() == temp:
+            self.scanEnergyLevel[31] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[31] = level[self.comboBox_Se.currentIndex()]
+        
+        print self.scanEnergyLevel[31]
+    '''
+    "comboBox_Br changed" event handler
+    '''
+    def comboBox_Br_Changed(self,event):
+        print "Br:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[32][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[32][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Br.currentIndex() == temp:
+            self.scanEnergyLevel[32] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[32] = level[self.comboBox_Br.currentIndex()]
+        
+        print self.scanEnergyLevel[32]
+    '''
+    "comboBox_Kr changed" event handler
+    '''
+    def comboBox_Kr_Changed(self,event):
+        print "Kr:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[33][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[33][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Kr.currentIndex() == temp:
+            self.scanEnergyLevel[33] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[33] = level[self.comboBox_Kr.currentIndex()]
+        
+        print self.scanEnergyLevel[33]
+    '''
+    "comboBox_Rb changed" event handler
+    '''
+    def comboBox_Rb_Changed(self,event):
+        print "Rb:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[34][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[34][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Rb.currentIndex() == temp:
+            self.scanEnergyLevel[34] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[34] = level[self.comboBox_Rb.currentIndex()]
+        
+        print self.scanEnergyLevel[34]
+    '''
+    "comboBox_Sr changed" event handler
+    '''
+    def comboBox_Sr_Changed(self,event):
+        print "Sr:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[35][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[35][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Sr.currentIndex() == temp:
+            self.scanEnergyLevel[35] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[35] = level[self.comboBox_Sr.currentIndex()]
+        
+        print self.scanEnergyLevel[35]
+    '''
+    "comboBox_Y changed" event handler
+    '''
+    def comboBox_Y_Changed(self,event):
+        print "Y:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[36][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[36][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Y.currentIndex() == temp:
+            self.scanEnergyLevel[36] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[36] = level[self.comboBox_Y.currentIndex()]
+        
+        print self.scanEnergyLevel[36]
+    '''
+    "comboBox_Zr changed" event handler
+    '''
+    def comboBox_Zr_Changed(self,event):
+        print "Zr:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[37][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[37][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Zr.currentIndex() == temp:
+            self.scanEnergyLevel[37] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[37] = level[self.comboBox_Zr.currentIndex()]
+        
+        print self.scanEnergyLevel[37]
+    '''
+    "comboBox_Nb changed" event handler
+    '''
+    def comboBox_Nb_Changed(self,event):
+        print "Nb:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[38][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[38][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Nb.currentIndex() == temp:
+            self.scanEnergyLevel[38] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[38] = level[self.comboBox_Nb.currentIndex()]
+        
+        print self.scanEnergyLevel[38]
+    '''
+    "comboBox_Mo changed" event handler
+    '''
+    def comboBox_Mo_Changed(self,event):
+        print "Mo:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[39][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[39][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Mo.currentIndex() == temp:
+            self.scanEnergyLevel[39] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[39] = level[self.comboBox_Mo.currentIndex()]
+        
+        print self.scanEnergyLevel[39]
+    '''
+    "comboBox_Tc changed" event handler
+    '''
+    def comboBox_Tc_Changed(self,event):
+        print "Tc:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[40][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[40][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Tc.currentIndex() == temp:
+            self.scanEnergyLevel[40] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[40] = level[self.comboBox_Tc.currentIndex()]
+        
+        print self.scanEnergyLevel[40]
+    '''
+    "comboBox_Ru changed" event handler
+    '''
+    def comboBox_Ru_Changed(self,event):
+        print "Ru:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[41][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[41][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ru.currentIndex() == temp:
+            self.scanEnergyLevel[41] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[41] = level[self.comboBox_Ru.currentIndex()]
+        
+        print self.scanEnergyLevel[41]
+    '''
+    "comboBox_Rh changed" event handler
+    '''
+    def comboBox_Rh_Changed(self,event):
+        print "Rh:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[42][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[42][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Rh.currentIndex() == temp:
+            self.scanEnergyLevel[42] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[42] = level[self.comboBox_Rh.currentIndex()]
+        
+        print self.scanEnergyLevel[42]
+    '''
+    "comboBox_Pd changed" event handler
+    '''
+    def comboBox_Pd_Changed(self,event):
+        print "Pd:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[43][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[43][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Pd.currentIndex() == temp:
+            self.scanEnergyLevel[43] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[43] = level[self.comboBox_Pd.currentIndex()]
+        
+        print self.scanEnergyLevel[43]
+    '''
+    "comboBox_Ag changed" event handler
+    '''
+    def comboBox_Ag_Changed(self,event):
+        print "Ag:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[44][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[44][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ag.currentIndex() == temp:
+            self.scanEnergyLevel[44] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[44] = level[self.comboBox_Ag.currentIndex()]
+        
+        print self.scanEnergyLevel[44]
+    '''
+    "comboBox_Cd changed" event handler
+    '''
+    def comboBox_Cd_Changed(self,event):
+        print "Cd:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[45][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[45][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Cd.currentIndex() == temp:
+            self.scanEnergyLevel[45] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[45] = level[self.comboBox_Cd.currentIndex()]
+        
+        print self.scanEnergyLevel[45]
+    '''
+    "comboBox_In changed" event handler
+    '''
+    def comboBox_In_Changed(self,event):
+        print "In:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[46][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[46][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_In.currentIndex() == temp:
+            self.scanEnergyLevel[46] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[46] = level[self.comboBox_In.currentIndex()]
+        
+        print self.scanEnergyLevel[46]
+    '''
+    "comboBox_Sn changed" event handler
+    '''
+    def comboBox_Sn_Changed(self,event):
+        print "Sn:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[47][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[47][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Sn.currentIndex() == temp:
+            self.scanEnergyLevel[47] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[47] = level[self.comboBox_Sn.currentIndex()]
+        
+        print self.scanEnergyLevel[47]
+    '''
+    "comboBox_Sb changed" event handler
+    '''
+    def comboBox_Sb_Changed(self,event):
+        print "Sb:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[48][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[48][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Sb.currentIndex() == temp:
+            self.scanEnergyLevel[48] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[48] = level[self.comboBox_Sb.currentIndex()]
+        
+        print self.scanEnergyLevel[48]
+    '''
+    "comboBox_Te changed" event handler
+    '''
+    def comboBox_Te_Changed(self,event):
+        print "Te:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[49][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[49][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Te.currentIndex() == temp:
+            self.scanEnergyLevel[49] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[49] = level[self.comboBox_Te.currentIndex()]
+        
+        print self.scanEnergyLevel[49]
+    '''
+    "comboBox_I changed" event handler
+    '''
+    def comboBox_I_Changed(self,event):
+        print "I:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[50][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[50][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_I.currentIndex() == temp:
+            self.scanEnergyLevel[50] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[50] = level[self.comboBox_I.currentIndex()]
+        
+        print self.scanEnergyLevel[50]
+    '''
+    "comboBox_Xe changed" event handler
+    '''
+    def comboBox_Xe_Changed(self,event):
+        print "Xe:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[51][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[51][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Xe.currentIndex() == temp:
+            self.scanEnergyLevel[51] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[51] = level[self.comboBox_Xe.currentIndex()]
+        
+        print self.scanEnergyLevel[51]
+    '''
+    "comboBox_Cs changed" event handler
+    '''
+    def comboBox_Cs_Changed(self,event):
+        print "Cs:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[52][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[52][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Cs.currentIndex() == temp:
+            self.scanEnergyLevel[52] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[52] = level[self.comboBox_Cs.currentIndex()]
+        
+        print self.scanEnergyLevel[52]
+    '''
+    "comboBox_Ba changed" event handler
+    '''
+    def comboBox_Ba_Changed(self,event):
+        print "Ba:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[53][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[53][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ba.currentIndex() == temp:
+            self.scanEnergyLevel[53] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[53] = level[self.comboBox_Ba.currentIndex()]
+        
+        print self.scanEnergyLevel[53]
+    '''
+    "comboBox_Hf changed" event handler
+    '''
+    def comboBox_Hf_Changed(self,event):
+        print "Hf:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[54][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[54][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Hf.currentIndex() == temp:
+            self.scanEnergyLevel[54] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[54] = level[self.comboBox_Hf.currentIndex()]
+        
+        print self.scanEnergyLevel[54]
+    '''
+    "comboBox_Ta changed" event handler
+    '''
+    def comboBox_Ta_Changed(self,event):
+        print "Ta:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[55][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[55][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ta.currentIndex() == temp:
+            self.scanEnergyLevel[55] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[55] = level[self.comboBox_Ta.currentIndex()]
+        
+        print self.scanEnergyLevel[55]
+    '''
+    "comboBox_W changed" event handler
+    '''
+    def comboBox_W_Changed(self,event):
+        print "W:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[56][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[56][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_W.currentIndex() == temp:
+            self.scanEnergyLevel[56] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[56] = level[self.comboBox_W.currentIndex()]
+        
+        print self.scanEnergyLevel[56]
+    '''
+    "comboBox_Re changed" event handler
+    '''
+    def comboBox_Re_Changed(self,event):
+        print "Re:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[57][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[57][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Re.currentIndex() == temp:
+            self.scanEnergyLevel[57] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[57] = level[self.comboBox_Re.currentIndex()]
+        
+        print self.scanEnergyLevel[57]
+    '''
+    "comboBox_Os changed" event handler
+    '''
+    def comboBox_Os_Changed(self,event):
+        print "Os:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[58][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[58][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Os.currentIndex() == temp:
+            self.scanEnergyLevel[58] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[58] = level[self.comboBox_Os.currentIndex()]
+        
+        print self.scanEnergyLevel[58]
+    '''
+    "comboBox_Ir changed" event handler
+    '''
+    def comboBox_Ir_Changed(self,event):
+        print "Ir:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[59][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[59][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ir.currentIndex() == temp:
+            self.scanEnergyLevel[59] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[59] = level[self.comboBox_Ir.currentIndex()]
+        
+        print self.scanEnergyLevel[59]
+    '''
+    "comboBox_Pt changed" event handler
+    '''
+    def comboBox_Pt_Changed(self,event):
+        print "Pt:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[60][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[60][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Pt.currentIndex() == temp:
+            self.scanEnergyLevel[60] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[60] = level[self.comboBox_Pt.currentIndex()]
+        
+        print self.scanEnergyLevel[60]
+    '''
+    "comboBox_Au changed" event handler
+    '''
+    def comboBox_Au_Changed(self,event):
+        print "Au:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[61][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[61][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Au.currentIndex() == temp:
+            self.scanEnergyLevel[61] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[61] = level[self.comboBox_Au.currentIndex()]
+        
+        print self.scanEnergyLevel[61]
+    '''
+    "comboBox_Hg changed" event handler
+    '''
+    def comboBox_Hg_Changed(self,event):
+        print "Hg:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[62][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[62][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Hg.currentIndex() == temp:
+            self.scanEnergyLevel[62] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[62] = level[self.comboBox_Hg.currentIndex()]
+        
+        print self.scanEnergyLevel[62]
+    '''
+    "comboBox_Tl changed" event handler
+    '''
+    def comboBox_Tl_Changed(self,event):
+        print "Tl:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[63][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[63][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Tl.currentIndex() == temp:
+            self.scanEnergyLevel[63] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[63] = level[self.comboBox_Tl.currentIndex()]
+        
+        print self.scanEnergyLevel[63]
+    '''
+    "comboBox_Pb changed" event handler
+    '''
+    def comboBox_Pb_Changed(self,event):
+        print "Pb:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[64][i] != 0):
+                level[temp] = self.modifiedPhtonEnergy[64][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Pb.currentIndex() == temp:
+            self.scanEnergyLevel[64] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[64] = level[self.comboBox_Pb.currentIndex()]
+        
+        print self.scanEnergyLevel[64]
+    '''
+    "comboBox_Bi changed" event handler
+    '''
+    def comboBox_Bi_Changed(self,event):
+        print "Bi:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[65][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[65][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Bi.currentIndex() == temp:
+            self.scanEnergyLevel[65] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[65] = level[self.comboBox_Bi.currentIndex()]
+        
+        print self.scanEnergyLevel[65]
+    '''
+    "comboBox_Po changed" event handler
+    '''
+    def comboBox_Po_Changed(self,event):
+        print "Po:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[66][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[66][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Po.currentIndex() == temp:
+            self.scanEnergyLevel[66] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[66] = level[self.comboBox_Po.currentIndex()]
+        
+        print self.scanEnergyLevel[66]
+    '''
+    "comboBox_At changed" event handler
+    '''
+    def comboBox_At_Changed(self,event):
+        print "At:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[67][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[67][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_At.currentIndex() == temp:
+            self.scanEnergyLevel[67] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[67] = level[self.comboBox_At.currentIndex()]
+        
+        print self.scanEnergyLevel[67]
+    '''
+    "comboBox_Rn changed" event handler
+    '''
+    def comboBox_Rn_Changed(self,event):
+        print "Rn:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[68][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[68][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Rn.currentIndex() == temp:
+            self.scanEnergyLevel[68] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[68] = level[self.comboBox_Rn.currentIndex()]
+        
+        print self.scanEnergyLevel[68]
+    '''
+    "comboBox_Fr changed" event handler
+    '''
+    def comboBox_Fr_Changed(self,event):
+        print "Fr:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[69][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[69][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Fr.currentIndex() == temp:
+            self.scanEnergyLevel[69] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[69] = level[self.comboBox_Fr.currentIndex()]
+        
+        print self.scanEnergyLevel[69]
+    '''
+    "comboBox_Ra changed" event handler
+    '''
+    def comboBox_Ra_Changed(self,event):
+        print "Ra:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[70][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[70][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ra.currentIndex() == temp:
+            self.scanEnergyLevel[70] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[70] = level[self.comboBox_Ra.currentIndex()]
+        
+        print self.scanEnergyLevel[70]
+    '''
+    "comboBox_La changed" event handler
+    '''
+    def comboBox_La_Changed(self,event):
+        print "La:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[71][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[71][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_La.currentIndex() == temp:
+            self.scanEnergyLevel[71] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[71] = level[self.comboBox_La.currentIndex()]
+        
+        print self.scanEnergyLevel[71]
+    '''
+    "comboBox_Ce changed" event handler
+    '''
+    def comboBox_Ce_Changed(self,event):
+        print "Ce:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[72][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[72][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ce.currentIndex() == temp:
+            self.scanEnergyLevel[72] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[72] = level[self.comboBox_Ce.currentIndex()]
+        
+        print self.scanEnergyLevel[72]
+    '''
+    "comboBox_Pr changed" event handler
+    '''
+    def comboBox_Pr_Changed(self,event):
+        print "Pr:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[73][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[73][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Pr.currentIndex() == temp:
+            self.scanEnergyLevel[73] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[73] = level[self.comboBox_Pr.currentIndex()]
+        
+        print self.scanEnergyLevel[73]
+    '''
+    "comboBox_Nd changed" event handler
+    '''
+    def comboBox_Nd_Changed(self,event):
+        print "Nd:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[74][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[74][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Nd.currentIndex() == temp:
+            self.scanEnergyLevel[74] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[74] = level[self.comboBox_Nd.currentIndex()]
+        
+        print self.scanEnergyLevel[74]
+    '''
+    "comboBox_Pm changed" event handler
+    '''
+    def comboBox_Pm_Changed(self,event):
+        print "Pm:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[75][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[75][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Pm.currentIndex() == temp:
+            self.scanEnergyLevel[75] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[75] = level[self.comboBox_Pm.currentIndex()]
+        
+        print self.scanEnergyLevel[75]
+    '''
+    "comboBox_Sm changed" event handler
+    '''
+    def comboBox_Sm_Changed(self,event):
+        print "Sm:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[76][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[76][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Sm.currentIndex() == temp:
+            self.scanEnergyLevel[76] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[76] = level[self.comboBox_Sm.currentIndex()]
+        
+        print self.scanEnergyLevel[76]
+    '''
+    "comboBox_Eu changed" event handler
+    '''
+    def comboBox_Eu_Changed(self,event):
+        print "Eu:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[77][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[77][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Eu.currentIndex() == temp:
+            self.scanEnergyLevel[77] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[77] = level[self.comboBox_Eu.currentIndex()]
+        
+        print self.scanEnergyLevel[77]
+    '''
+    "comboBox_Gd changed" event handler
+    '''
+    def comboBox_Gd_Changed(self,event):
+        print "Gd:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[78][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[78][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Gd.currentIndex() == temp:
+            self.scanEnergyLevel[78] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[78] = level[self.comboBox_Gd.currentIndex()]
+        
+        print self.scanEnergyLevel[78]
+    '''
+    "comboBox_Tb changed" event handler
+    '''
+    def comboBox_Tb_Changed(self,event):
+        print "Tb:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[79][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[79][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Tb.currentIndex() == temp:
+            self.scanEnergyLevel[79] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[79] = level[self.comboBox_Tb.currentIndex()]
+        
+        print self.scanEnergyLevel[79]
+    '''
+    "comboBox_Dy changed" event handler
+    '''
+    def comboBox_Dy_Changed(self,event):
+        print "Dy:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[80][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[80][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Dy.currentIndex() == temp:
+            self.scanEnergyLevel[80] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[80] = level[self.comboBox_Dy.currentIndex()]
+        
+        print self.scanEnergyLevel[80]
+    '''
+    "comboBox_Ho changed" event handler
+    '''
+    def comboBox_Ho_Changed(self,event):
+        print "Ho:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[81][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[81][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ho.currentIndex() == temp:
+            self.scanEnergyLevel[81] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[81] = level[self.comboBox_Ho.currentIndex()]
+        
+        print self.scanEnergyLevel[81]
+    '''
+    "comboBox_Er changed" event handler
+    '''
+    def comboBox_Er_Changed(self,event):
+        print "Er:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[82][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[82][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Er.currentIndex() == temp:
+            self.scanEnergyLevel[82] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[82] = level[self.comboBox_Er.currentIndex()]
+        
+        print self.scanEnergyLevel[82]
+    '''
+    "comboBox_Tm changed" event handler
+    '''
+    def comboBox_Tm_Changed(self,event):
+        print "Tm:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[83][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[83][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Tm.currentIndex() == temp:
+            self.scanEnergyLevel[83] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[83] = level[self.comboBox_Tm.currentIndex()]
+        
+        print self.scanEnergyLevel[83]
+    '''
+    "comboBox_Yb changed" event handler
+    '''
+    def comboBox_Yb_Changed(self,event):
+        print "Yb:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[84][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[84][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Yb.currentIndex() == temp:
+            self.scanEnergyLevel[84] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[84] = level[self.comboBox_Yb.currentIndex()]
+        
+        print self.scanEnergyLevel[84]
+    '''
+    "comboBox_Lu changed" event handler
+    '''
+    def comboBox_Lu_Changed(self,event):
+        print "Lu:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[85][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[85][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Lu.currentIndex() == temp:
+            self.scanEnergyLevel[85] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[85] = level[self.comboBox_Lu.currentIndex()]
+        
+        print self.scanEnergyLevel[85]
+    '''
+    "comboBox_Ac changed" event handler
+    '''
+    def comboBox_Ac_Changed(self,event):
+        print "Ac:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[86][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[86][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Ac.currentIndex() == temp:
+            self.scanEnergyLevel[86] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[86] = level[self.comboBox_Ac.currentIndex()]
+        
+        print self.scanEnergyLevel[86]
+    '''
+    "comboBox_Th changed" event handler
+    '''
+    def comboBox_Th_Changed(self,event):
+        print "Th:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[87][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[87][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Th.currentIndex() == temp:
+            self.scanEnergyLevel[87] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[87] = level[self.comboBox_Th.currentIndex()]
+        
+        print self.scanEnergyLevel[87]
+    '''
+    "comboBox_Pa changed" event handler
+    '''
+    def comboBox_Pa_Changed(self,event):
+        print "Pa:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[88][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[88][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Pa.currentIndex() == temp:
+            self.scanEnergyLevel[88] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[88] = level[self.comboBox_Pa.currentIndex()]
+        
+        print self.scanEnergyLevel[88]
+    '''
+    "comboBox_U changed" event handler
+    '''
+    def comboBox_U_Changed(self,event):
+        print "U:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[89][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[89][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_U.currentIndex() == temp:
+            self.scanEnergyLevel[89] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[89] = level[self.comboBox_U.currentIndex()]
+        
+        print self.scanEnergyLevel[89]
+    '''
+    "comboBox_Np changed" event handler
+    '''
+    def comboBox_Np_Changed(self,event):
+        print "Np:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[90][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[90][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Np.currentIndex() == temp:
+            self.scanEnergyLevel[90] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[90] = level[self.comboBox_Np.currentIndex()]
+        
+        print self.scanEnergyLevel[90]
+    '''
+    "comboBox_Pu changed" event handler
+    '''
+    def comboBox_Pu_Changed(self,event):
+        print "Pu:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[91][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[91][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Pu.currentIndex() == temp:
+            self.scanEnergyLevel[91] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[91] = level[self.comboBox_Pu.currentIndex()]
+        
+        print self.scanEnergyLevel[91]
+    '''
+    "comboBox_Am changed" event handler
+    '''
+    def comboBox_Am_Changed(self,event):
+        print "Am:"
+        temp = 0
+        level = [0]*len(self.PhotonEnergy[0])
+        # Get all energy levels in range
+        for i in range(len(self.PhotonEnergy[0])):
+            if (self.modifiedPhotonEnergy[92][i] != 0):
+                level[temp] = self.modifiedPhotonEnergy[92][i]
+                temp = temp + 1
+        # Check if "All" is selected
+        if self.comboBox_Am.currentIndex() == temp:
+            self.scanEnergyLevel[92] = -1
+        else:
+            # Update scanEnergyLevel
+            self.scanEnergyLevel[92] = level[self.comboBox_Am.currentIndex()]
+        
+        print self.scanEnergyLevel[92]
     
     '''
     "CellDoubleClicked" event handler
@@ -970,10 +2790,100 @@ class MyForm(QtGui.QDialog):
                 # Update scanEnergyRange
                 self.scanEnergyRange[0] = self.ui.tableWidget.item(row,column).text().toInt()[0]
             # If element == Be
-            if (self.ui.tableWidget.item(row,0).text() == "Be") and \
+            elif (self.ui.tableWidget.item(row,0).text() == "Be") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
                 # Update scanEnergyRange
                 self.scanEnergyRange[1] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == B
+            elif (self.ui.tableWidget.item(row,0).text() == "B") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[2] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == C
+            elif (self.ui.tableWidget.item(row,0).text() == "C") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[3] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == N
+            elif (self.ui.tableWidget.item(row,0).text() == "N") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[4] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == O
+            elif (self.ui.tableWidget.item(row,0).text() == "O") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[5] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == F
+            elif (self.ui.tableWidget.item(row,0).text() == "F") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[6] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ne
+            elif (self.ui.tableWidget.item(row,0).text() == "Ne") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[7] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Na
+            elif (self.ui.tableWidget.item(row,0).text() == "Na") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[8] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Mg
+            elif (self.ui.tableWidget.item(row,0).text() == "Mg") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[9] = self.ui.tableWidget.item(row,column).text().toInt()[0]       
+            # If element == Al
+            elif (self.ui.tableWidget.item(row,0).text() == "Al") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[10] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Si
+            elif (self.ui.tableWidget.item(row,0).text() == "Si") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[11] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == P
+            elif (self.ui.tableWidget.item(row,0).text() == "P") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[12] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == S
+            elif (self.ui.tableWidget.item(row,0).text() == "S") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[13] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Cl
+            elif (self.ui.tableWidget.item(row,0).text() == "Cl") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[14] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ar
+            elif (self.ui.tableWidget.item(row,0).text() == "Ar") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[15] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == K
+            elif (self.ui.tableWidget.item(row,0).text() == "K") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[16] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ca
+            elif (self.ui.tableWidget.item(row,0).text() == "Ca") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[17] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Sc
+            elif (self.ui.tableWidget.item(row,0).text() == "Sc") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[18] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ti
+            elif (self.ui.tableWidget.item(row,0).text() == "Ti") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[19] = self.ui.tableWidget.item(row,column).text().toInt()[0]  
             # If element == V
             elif (self.ui.tableWidget.item(row,0).text() == "V") and \
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
@@ -1089,6 +2999,256 @@ class MyForm(QtGui.QDialog):
                (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
                 # Update scanEnergyRange
                 self.scanEnergyRange[42] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Pd
+            elif (self.ui.tableWidget.item(row,0).text() == "Pd") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                # Update scanEnergyRange
+                self.scanEnergyRange[43] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ag
+            elif (self.ui.tableWidget.item(row,0).text() == "Ag") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                # Update scanEnergyRange
+                self.scanEnergyRange[44] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Cd
+            elif (self.ui.tableWidget.item(row,0).text() == "Cd") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                # Update scanEnergyRange
+                self.scanEnergyRange[45] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == In
+            elif (self.ui.tableWidget.item(row,0).text() == "In") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                # Update scanEnergyRange
+                self.scanEnergyRange[46] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Sn
+            elif (self.ui.tableWidget.item(row,0).text() == "Sn") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                # Update scanEnergyRange
+                self.scanEnergyRange[47] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Sb
+            elif (self.ui.tableWidget.item(row,0).text() == "Sb") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                # Update scanEnergyRange
+                self.scanEnergyRange[48] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Te
+            elif (self.ui.tableWidget.item(row,0).text() == "Te") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 0):
+                # Update scanEnergyRange
+                self.scanEnergyRange[49] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == I
+            elif (self.ui.tableWidget.item(row,0).text() == "I") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[50] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Xe
+            elif (self.ui.tableWidget.item(row,0).text() == "Xe") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[51] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Cs
+            elif (self.ui.tableWidget.item(row,0).text() == "Cs") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[52] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ba
+            elif (self.ui.tableWidget.item(row,0).text() == "Ba") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[53] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Hf
+            elif (self.ui.tableWidget.item(row,0).text() == "Hf") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[54] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ta
+            elif (self.ui.tableWidget.item(row,0).text() == "Ta") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[55] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == W
+            elif (self.ui.tableWidget.item(row,0).text() == "W") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[56] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Re
+            elif (self.ui.tableWidget.item(row,0).text() == "Re") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[57] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Os
+            elif (self.ui.tableWidget.item(row,0).text() == "Os") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[58] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ir
+            elif (self.ui.tableWidget.item(row,0).text() == "Ir") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[59] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Pt
+            elif (self.ui.tableWidget.item(row,0).text() == "Pt") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[60] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Au
+            elif (self.ui.tableWidget.item(row,0).text() == "Au") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[61] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Hg
+            elif (self.ui.tableWidget.item(row,0).text() == "Hg") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[62] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Tl
+            elif (self.ui.tableWidget.item(row,0).text() == "Tl") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[63] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Pb
+            elif (self.ui.tableWidget.item(row,0).text() == "Pb") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[64] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Bi
+            elif (self.ui.tableWidget.item(row,0).text() == "Bi") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[65] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Po
+            elif (self.ui.tableWidget.item(row,0).text() == "Po") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[66] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == At
+            elif (self.ui.tableWidget.item(row,0).text() == "At") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[67] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Rn
+            elif (self.ui.tableWidget.item(row,0).text() == "Rn") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[68] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Fr
+            elif (self.ui.tableWidget.item(row,0).text() == "Fr") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[69] = self.ui.tableWidget.item(row,column).text().toInt()[0]            
+            # If element == Ra
+            elif (self.ui.tableWidget.item(row,0).text() == "Ra") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[70] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == La
+            elif (self.ui.tableWidget.item(row,0).text() == "La") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[71] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ce
+            elif (self.ui.tableWidget.item(row,0).text() == "Ce") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[72] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Pr
+            elif (self.ui.tableWidget.item(row,0).text() == "Pr") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[73] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Nd
+            elif (self.ui.tableWidget.item(row,0).text() == "Nd") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[74] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Pm
+            elif (self.ui.tableWidget.item(row,0).text() == "Pm") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[75] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Sm
+            elif (self.ui.tableWidget.item(row,0).text() == "Sm") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[76] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Eu
+            elif (self.ui.tableWidget.item(row,0).text() == "Eu") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[77] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Gd
+            elif (self.ui.tableWidget.item(row,0).text() == "Gd") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[78] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Tb
+            elif (self.ui.tableWidget.item(row,0).text() == "Tb") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[79] = self.ui.tableWidget.item(row,column).text().toInt()[0]            
+            # If element == Dy
+            elif (self.ui.tableWidget.item(row,0).text() == "Dy") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[80] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ho
+            elif (self.ui.tableWidget.item(row,0).text() == "Ho") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[81] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Er
+            elif (self.ui.tableWidget.item(row,0).text() == "Er") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[82] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Tm
+            elif (self.ui.tableWidget.item(row,0).text() == "Tm") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[83] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Yb
+            elif (self.ui.tableWidget.item(row,0).text() == "Yb") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[84] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Lu
+            elif (self.ui.tableWidget.item(row,0).text() == "Lu") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[85] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Ac
+            elif (self.ui.tableWidget.item(row,0).text() == "Ac") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[86] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Th
+            elif (self.ui.tableWidget.item(row,0).text() == "Th") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[87] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Pa
+            elif (self.ui.tableWidget.item(row,0).text() == "Pa") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[88] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == U
+            elif (self.ui.tableWidget.item(row,0).text() == "U") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[89] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Np
+            elif (self.ui.tableWidget.item(row,0).text() == "Np") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[90] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Pu
+            elif (self.ui.tableWidget.item(row,0).text() == "U") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[91] = self.ui.tableWidget.item(row,column).text().toInt()[0]
+            # If element == Am
+            elif (self.ui.tableWidget.item(row,0).text() == "U") and \
+               (self.ui.tableWidget.item(row,column).text().toInt()[0] != 300):
+                # Update scanEnergyRange
+                self.scanEnergyRange[92] = self.ui.tableWidget.item(row,column).text().toInt()[0]
     
     '''
     "MinPhotonEnergy editingFinished" event handler
