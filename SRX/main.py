@@ -910,6 +910,2372 @@ class MyForm(QtGui.QDialog):
                         self.ui.tableWidget.setItem(self.LineCount,2,
                                                     QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
                         self.LineCount = self.LineCount + 1
+                    elif index == 2:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_B = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_B.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_B.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_B.currentIndexChanged['QString'].connect(self.comboBox_B_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_B)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 3:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_C = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_C.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_C.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_C.currentIndexChanged['QString'].connect(self.comboBox_C_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_C)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 4:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_N = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_N.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_N.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_N.currentIndexChanged['QString'].connect(self.comboBox_N_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_N)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 5:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_O = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_O.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_O.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_O.currentIndexChanged['QString'].connect(self.comboBox_O_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_O)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 6:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_F = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_F.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_F.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_F.currentIndexChanged['QString'].connect(self.comboBox_F_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_F)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 7:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ne = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ne.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ne.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ne.currentIndexChanged['QString'].connect(self.comboBox_Ne_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ne)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 8:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Na = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Na.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Na.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Na.currentIndexChanged['QString'].connect(self.comboBox_Na_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Na)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 9:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Mg = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Mg.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Mg.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Mg.currentIndexChanged['QString'].connect(self.comboBox_Mg_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Mg)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 10:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Al = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Al.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_Al.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Al.currentIndexChanged['QString'].connect(self.comboBox_Al_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Al)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 11:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Si = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Si.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_Si.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Si.currentIndexChanged['QString'].connect(self.comboBox_Si_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Si)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 12:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_P = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_P.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_P.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_P.currentIndexChanged['QString'].connect(self.comboBox_P_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_P)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 13:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_S = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_S.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_S.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_S.currentIndexChanged['QString'].connect(self.comboBox_S_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_S)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 14:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Cl = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Cl.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_Cl.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Cl.currentIndexChanged['QString'].connect(self.comboBox_Cl_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Cl)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 15:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ar = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ar.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_Ar.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ar.currentIndexChanged['QString'].connect(self.comboBox_Ar_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ar)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 16:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_K = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_K.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_K.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_K.currentIndexChanged['QString'].connect(self.comboBox_K_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_K)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 17:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ca = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ca.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_Ca.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ca.currentIndexChanged['QString'].connect(self.comboBox_Ca_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ca)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 18:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Sc = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Sc.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_Sc.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Sc.currentIndexChanged['QString'].connect(self.comboBox_Sc_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Sc)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 19:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ti = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ti.insertItem(temp,
+                                                            self.energyLabel[i] + \
+                                                            QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                            "eV")
+                                temp = temp + 1
+                        self.comboBox_Ti.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ti.currentIndexChanged['QString'].connect(self.comboBox_Ti_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ti)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 20:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_V = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_V.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_V.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_V.currentIndexChanged['QString'].connect(self.comboBox_V_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_V)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 21:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Cr = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Cr.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Cr.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Cr.currentIndexChanged['QString'].connect(self.comboBox_Cr_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Cr)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 22:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Mn = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Mn.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Mn.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Mn.currentIndexChanged['QString'].connect(self.comboBox_Mn_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Mn)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 23:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Fe = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Fe.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Fe.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Fe.currentIndexChanged['QString'].connect(self.comboBox_Fe_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Fe)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 24:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Co = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Co.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Co.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Co.currentIndexChanged['QString'].connect(self.comboBox_Co_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Co)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 25:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ni = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ni.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ni.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ni.currentIndexChanged['QString'].connect(self.comboBox_Ni_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ni)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 26:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Cu = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Cu.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Cu.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Cu.currentIndexChanged['QString'].connect(self.comboBox_Cu_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Cu)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 27:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Zn = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Zn.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Zn.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Zn.currentIndexChanged['QString'].connect(self.comboBox_Zn_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Zn)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 28:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ga = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ga.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ga.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ga.currentIndexChanged['QString'].connect(self.comboBox_Ga_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ga)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 29:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ge = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ge.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ge.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ge.currentIndexChanged['QString'].connect(self.comboBox_Ge_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ge)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 30:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_As = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_As.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_As.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_As.currentIndexChanged['QString'].connect(self.comboBox_As_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_As)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 31:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Se = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Se.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Se.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Se.currentIndexChanged['QString'].connect(self.comboBox_Se_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Se)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 32:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Br = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Br.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Br.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Br.currentIndexChanged['QString'].connect(self.comboBox_Br_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Br)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 33:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Kr = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Kr.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Kr.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Kr.currentIndexChanged['QString'].connect(self.comboBox_Kr_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Kr)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 34:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Rb = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Rb.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Rb.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Rb.currentIndexChanged['QString'].connect(self.comboBox_Rb_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Rb)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 35:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Sr = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Sr.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Sr.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Sr.currentIndexChanged['QString'].connect(self.comboBox_Sr_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Sr)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 36:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Y = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Y.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Y.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Y.currentIndexChanged['QString'].connect(self.comboBox_Y_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Y)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 37:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Zr = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Zr.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Zr.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Zr.currentIndexChanged['QString'].connect(self.comboBox_Zr_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Zr)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 38:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Nb = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Nb.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Nb.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Nb.currentIndexChanged['QString'].connect(self.comboBox_Nb_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Nb)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 39:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Mo = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Mo.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Mo.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Mo.currentIndexChanged['QString'].connect(self.comboBox_Mo_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Mo)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1   
+                    elif index == 40:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Tc = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Tc.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Tc.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Tc.currentIndexChanged['QString'].connect(self.comboBox_Tc_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Tc)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 41:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ru = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ru.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ru.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ru.currentIndexChanged['QString'].connect(self.comboBox_Ru_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ru)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 42:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Rh = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Rh.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Rh.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Rh.currentIndexChanged['QString'].connect(self.comboBox_Rh_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Rh)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 43:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Pd = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Pd.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Pd.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Pd.currentIndexChanged['QString'].connect(self.comboBox_Pd_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Pd)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 44:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ag = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ag.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ag.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ag.currentIndexChanged['QString'].connect(self.comboBox_Ag_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ag)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 45:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Cd = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Cd.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Cd.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Cd.currentIndexChanged['QString'].connect(self.comboBox_Cd_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Cd)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 46:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_In = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_In.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_In.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_In.currentIndexChanged['QString'].connect(self.comboBox_In_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_In)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 47:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Sn = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Sn.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Sn.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Sn.currentIndexChanged['QString'].connect(self.comboBox_Sn_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Sn)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 48:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Sb = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Sb.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Sb.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Sb.currentIndexChanged['QString'].connect(self.comboBox_Sb_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Sb)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 49:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Te = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Te.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Te.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Te.currentIndexChanged['QString'].connect(self.comboBox_Te_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Te)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1     
+                    elif index == 50:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_I = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_I.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_I.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_I.currentIndexChanged['QString'].connect(self.comboBox_I_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_I)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 51:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Xe = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Xe.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Xe.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Xe.currentIndexChanged['QString'].connect(self.comboBox_Xe_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Xe)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 52:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Cs = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Cs.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Cs.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Cs.currentIndexChanged['QString'].connect(self.comboBox_Cs_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Cs)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 53:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ba = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ba.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ba.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ba.currentIndexChanged['QString'].connect(self.comboBox_Ba_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ba)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 54:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Hf = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Hf.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Hf.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Hf.currentIndexChanged['QString'].connect(self.comboBox_Hf_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Hf)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 55:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ta = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ta.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ta.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ta.currentIndexChanged['QString'].connect(self.comboBox_Ta_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ta)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 56:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_W = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_W.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_W.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_W.currentIndexChanged['QString'].connect(self.comboBox_W_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_W)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 57:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Re = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Re.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Re.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Re.currentIndexChanged['QString'].connect(self.comboBox_Re_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Re)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 58:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Os = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Os.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Os.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Os.currentIndexChanged['QString'].connect(self.comboBox_Os_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Os)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 59:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ir = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ir.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ir.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ir.currentIndexChanged['QString'].connect(self.comboBox_Ir_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ir)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1                        
+                    elif index == 60:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Pt = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Pt.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Pt.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Pt.currentIndexChanged['QString'].connect(self.comboBox_Pt_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Pt)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 61:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Au = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Au.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Au.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Au.currentIndexChanged['QString'].connect(self.comboBox_Au_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Au)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 62:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Hg = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Hg.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Hg.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Hg.currentIndexChanged['QString'].connect(self.comboBox_Hg_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Hg)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 63:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Tl = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Tl.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Tl.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Tl.currentIndexChanged['QString'].connect(self.comboBox_Tl_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Tl)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 64:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Pb = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Pb.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Pb.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Pb.currentIndexChanged['QString'].connect(self.comboBox_Pb_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Pb)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 65:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Bi = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Bi.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Bi.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Bi.currentIndexChanged['QString'].connect(self.comboBox_Bi_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Bi)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 66:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Po = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Po.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Po.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Po.currentIndexChanged['QString'].connect(self.comboBox_Po_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Po)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 67:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_At = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_At.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_At.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_At.currentIndexChanged['QString'].connect(self.comboBox_At_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_At)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 68:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Rn = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Rn.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Rn.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Rn.currentIndexChanged['QString'].connect(self.comboBox_Rn_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Rn)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 69:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Fr = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Fr.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Fr.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Fr.currentIndexChanged['QString'].connect(self.comboBox_Fr_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Fr)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1                        
+                    elif index == 70:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ra = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ra.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ra.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ra.currentIndexChanged['QString'].connect(self.comboBox_Ra_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ra)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 71:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_La = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_La.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_La.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_La.currentIndexChanged['QString'].connect(self.comboBox_La_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_La)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 72:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ce = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ce.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ce.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ce.currentIndexChanged['QString'].connect(self.comboBox_Ce_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ce)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 73:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Pr = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Pr.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Pr.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Pr.currentIndexChanged['QString'].connect(self.comboBox_Pr_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Pr)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 74:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Nd = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Nd.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Nd.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Nd.currentIndexChanged['QString'].connect(self.comboBox_Nd_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Nd)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 75:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Pm = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Pm.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Pm.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Pm.currentIndexChanged['QString'].connect(self.comboBox_Pm_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Pm)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 76:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Sm = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Sm.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Sm.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Sm.currentIndexChanged['QString'].connect(self.comboBox_Sm_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Sm)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 77:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Eu = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Eu.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Eu.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Eu.currentIndexChanged['QString'].connect(self.comboBox_Eu_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Eu)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 78:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Gd = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Gd.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Gd.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Gd.currentIndexChanged['QString'].connect(self.comboBox_Gd_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Gd)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 79:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Tb = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Tb.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Tb.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Tb.currentIndexChanged['QString'].connect(self.comboBox_Tb_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Tb)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1                        
+                    elif index == 80:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Dy = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Dy.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Dy.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Dy.currentIndexChanged['QString'].connect(self.comboBox_Dy_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Dy)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 81:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ho = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ho.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ho.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ho.currentIndexChanged['QString'].connect(self.comboBox_Ho_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ho)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 82:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Er = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Er.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Er.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Er.currentIndexChanged['QString'].connect(self.comboBox_Er_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Er)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 83:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Tm = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Tm.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Tm.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Tm.currentIndexChanged['QString'].connect(self.comboBox_Tm_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Tm)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 84:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Yb = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Yb.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Yb.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Yb.currentIndexChanged['QString'].connect(self.comboBox_Yb_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Yb)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 85:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Lu = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Lu.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Lu.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Lu.currentIndexChanged['QString'].connect(self.comboBox_Lu_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Lu)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 86:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Ac = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Ac.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Ac.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Ac.currentIndexChanged['QString'].connect(self.comboBox_Ac_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Ac)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 87:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Th = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Th.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Th.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Th.currentIndexChanged['QString'].connect(self.comboBox_Th_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Th)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 88:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Pa = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Pa.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Pa.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Pa.currentIndexChanged['QString'].connect(self.comboBox_Pa_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Pa)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 89:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_U = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_U.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_U.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_U.currentIndexChanged['QString'].connect(self.comboBox_U_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_U)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1                        
+                    elif index == 90:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Np = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Np.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Np.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Np.currentIndexChanged['QString'].connect(self.comboBox_Np_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Np)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 91:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Pu = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Pu.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Pu.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Pu.currentIndexChanged['QString'].connect(self.comboBox_Pu_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Pu)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
+                    elif index == 92:
+                        # Add a new line in tableWidget
+                        self.ui.tableWidget.insertRow(self.LineCount)
+                        # Create comboBox
+                        self.comboBox_Am = QtGui.QComboBox()
+                        temp = 0
+                        # Insert items to comboBox
+                        for i in range(len(self.PhotonEnergy[0])):
+                            if (self.modifiedPhotonEnergy[index][i] != 0):
+                                self.comboBox_Am.insertItem(temp,
+                                                           self.energyLabel[i] + \
+                                                           QString(unicode(self.modifiedPhotonEnergy[index][i])) + \
+                                                           "eV")
+                                temp = temp + 1
+                        self.comboBox_Am.insertItem(temp,"All")
+                        # Connect "comboBox changed" event handler
+                        self.comboBox_Am.currentIndexChanged['QString'].connect(self.comboBox_Am_Changed)
+                        # Show element symbol in talbeWidget
+                        self.ui.tableWidget.setItem(self.LineCount,0,
+                                                    QTableWidgetItem(QString(self.knownElements[index])))
+                        # Show comboBox in tableWidget
+                        self.ui.tableWidget.setCellWidget(self.LineCount,1,self.comboBox_Am)
+                        # Show scanEnergyRange in tableWidget
+                        self.ui.tableWidget.setItem(self.LineCount,2,
+                                                    QTableWidgetItem(QString(unicode(self.scanEnergyRange[index]))))
+                        self.LineCount = self.LineCount + 1
     '''
     "comboBox_Li changed" event handler
     '''
